@@ -1,13 +1,109 @@
-1565c0;
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Heessen + Hövel Streets ballern</title>
+
+  <!-- Social Preview -->
+  <meta property="og:title" content="Heessen + Hövel Streets ballern">
+  <meta property="og:description" content="Jetzt online">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://foulnet.github.io/Foulnet-Website/">
+  <meta property="og:image" content="https://foulnet.github.io/Foulnet-Website/photo-output.png">
+
+  <style>
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      margin: 0;
+      background: #0f0f10;
+      color: #fff;
+    }
+    .wrap {
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 22px;
+    }
+    .card {
+      background: #17171a;
+      border: 1px solid #2a2a2f;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    img {
+      width: 100%;
+      display: block;
+    }
+    .p {
+      padding: 16px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 22px;
+    }
+    p {
+      margin: 0 0 14px;
+      opacity: .85;
+    }
+    .btn {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 800;
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+    .primary {
+      background: #ff0033;
+      color: #fff;
+    }
+    .secondary {
+      background: #2a2a2f;
+      color: #fff;
+      margin-top: 10px;
+    }
+    .hint {
+      margin-top: 14px;
+      font-size: 13px;
+      opacity: .75;
+      line-height: 1.35;
     }
   </style>
 </head>
+
 <body>
-  <h1>Street Session in Hamm</h1>
-  <img src="photo-output.png" alt="Mein Bild" style="max-width: 100%; height: auto;">
-  <br><br>
-  <button onclick="window.open('https://youtu.be/BDWFvXKMiAQ', '_blank')">
-    In YouTube App öffnen
-  </button>
+  <div class="wrap">
+    <div class="card">
+
+      <!-- Bild -->
+      <img src="https://foulnet.github.io/Foulnet-Website/photo-output.png" alt="Heessen + Hövel Streetsession ballern">
+
+      <div class="p">
+        <h1>Heessen + Hövel Streets ballern</h1>
+        <p>Video öffnen:</p>
+
+        <!-- Button öffnet YouTube-Link direkt im Browser -->
+        <a class="btn primary"
+           href="https://youtu.be/BDWFvXKMiAQ"
+           target="_blank"
+           rel="noopener">
+           Video im Browser öffnen
+        </a>
+
+        <!-- Zweitbutton: Browser fallback, gleiche URL -->
+        <a class="btn secondary"
+           href="https://youtu.be/BDWFvXKMiAQ"
+           target="_blank"
+           rel="noopener">
+           Im Browser öffnen
+        </a>
+
+        <div class="hint">
+          Hinweis: Um die YouTube-App zu nutzen, öffne das Video im Browser und tippe dann auf „Öffnen in App“.
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

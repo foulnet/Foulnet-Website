@@ -1,3 +1,233 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="theme-color" content="#080808">
+<meta property="og:title" content="FOULNET">
+<meta property="og:description" content="Skate · Music · Content">
+<title>FOULNET</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+/* ─── RESET ─────────────────────────────── */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
+
+/* ─── TOKENS ─────────────────────────────── */
+:root {
+  --bg:       #080808;
+  --surface:  #111111;
+  --border:   #1f1f1f;
+  --muted:    #2e2e2e;
+  --dim:      #555;
+  --text:     #e8e2d9;
+  --red:      #e8132a;
+  --red-glow: rgba(232,19,42,0.18);
+  --yellow:   #f5c11a;
+  --ff-head:  'Barlow Condensed', sans-serif;
+  --ff-mono:  'DM Mono', monospace;
+  --ease:     cubic-bezier(.25,.46,.45,.94);
+}
+
+/* ─── BASE ─────────────────────────────── */
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--ff-mono);
+  min-height: 100vh;
+  overflow-x: hidden;
+  cursor: default;
+}
+
+/* grain */
+body::after {
+  content:'';
+  position:fixed; inset:0; z-index:9999;
+  pointer-events:none;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)' opacity='1'/%3E%3C/svg%3E");
+  opacity:0.035;
+}
+
+/* ─── LAYOUT ─────────────────────────────── */
+.page {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 0 22px 80px;
+}
+
+/* ─── HERO ─────────────────────────────── */
+.hero {
+  padding-top: 52px;
+  padding-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  animation: riseIn .7s var(--ease) both;
+}
+
+/* ticker strip */
+.ticker-wrap {
+  width: 100vw;
+  max-width: 520px;
+  overflow: hidden;
+  background: var(--red);
+  padding: 7px 0;
+  margin-bottom: 0;
+  position: relative;
+}
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker 18s linear infinite;
+  gap: 0;
+}
+.ticker-item {
+  font-family: var(--ff-head);
+  font-weight: 900;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 0 28px;
+  white-space: nowrap;
+  opacity: .9;
+}
+.ticker-dot {
+  color: rgba(255,255,255,.4);
+}
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* wordmark */
+.wordmark-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 42px 0 28px;
+}
+
+.wordmark {
+  font-family: var(--ff-head);
+  font-weight: 900;
+  font-size: clamp(88px, 22vw, 130px);
+  line-height: .85;
+  letter-spacing: -2px;
+  color: var(--text);
+  position: relative;
+  display: inline-block;
+  user-select: none;
+}
+
+/* stencil cutout shadow */
+.wordmark::before {
+  content: 'FOULNET';
+  position: absolute;
+  inset: 0;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--red);
+  transform: translate(3px, 3px);
+  z-index: -1;
+  letter-spacing: -2px;
+}
+
+.wordmark-sub {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+.ws-line { flex:1; height:1px; background: var(--border); width: 40px; }
+.ws-text {
+  font-size: 9px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+/* ─── VIDEO CARD ─────────────────────────── */
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  animation: riseIn .6s .05s var(--ease) both;
+}
+.sh-label {
+  font-size: 9px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.sh-line {
+  flex:1;
+  height:1px;
+  background: var(--border);
+}
+.sh-tag {
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--red);
+  border: 1px solid var(--red);
+  padding: 2px 7px;
+  border-radius: 2px;
+}
+
+.vcard {
+  display: block;
+  text-decoration: none;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  position: relative;
+  animation: riseIn .6s .1s var(--ease) both;
+  transition: border-color .3s var(--ease), box-shadow .3s var(--ease);
+}
+.vcard:hover {
+  border-color: var(--red);
+  box-shadow: 0 0 32px var(--red-glow);
+}
+
+.vcard-thumb {
+  position: relative;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: #0d0d0d;
+}
+.vcard-thumb img {
+  width:100%; height:100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .5s var(--ease), filter .4s;
+  filter: brightness(.9) saturate(.8);
+}
+.vcard:hover .vcard-thumb img {
+  transform: scale(1.04);
+  filter: brightness(1) saturate(1);
+}
+
+/* scan-line over thumb */
+.vcard-thumb::before {
+  content:'';
+  position:absolute; inset:0; z-index:2;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0,0,0,.08) 0px,
+    rgba(0,0,0,.08) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events:none;
+}
+
 .vplay {
   position:absolute; inset:0; z-index:3;
   display:flex; align-items:center; justify-content:center;
@@ -74,8 +304,7 @@
   transition: background .2s;
 }
 .vcard:hover .vwatch { background: #c80f23; }
-
-/* ─── DIVIDER ─────────────────────────────── */
+  /* ─── DIVIDER ─────────────────────────────── */
 .sep {
   margin: 32px 0;
   display: flex;
@@ -127,16 +356,16 @@
   border-color: var(--muted);
 }
 
-.lbtn--yt::before { background: #e8132a; }
-.lbtn--ig::before { background: linear-gradient(180deg,#f58529,#c13584); }
-.lbtn--sp::before { background: #1DB954; }
-.lbtn--am::before { background: #fc3c44; }
-.lbtn--amz::before { background: #00a8e0; }
+.lbtn--yt::before    { background: #e8132a; }
+.lbtn--ig::before    { background: linear-gradient(180deg,#f58529,#c13584); }
+.lbtn--sp::before    { background: #1DB954; }
+.lbtn--am::before    { background: #fc3c44; }
+.lbtn--amz::before   { background: #00a8e0; }
 
-.lbtn:hover.lbtn--yt { box-shadow: -4px 0 20px rgba(232,19,42,.12); }
-.lbtn:hover.lbtn--ig { box-shadow: -4px 0 20px rgba(193,53,132,.12); }
-.lbtn:hover.lbtn--sp { box-shadow: -4px 0 20px rgba(29,185,84,.12); }
-.lbtn:hover.lbtn--am { box-shadow: -4px 0 20px rgba(252,60,68,.12); }
+.lbtn:hover.lbtn--yt  { box-shadow: -4px 0 20px rgba(232,19,42,.12); }
+.lbtn:hover.lbtn--ig  { box-shadow: -4px 0 20px rgba(193,53,132,.12); }
+.lbtn:hover.lbtn--sp  { box-shadow: -4px 0 20px rgba(29,185,84,.12); }
+.lbtn:hover.lbtn--am  { box-shadow: -4px 0 20px rgba(252,60,68,.12); }
 .lbtn:hover.lbtn--amz { box-shadow: -4px 0 20px rgba(0,168,224,.12); }
 
 .lbtn-icon {
@@ -206,6 +435,59 @@
 }
 .mh-line { flex:1; height:1px; background: var(--border); }
 
+/* ─── SPOTIFY PLAYER ────────────────────── */
+.spotify-bar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: linear-gradient(to top, #080808 60%, transparent);
+  padding: 16px 22px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 520px;
+  margin: 0 auto;
+  animation: riseIn .6s .6s var(--ease) both;
+}
+
+.spotify-embed-wrap {
+  flex: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 80px;
+}
+
+.spotify-embed-wrap iframe {
+  width: 100%;
+  height: 80px;
+  border: none;
+  display: block;
+}
+
+.mute-btn {
+  flex-shrink: 0;
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: border-color .2s, background .2s, transform .15s;
+  color: var(--text);
+}
+.mute-btn:hover {
+  border-color: var(--red);
+  background: var(--muted);
+  transform: scale(1.08);
+}
+.mute-btn svg { width: 18px; height: 18px; }
+.mute-btn .icon-muted { display: none; }
+.mute-btn.is-muted .icon-sound { display: none; }
+.mute-btn.is-muted .icon-muted { display: block; }
+
+/* push page content up so fixed bar doesn't overlap footer */
+.page { padding-bottom: 140px; }
+
 /* ─── FOOTER ─────────────────────────────── */
 footer {
   margin-top: 48px;
@@ -232,13 +514,13 @@ footer {
 /* ─── KEYFRAMES ─────────────────────────── */
 @keyframes riseIn {
   from { opacity:0; transform:translateY(18px); }
-  to { opacity:1; transform:translateY(0); }
+  to   { opacity:1; transform:translateY(0); }
 }
 
 /* ─── MOBILE REFINEMENTS ─────────────────── */
 @media (max-width: 400px) {
   .vwatch { display: none; }
-  .vmeta { padding: 12px 14px 14px; }
+  .vmeta  { padding: 12px 14px 14px; }
 }
 
 </style>
@@ -287,10 +569,10 @@ footer {
         <span class="ticker-item ticker-dot">✦</span>
         <span class="ticker-item">CONTENT</span>
         <span class="ticker-item ticker-dot">✦</span>
+  
       </div>
     </div>
-
-    <!-- wordmark -->
+<!-- wordmark -->
     <div class="wordmark-wrap">
       <div class="wordmark">FOULNET</div>
       <div class="wordmark-sub">
@@ -414,4 +696,56 @@ footer {
     </a>
 
     <a class="lbtn lbtn--amz" href="https://music.amazon.de/search/Foulnet+Gute+Nacht" target="_blank" rel="noopener">
-      <div class="lbtn-ic
+      <div class="lbtn-icon">
+        <svg viewBox="0 0 24 24" fill="#00a8e0"><path d="M13.958 10.09c0 1.232.029 2.256-.591 3.351-.502.891-1.301 1.438-2.186 1.438-1.214 0-1.922-.924-1.922-2.292 0-2.692 2.415-3.182 4.7-3.182v.685zm3.186 7.705a.66.66 0 0 1-.748.074c-1.051-.873-1.239-1.278-1.814-2.108-1.734 1.769-2.96 2.298-5.208 2.298-2.659 0-4.731-1.641-4.731-4.925 0-2.565 1.391-4.309 3.37-5.164 1.715-.754 4.11-.891 5.942-1.099v-.41c0-.753.059-1.642-.384-2.294-.384-.578-1.124-.817-1.774-.817-1.205 0-2.277.618-2.54 1.899-.054.285-.262.567-.549.581l-3.076-.333c-.259-.056-.548-.266-.472-.66.708-3.726 4.076-4.846 7.093-4.846 1.543 0 3.56.41 4.775 1.575 1.543 1.44 1.395 3.363 1.395 5.457v4.945c0 1.488.616 2.14 1.196 2.943.204.285.249.628-.01.839l-2.465 2.045zm3.27 1.985c-2.089 1.542-5.115 2.359-7.72 2.359-3.653 0-6.938-1.35-9.42-3.596-.195-.176-.021-.417.214-.28 2.682 1.561 5.996 2.501 9.421 2.501 2.31 0 4.847-.48 7.18-1.472.352-.15.647.231.325.488zm.929-1.058c-.266-.342-1.757-.161-2.427-.081-.203.025-.234-.153-.051-.281 1.189-.836 3.137-.595 3.364-.315.228.282-.059 2.234-1.176 3.167-.172.144-.335.067-.259-.121.251-.626.813-2.027.549-2.369z"/></svg>
+      </div>
+      <div class="lbtn-copy">
+        <div class="lbtn-name">Amazon Music</div>
+        <div class="lbtn-handle">Foulnet — Gute Nacht</div>
+      </div>
+      <span class="lbtn-arrow">›</span>
+    </a>
+
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-name">FOULNET</div>
+    <div class="footer-sub">© 2025 · All rights reserved</div>
+  </footer>
+
+</div><!-- /page -->
+
+<!-- ── SPOTIFY FIXED BAR ── -->
+<div class="spotify-bar">
+  <div class="spotify-embed-wrap">
+    <iframe
+      id="spotify-iframe"
+      src="https://open.spotify.com/embed/track/6i4Vl8Txt5rba3QrpKKlpG?utm_source=generator&theme=0&autoplay=1"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy"
+    ></iframe>
+  </div>
+  <button class="mute-btn" id="muteBtn" title="Stumm schalten" aria-label="Stumm schalten">
+    <svg class="icon-sound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+      <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+      <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+    </svg>
+    <svg class="icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+      <line x1="23" y1="9" x2="17" y2="15"/>
+      <line x1="17" y1="9" x2="23" y2="15"/>
+    </svg>
+  </button>
+</div>
+
+<script>
+  const btn = document.getElementById('muteBtn');
+  const iframe = document.getElementById('spotify-iframe');
+  let muted = false;
+
+  btn.addEventListener('click', () => {
+    muted = !muted;
+    btn.classList.toggle('is-muted', muted);
+    btn.title = muted ? 'Ton an' : 'Stumm 

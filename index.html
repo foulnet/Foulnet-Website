@@ -11,9 +11,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 
+/* ─── RESET ─────────────────────────────── */
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 html { -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
 
+/* ─── TOKENS ─────────────────────────────── */
 :root {
   --bg:       #080808;
   --surface:  #111111;
@@ -29,6 +31,7 @@ html { -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
   --ease:     cubic-bezier(.25,.46,.45,.94);
 }
 
+/* ─── BASE ─────────────────────────────── */
 body {
   background: var(--bg);
   color: var(--text);
@@ -47,12 +50,14 @@ body::after {
   opacity:0.035;
 }
 
+/* ─── LAYOUT ─────────────────────────────── */
 .page {
   max-width: 520px;
   margin: 0 auto;
   padding: 0 22px 140px;
 }
 
+/* ─── HERO ─────────────────────────────── */
 .hero {
   padding-top: 52px;
   padding-bottom: 40px;
@@ -87,20 +92,19 @@ body::after {
   white-space: nowrap;
   opacity: .9;
 }
-.ticker-dot { color: rgba(255,255,
+.ticker-dot { color: rgba(255,255,255,.4); }
+
 @keyframes ticker {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
 
-/* wordmark */
 .wordmark-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 42px 0 28px;
 }
-
 .wordmark {
   font-family: var(--ff-head);
   font-weight: 900;
@@ -112,8 +116,6 @@ body::after {
   display: inline-block;
   user-select: none;
 }
-
-/* stencil cutout shadow */
 .wordmark::before {
   content: 'FOULNET';
   position: absolute;
@@ -124,7 +126,6 @@ body::after {
   z-index: -1;
   letter-spacing: -2px;
 }
-
 .wordmark-sub {
   display: flex;
   align-items: center;
@@ -139,7 +140,7 @@ body::after {
   color: var(--dim);
 }
 
-/* ─── VIDEO CARD ─────────────────────────── */
+/* ─── SECTION HEAD ─────────────────────── */
 .section-head {
   display: flex;
   align-items: center;
@@ -152,12 +153,9 @@ body::after {
   letter-spacing: 5px;
   text-transform: uppercase;
   color: var(--dim);
+  transition: color .3s var(--ease);
 }
-.sh-line {
-  flex:1;
-  height:1px;
-  background: var(--border);
-}
+.sh-line { flex:1; height:1px; background: var(--border); }
 .sh-tag {
   font-size: 8px;
   letter-spacing: 2px;
@@ -168,21 +166,43 @@ body::after {
   border-radius: 2px;
 }
 
+/* ─── VIDEO CAROUSEL ────────────────────── */
+.vcarousel-outer {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  animation: riseIn .6s .1s var(--ease) both;
+  touch-action: pan-y;
+  user-select: none;
+  cursor: grab;
+}
+.vcarousel-outer:active { cursor: grabbing; }
+
+.vcarousel-track {
+  display: flex;
+  transition: transform .45s var(--ease);
+  will-change: transform;
+}
+
 .vcard {
+  flex: 0 0 100%;
+  width: 100%;
   display: block;
   text-decoration: none;
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 6px;
   overflow: hidden;
-  border: 1px solid var(--border);
-  background: var(--surface);
   position: relative;
-  animation: riseIn .6s .1s var(--ease) both;
   transition: border-color .3s var(--ease), box-shadow .3s var(--ease);
+  pointer-events: none;
 }
+.vcard.active-card { pointer-events: auto; }
 .vcard:hover {
   border-color: var(--red);
   box-shadow: 0 0 32px var(--red-glow);
 }
+.vcarousel-track .vcard + .vcard { margin-left: 16px; }
 
 .vcard-thumb {
   position: relative;
@@ -201,8 +221,6 @@ body::after {
   transform: scale(1.04);
   filter: brightness(1) saturate(1);
 }
-
-/* scan-line over thumb */
 .vcard-thumb::before {
   content:'';
   position:absolute; inset:0; z-index:2;
@@ -225,7 +243,6 @@ body::after {
 .vcard:hover .vplay {
   background: radial-gradient(ellipse at center, rgba(232,19,42,.25) 0%, transparent 70%);
 }
-
 .vplay-btn {
   width: 58px; height: 58px;
   border-radius: 50%;
@@ -240,7 +257,6 @@ body::after {
 }
 .vplay-btn svg { width:22px; height:22px; margin-left:3px; }
 
-/* corner badge */
 .vcorner {
   position:absolute; top:12px; left:12px; z-index:4;
   background: var(--yellow);
@@ -253,7 +269,6 @@ body::after {
   padding: 4px 9px;
   border-radius: 2px;
 }
-
 .vmeta {
   padding: 14px 18px 16px;
   display: flex;
@@ -292,7 +307,41 @@ body::after {
   transition: background .2s;
 }
 .vcard:hover .vwatch { background: #c80f23; }
-  /* ─── DIVIDER ─────────────────────────────── */
+
+/* ─── DOTS ──────────────────────────────── */
+.vdots {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 12px;
+}
+.vdot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--muted);
+  transition: background .3s, transform .3s;
+  cursor: pointer;
+}
+.vdot.active { background: var(--red); transform: scale(1.4); }
+
+.swipe-hint {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+  margin-top: 8px;
+  opacity: .35;
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--dim);
+  transition: opacity .4s;
+  animation: riseIn .5s .4s var(--ease) both;
+}
+.swipe-hint.hidden { opacity: 0; }
+.swipe-hint svg { width: 12px; height: 12px; }
+
+/* ─── DIVIDER ───────────────────────────── */
 .sep {
   margin: 32px 0;
   display: flex;
@@ -301,18 +350,10 @@ body::after {
   animation: riseIn .6s .15s var(--ease) both;
 }
 .sep-line { flex:1; height:1px; background: var(--border); }
-.sep-dot {
-  width:5px; height:5px;
-  border-radius:50%;
-  background: var(--red);
-}
+.sep-dot { width:5px; height:5px; border-radius:50%; background: var(--red); }
 
-/* ─── LINK GRID ─────────────────────────── */
-.links {
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
-}
+/* ─── LINKS ─────────────────────────────── */
+.links { display: flex; flex-direction: column; gap: 9px; }
 
 .lbtn {
   display: flex;
@@ -327,8 +368,6 @@ body::after {
   position: relative;
   overflow: hidden;
 }
-
-/* animated left bar */
 .lbtn::before {
   content:'';
   position:absolute; left:0; top:0; bottom:0;
@@ -339,10 +378,7 @@ body::after {
   border-radius: 0 2px 2px 0;
 }
 .lbtn:hover::before { transform: scaleY(1); }
-.lbtn:hover {
-  transform: translateX(5px);
-  border-color: var(--muted);
-}
+.lbtn:hover { transform: translateX(5px); border-color: var(--muted); }
 
 .lbtn--yt::before    { background: #e8132a; }
 .lbtn--ig::before    { background: linear-gradient(180deg,#f58529,#c13584); }
@@ -364,7 +400,6 @@ body::after {
   background: var(--muted);
 }
 .lbtn-icon svg { width:18px; height:18px; }
-
 .lbtn-copy { flex:1; }
 .lbtn-name {
   font-family: var(--ff-head);
@@ -381,49 +416,36 @@ body::after {
   margin-top: 2px;
   text-transform: uppercase;
 }
-
 .lbtn-arrow {
   color: var(--muted);
   font-size: 16px;
   transition: color .2s, transform .2s;
 }
-.lbtn:hover .lbtn-arrow {
-  color: var(--text);
-  transform: translateX(3px);
-}
+.lbtn:hover .lbtn-arrow { color: var(--text); transform: translateX(3px); }
 
-/* staggered anims */
 .links .lbtn:nth-child(1) { animation: riseIn .5s .18s var(--ease) both; }
 .links .lbtn:nth-child(2) { animation: riseIn .5s .24s var(--ease) both; }
 .links .lbtn:nth-child(3) { animation: riseIn .5s .30s var(--ease) both; }
 .links .lbtn:nth-child(4) { animation: riseIn .5s .36s var(--ease) both; }
 .links .lbtn:nth-child(5) { animation: riseIn .5s .42s var(--ease) both; }
 
-/* music group header */
 .music-head {
   display:flex; align-items:center; gap:10px;
   margin: 28px 0 12px;
   animation: riseIn .5s .28s var(--ease) both;
 }
 .mh-label {
-  font-size: 9px;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  color: var(--dim);
-  white-space: nowrap;
+  font-size: 9px; letter-spacing: 5px;
+  text-transform: uppercase; color: var(--dim); white-space: nowrap;
 }
 .mh-song {
-  font-family: var(--ff-head);
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--text);
-  white-space: nowrap;
+  font-family: var(--ff-head); font-weight: 700;
+  font-size: 12px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--text); white-space: nowrap;
 }
 .mh-line { flex:1; height:1px; background: var(--border); }
 
-/* ─── SPOTIFY PLAYER ────────────────────── */
+/* ─── SPOTIFY BAR ───────────────────────── */
 .spotify-bar {
   position: fixed;
   bottom: 0; left: 0; right: 0;
@@ -437,21 +459,12 @@ body::after {
   margin: 0 auto;
   animation: riseIn .6s .6s var(--ease) both;
 }
-
 .spotify-embed-wrap {
-  flex: 1;
-  border-radius: 8px;
-  overflow: hidden;
-  height: 80px;
+  flex: 1; border-radius: 8px; overflow: hidden; height: 80px;
 }
-
 .spotify-embed-wrap iframe {
-  width: 100%;
-  height: 80px;
-  border: none;
-  display: block;
+  width: 100%; height: 80px; border: none; display: block;
 }
-
 .mute-btn {
   flex-shrink: 0;
   width: 42px; height: 42px;
@@ -463,49 +476,29 @@ body::after {
   transition: border-color .2s, background .2s, transform .15s;
   color: var(--text);
 }
-.mute-btn:hover {
-  border-color: var(--red);
-  background: var(--muted);
-  transform: scale(1.08);
-}
+.mute-btn:hover { border-color: var(--red); background: var(--muted); transform: scale(1.08); }
 .mute-btn svg { width: 18px; height: 18px; }
 .mute-btn .icon-muted { display: none; }
 .mute-btn.is-muted .icon-sound { display: none; }
 .mute-btn.is-muted .icon-muted { display: block; }
 
-/* push page content up so fixed bar doesn't overlap footer */
-.page { padding-bottom: 140px; }
-
 /* ─── FOOTER ─────────────────────────────── */
-footer {
-  margin-top: 48px;
-  text-align: center;
-  animation: riseIn .5s .5s var(--ease) both;
-}
+footer { margin-top: 48px; text-align: center; animation: riseIn .5s .5s var(--ease) both; }
 .footer-name {
-  font-family: var(--ff-head);
-  font-weight: 900;
-  font-size: 36px;
-  letter-spacing: 6px;
-  color: var(--border);
-  text-transform: uppercase;
-  user-select: none;
+  font-family: var(--ff-head); font-weight: 900;
+  font-size: 36px; letter-spacing: 6px;
+  color: var(--border); text-transform: uppercase; user-select: none;
 }
 .footer-sub {
-  font-size: 9px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: #2a2a2a;
-  margin-top: 4px;
+  font-size: 9px; letter-spacing: 3px;
+  text-transform: uppercase; color: #2a2a2a; margin-top: 4px;
 }
 
-/* ─── KEYFRAMES ─────────────────────────── */
 @keyframes riseIn {
   from { opacity:0; transform:translateY(18px); }
   to   { opacity:1; transform:translateY(0); }
 }
 
-/* ─── MOBILE REFINEMENTS ─────────────────── */
 @media (max-width: 400px) {
   .vwatch { display: none; }
   .vmeta  { padding: 12px 14px 14px; }
@@ -517,50 +510,28 @@ footer {
 
 <div class="page">
 
-  <!-- ── HERO ── -->
+  <!-- HERO -->
   <div class="hero">
-
-    <!-- ticker -->
     <div class="ticker-wrap">
       <div class="ticker-track">
-        <!-- duplicated for seamless loop -->
-        <span class="ticker-item">FOULNET</span>
-        <span class="ticker-item ticker-dot">✦</span>
-        <span class="ticker-item">SKATE</span>
-        <span class="ticker-item ticker-dot">✦</span>
-        <span class="ticker-item">MUSIK</span>
-        <span class="ticker-item ticker-dot">✦</span>
-        <span class="ticker-item">CONTENT</span>
-        <span class="ticker-item ticker-dot">✦</span>
-        <span class="ticker-item">FOULNET</span>
-        <span class="ticker-item ticker-dot">✦</span>
-        <span class="ticker-item">SKATE</span>
-        <span class="ticker-item ticker-dot">✦</span>
-        <span class="ticker-item">MUSIK</span>
-        <span class="ticker-item ticker-dot">✦</span>
-        <span class="ticker-item">CONTENT</span>
-        <span class="ticker-item ticker-dot">✦</span>
-        <!-- duplicate set for infinite -->
-        <span class="ticker-item">FOULNET</span>
-        <span class="ticker-item ticker-dot">✦</span>
-        <span class="ticker-item">SKATE</span>
-        <span class="ticker-item ticker-dot">✦</span>
-        <span class="ticker-item">MUSIK</span>
-        <span class="ticker-item ticker-dot">✦</span>
-        <span class="ticker-item">CONTENT</span>
-        <span class="ticker-item ticker-dot">✦</span>
-        <span class="ticker-item">FOULNET</span>
-        <span class="ticker-item ticker-dot">✦</span>
-        <span class="ticker-item">SKATE</span>
-        <span class="ticker-item ticker-dot">✦</span>
-        <span class="ticker-item">MUSIK</span>
-        <span class="ticker-item ticker-dot">✦</span>
-        <span class="ticker-item">CONTENT</span>
-        <span class="ticker-item ticker-dot">✦</span>
-  
+        <span class="ticker-item">FOULNET</span><span class="ticker-item ticker-dot">✦</span>
+        <span class="ticker-item">SKATE</span><span class="ticker-item ticker-dot">✦</span>
+        <span class="ticker-item">MUSIK</span><span class="ticker-item ticker-dot">✦</span>
+        <span class="ticker-item">CONTENT</span><span class="ticker-item ticker-dot">✦</span>
+        <span class="ticker-item">FOULNET</span><span class="ticker-item ticker-dot">✦</span>
+        <span class="ticker-item">SKATE</span><span class="ticker-item ticker-dot">✦</span>
+        <span class="ticker-item">MUSIK</span><span class="ticker-item ticker-dot">✦</span>
+        <span class="ticker-item">CONTENT</span><span class="ticker-item ticker-dot">✦</span>
+        <span class="ticker-item">FOULNET</span><span class="ticker-item ticker-dot">✦</span>
+        <span class="ticker-item">SKATE</span><span class="ticker-item ticker-dot">✦</span>
+        <span class="ticker-item">MUSIK</span><span class="ticker-item ticker-dot">✦</span>
+        <span class="ticker-item">CONTENT</span><span class="ticker-item ticker-dot">✦</span>
+        <span class="ticker-item">FOULNET</span><span class="ticker-item ticker-dot">✦</span>
+        <span class="ticker-item">SKATE</span><span class="ticker-item ticker-dot">✦</span>
+        <span class="ticker-item">MUSIK</span><span class="ticker-item ticker-dot">✦</span>
+        <span class="ticker-item">CONTENT</span><span class="ticker-item ticker-dot">✦</span>
       </div>
     </div>
-<!-- wordmark -->
     <div class="wordmark-wrap">
       <div class="wordmark">FOULNET</div>
       <div class="wordmark-sub">
@@ -569,56 +540,97 @@ footer {
         <div class="ws-line"></div>
       </div>
     </div>
-
-  </div><!-- /hero -->
-
-  <!-- ── LATEST VIDEO ── -->
-  <div class="section-head">
-    <span class="sh-label">Neustes Video</span>
-    <div class="sh-line"></div>
-    <span class="sh-tag">NEU</span>
   </div>
 
-  <a class="vcard" href="https://youtu.be/bJM1S0QascU" target="_blank" rel="noopener noreferrer">
-    <div class="vcard-thumb">
-      <img
-        src="https://img.youtube.com/vi/bJM1S0QascU/maxresdefault.jpg"
-        onerror="this.src='https://img.youtube.com/vi/bJM1S0QascU/hqdefault.jpg'"
-        alt="Kape Setup First Session"
-        loading="lazy"
-      >
-      <span class="vcorner">Kape Setup</span>
-      <div class="vplay">
-        <div class="vplay-btn">
-          <svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
-        </div>
-      </div>
-    </div>
-    <div class="vmeta">
-      <div>
-        <div class="vtitle">Neues Setup, neues Level?<br>Kape Deck First Impression</div>
-        <div class="vsub">YouTube · 360 Flip · Noseslide · Big Spin Impossible</div>
-      </div>
-      <div class="vwatch">Watch ↗</div>
-    </div>
-  </a>
+  <!-- VIDEO CAROUSEL -->
+  <div class="section-head">
+    <span class="sh-label" id="videoLabel">Neustes Video</span>
+    <div class="sh-line"></div>
+    <span class="sh-tag" id="videoTag">NEU</span>
+  </div>
 
-  <!-- ── DIVIDER ── -->
+  <div class="vcarousel-outer" id="carousel">
+    <div class="vcarousel-track" id="carouselTrack">
+
+      <!-- CARD 0 — Neues Video -->
+      <a class="vcard active-card" id="card0" href="https://youtu.be/Hg3gfZjzyjY" target="_blank" rel="noopener noreferrer">
+        <div class="vcard-thumb">
+          <img
+            src="https://img.youtube.com/vi/Hg3gfZjzyjY/maxresdefault.jpg"
+            onerror="this.src='https://img.youtube.com/vi/Hg3gfZjzyjY/hqdefault.jpg'"
+            alt="Adidas hat gelogen - Ozeanplastik Board 1 Monat Review"
+            loading="eager"
+          >
+          <span class="vcorner">Ozeanplastik</span>
+          <div class="vplay">
+            <div class="vplay-btn">
+              <svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="vmeta">
+          <div>
+            <div class="vtitle">Adidas hat gelogen —<br>echtes Ozeanplastik?</div>
+            <div class="vsub">1 Monat Review · Q&amp;A · Kape Board</div>
+          </div>
+          <div class="vwatch">Watch ↗</div>
+        </div>
+      </a>
+
+      <!-- CARD 1 — Altes Video -->
+      <a class="vcard" id="card1" href="https://youtu.be/bJM1S0QascU" target="_blank" rel="noopener noreferrer">
+        <div class="vcard-thumb">
+          <img
+            src="https://img.youtube.com/vi/bJM1S0QascU/maxresdefault.jpg"
+            onerror="this.src='https://img.youtube.com/vi/bJM1S0QascU/hqdefault.jpg'"
+            alt="Kape Setup First Session"
+            loading="lazy"
+          >
+          <span class="vcorner">Kape Setup</span>
+          <div class="vplay">
+            <div class="vplay-btn">
+              <svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="vmeta">
+          <div>
+            <div class="vtitle">Neues Setup, neues Level?<br>Kape Deck First Impression</div>
+            <div class="vsub">YouTube · 360 Flip · Noseslide · Big Spin Impossible</div>
+          </div>
+          <div class="vwatch">Watch ↗</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <div class="vdots">
+    <div class="vdot active" id="dot0" onclick="goTo(0)"></div>
+    <div class="vdot" id="dot1" onclick="goTo(1)"></div>
+  </div>
+  <div class="swipe-hint" id="swipeHint">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 12H5M12 5l-7 7 7 7"/>
+    </svg>
+    swipe für älteres video
+  </div>
+
+  <!-- DIVIDER -->
   <div class="sep">
     <div class="sep-line"></div>
     <div class="sep-dot"></div>
     <div class="sep-line"></div>
   </div>
 
-  <!-- ── SOCIALS ── -->
+  <!-- SOCIALS -->
   <div class="section-head">
     <span class="sh-label">Socials</span>
     <div class="sh-line"></div>
   </div>
 
   <div class="links">
-
-    <a class="lbtn lbtn--yt" href="https://youtu.be/bJM1S0QascU" target="_blank" rel="noopener">
+    <a class="lbtn lbtn--yt" href="https://www.youtube.com/@Foulnet" target="_blank" rel="noopener">
       <div class="lbtn-icon">
         <svg viewBox="0 0 24 24" fill="#e8132a"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
       </div>
@@ -648,10 +660,9 @@ footer {
       </div>
       <span class="lbtn-arrow">›</span>
     </a>
-
   </div>
 
-  <!-- ── MUSIC ── -->
+  <!-- MUSIK -->
   <div class="music-head">
     <span class="mh-label">Musik</span>
     <div class="mh-line"></div>
@@ -660,7 +671,6 @@ footer {
   </div>
 
   <div class="links">
-
     <a class="lbtn lbtn--sp" href="https://open.spotify.com/search/Foulnet%20Gute%20Nacht" target="_blank" rel="noopener">
       <div class="lbtn-icon">
         <svg viewBox="0 0 24 24" fill="#1DB954"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
@@ -693,18 +703,16 @@ footer {
       </div>
       <span class="lbtn-arrow">›</span>
     </a>
-
   </div>
 
-  <!-- ── FOOTER ── -->
   <footer>
     <div class="footer-name">FOULNET</div>
     <div class="footer-sub">© 2025 · All rights reserved</div>
   </footer>
 
-</div><!-- /page -->
+</div>
 
-<!-- ── SPOTIFY FIXED BAR ── -->
+<!-- SPOTIFY -->
 <div class="spotify-bar">
   <div class="spotify-embed-wrap">
     <iframe
@@ -729,87 +737,89 @@ footer {
 </div>
 
 <script>
-  const btn = document.getElementById('muteBtn');
-  const iframe = document.getElementById('spotify-iframe');
-  let muted = false;
+/* MUTE */
+const muteBtn = document.getElementById('muteBtn');
+const spotifyIframe = document.getElementById('spotify-iframe');
+let muted = false;
+muteBtn.addEventListener('click', () => {
+  muted = !muted;
+  muteBtn.classList.toggle('is-muted', muted);
+  muteBtn.title = muted ? 'Ton an' : 'Stumm schalten';
+  const base = 'https://open.spotify.com/embed/track/6i4Vl8Txt5rba3QrpKKlpG?utm_source=generator&theme=0&autoplay=1';
+  spotifyIframe.src = muted ? base + '&volume=0' : base;
+});
 
-  btn.addEventListener('click', () => {
-    muted = !muted;
-    btn.classList.toggle('is-muted', muted);
-    btn.title = muted ? 'Ton an' : 'Stumm schalten';
-    const base = 'https://open.spotify.com/embed/track/6i4Vl8Txt5rba3QrpKKlpG?utm_source=generator&theme=0&autoplay=1';
-    spotifyIframe.src = muted ? base + '&volume=0' : base;
-  });
+/* CAROUSEL */
+const track    = document.getElementById('carouselTrack');
+const carousel = document.getElementById('carousel');
+const label    = document.getElementById('videoLabel');
+const tag      = document.getElementById('videoTag');
+const hint     = document.getElementById('swipeHint');
+const cards    = [document.getElementById('card0'), document.getElementById('card1')];
+const dots     = [document.getElementById('dot0'), document.getElementById('dot1')];
 
-  /* CAROUSEL */
-  const track    = document.getElementById('carouselTrack');
-  const carousel = document.getElementById('carousel');
-  const label    = document.getElementById('videoLabel');
-  const tag      = document.getElementById('videoTag');
-  const hint     = document.getElementById('swipeHint');
-  const cards    = [document.getElementById('card0'), document.getElementById('card1')];
-  const dots     = [document.getElementById('dot0'), document.getElementById('dot1')];
+const labels = ['Neustes Video', 'Vorheriges Video'];
+const tags   = ['NEU', ''];
 
-  const labels = ['Neustes Video', 'Vorheriges Video'];
-  const tags   = ['NEU', ''];
+let current = 0;
+let isDragging = false;
+let startX = 0;
 
-  let current = 0;
-  let isDragging = false;
-  let startX = 0;
+function getOffset(index) {
+  return index * (carousel.offsetWidth + 16);
+}
 
-  function getOffset(index) {
-    return index * (carousel.offsetWidth + 16);
-  }
+function goTo(index, animate = true) {
+  if (index < 0 || index >= cards.length) return;
+  current = index;
+  track.style.transition = animate ? 'transform .45s cubic-bezier(.25,.46,.45,.94)' : 'none';
+  track.style.transform  = `translateX(-${getOffset(index)}px)`;
+  label.textContent = labels[index];
+  tag.textContent   = tags[index];
+  tag.style.display = tags[index] ? '' : 'none';
+  dots.forEach((d, i) => d.classList.toggle('active', i === index));
+  cards.forEach((c, i) => c.classList.toggle('active-card', i === index));
+  hint.classList.toggle('hidden', index > 0);
+}
 
-  function goTo(index, animate = true) {
-    if (index < 0 || index >= cards.length) return;
-    current = index;
-    track.style.transition = animate ? 'transform .45s cubic-bezier(.25,.46,.45,.94)' : 'none';
-    track.style.transform  = `translateX(-${getOffset(index)}px)`;
-    label.textContent = labels[index];
-    tag.textContent   = tags[index];
-    tag.style.display = tags[index] ? '' : 'none';
-    dots.forEach((d, i) => d.classList.toggle('active', i === index));
-    cards.forEach((c, i) => c.classList.toggle('active-card', i === index));
-    hint.classList.toggle('hidden', index > 0);
-  }
+/* touch */
+carousel.addEventListener('touchstart', e => {
+  startX = e.touches[0].clientX;
+  track.style.transition = 'none';
+}, { passive: true });
 
-  carousel.addEventListener('touchstart', e => {
-    startX = e.touches[0].clientX;
-    track.style.transition = 'none';
-  }, { passive: true });
+carousel.addEventListener('touchmove', e => {
+  const diff = e.touches[0].clientX - startX;
+  track.style.transform = `translateX(-${getOffset(current) - diff}px)`;
+}, { passive: true });
 
-  carousel.addEventListener('touchmove', e => {
-    const diff = e.touches[0].clientX - startX;
-    track.style.transform = `translateX(-${getOffset(current) - diff}px)`;
-  }, { passive: true });
+carousel.addEventListener('touchend', e => {
+  const diff = startX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 50) goTo(diff > 0 ? Math.min(current+1, cards.length-1) : Math.max(current-1, 0));
+  else goTo(current);
+});
 
-  carousel.addEventListener('touchend', e => {
-    const diff = startX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 50) goTo(diff > 0 ? Math.min(current+1, cards.length-1) : Math.max(current-1, 0));
-    else goTo(current);
-  });
+/* mouse */
+carousel.addEventListener('mousedown', e => {
+  isDragging = true; startX = e.clientX;
+  track.style.transition = 'none'; e.preventDefault();
+});
+window.addEventListener('mousemove', e => {
+  if (!isDragging) return;
+  track.style.transform = `translateX(-${getOffset(current) - (e.clientX - startX)}px)`;
+});
+window.addEventListener('mouseup', e => {
+  if (!isDragging) return; isDragging = false;
+  const diff = startX - e.clientX;
+  if (Math.abs(diff) > 50) goTo(diff > 0 ? Math.min(current+1, cards.length-1) : Math.max(current-1, 0));
+  else goTo(current);
+});
+cards.forEach(card => {
+  card.addEventListener('click', e => { if (Math.abs(startX - (e.clientX||startX)) > 5) e.preventDefault(); });
+});
 
-  carousel.addEventListener('mousedown', e => {
-    isDragging = true; startX = e.clientX;
-    track.style.transition = 'none'; e.preventDefault();
-  });
-  window.addEventListener('mousemove', e => {
-    if (!isDragging) return;
-    track.style.transform = `translateX(-${getOffset(current) - (e.clientX - startX)}px)`;
-  });
-  window.addEventListener('mouseup', e => {
-    if (!isDragging) return; isDragging = false;
-    const diff = startX - e.clientX;
-    if (Math.abs(diff) > 50) goTo(diff > 0 ? Math.min(current+1, cards.length-1) : Math.max(current-1, 0));
-    else goTo(current);
-  });
-  cards.forEach(card => {
-    card.addEventListener('click', e => { if (Math.abs(startX - (e.clientX||startX)) > 5) e.preventDefault(); });
-  });
-
-  goTo(0, false);
-  window.addEventListener('resize', () => goTo(current, false));
+goTo(0, false);
+window.addEventListener('resize', () => goTo(current, false));
 </script>
 
 </body>

@@ -736,4 +736,81 @@ footer {
   btn.addEventListener('click', () => {
     muted = !muted;
     btn.classList.toggle('is-muted', muted);
-    btn.title = muted ? 'Ton an' : 'Stumm 
+    btn.title = muted ? 'Ton an' : 'Stumm schalten';
+    const base = 'https://open.spotify.com/embed/track/6i4Vl8Txt5rba3QrpKKlpG?utm_source=generator&theme=0&autoplay=1';
+    spotifyIframe.src = muted ? base + '&volume=0' : base;
+  });
+
+  /* CAROUSEL */
+  const track    = document.getElementById('carouselTrack');
+  const carousel = document.getElementById('carousel');
+  const label    = document.getElementById('videoLabel');
+  const tag      = document.getElementById('videoTag');
+  const hint     = document.getElementById('swipeHint');
+  const cards    = [document.getElementById('card0'), document.getElementById('card1')];
+  const dots     = [document.getElementById('dot0'), document.getElementById('dot1')];
+
+  const labels = ['Neustes Video', 'Vorheriges Video'];
+  const tags   = ['NEU', ''];
+
+  let current = 0;
+  let isDragging = false;
+  let startX = 0;
+
+  function getOffset(index) {
+    return index * (carousel.offsetWidth + 16);
+  }
+
+  function goTo(index, animate = true) {
+    if (index < 0 || index >= cards.length) return;
+    current = index;
+    track.style.transition = animate ? 'transform .45s cubic-bezier(.25,.46,.45,.94)' : 'none';
+    track.style.transform  = `translateX(-${getOffset(index)}px)`;
+    label.textContent = labels[index];
+    tag.textContent   = tags[index];
+    tag.style.display = tags[index] ? '' : 'none';
+    dots.forEach((d, i) => d.classList.toggle('active', i === index));
+    cards.forEach((c, i) => c.classList.toggle('active-card', i === index));
+    hint.classList.toggle('hidden', index > 0);
+  }
+
+  carousel.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+    track.style.transition = 'none';
+  }, { passive: true });
+
+  carousel.addEventListener('touchmove', e => {
+    const diff = e.touches[0].clientX - startX;
+    track.style.transform = `translateX(-${getOffset(current) - diff}px)`;
+  }, { passive: true });
+
+  carousel.addEventListener('touchend', e => {
+    const diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) goTo(diff > 0 ? Math.min(current+1, cards.length-1) : Math.max(current-1, 0));
+    else goTo(current);
+  });
+
+  carousel.addEventListener('mousedown', e => {
+    isDragging = true; startX = e.clientX;
+    track.style.transition = 'none'; e.preventDefault();
+  });
+  window.addEventListener('mousemove', e => {
+    if (!isDragging) return;
+    track.style.transform = `translateX(-${getOffset(current) - (e.clientX - startX)}px)`;
+  });
+  window.addEventListener('mouseup', e => {
+    if (!isDragging) return; isDragging = false;
+    const diff = startX - e.clientX;
+    if (Math.abs(diff) > 50) goTo(diff > 0 ? Math.min(current+1, cards.length-1) : Math.max(current-1, 0));
+    else goTo(current);
+  });
+  cards.forEach(card => {
+    card.addEventListener('click', e => { if (Math.abs(startX - (e.clientX||startX)) > 5) e.preventDefault(); });
+  });
+
+  goTo(0, false);
+  window.addEventListener('resize', () => goTo(current, false));
+</script>
+
+</body>
+</html>

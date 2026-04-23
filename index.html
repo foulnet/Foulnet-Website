@@ -41,6 +41,7 @@ body {
   cursor: default;
 }
 
+/* grain */
 body::after {
   content:'';
   position:fixed; inset:0; z-index:9999;
@@ -68,18 +69,21 @@ body::after {
   animation: riseIn .7s var(--ease) both;
 }
 
+/* ticker strip */
 .ticker-wrap {
   width: 100vw;
   max-width: 520px;
   overflow: hidden;
   background: var(--red);
   padding: 7px 0;
+  margin-bottom: 0;
   position: relative;
 }
 .ticker-track {
   display: flex;
   width: max-content;
   animation: ticker 18s linear infinite;
+  gap: 0;
 }
 .ticker-item {
   font-family: var(--ff-head);
@@ -99,12 +103,14 @@ body::after {
   to   { transform: translateX(-50%); }
 }
 
+/* wordmark */
 .wordmark-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 42px 0 28px;
 }
+
 .wordmark {
   font-family: var(--ff-head);
   font-weight: 900;
@@ -116,6 +122,7 @@ body::after {
   display: inline-block;
   user-select: none;
 }
+
 .wordmark::before {
   content: 'FOULNET';
   position: absolute;
@@ -126,6 +133,7 @@ body::after {
   z-index: -1;
   letter-spacing: -2px;
 }
+
 .wordmark-sub {
   display: flex;
   align-items: center;
@@ -164,6 +172,7 @@ body::after {
   border: 1px solid var(--red);
   padding: 2px 7px;
   border-radius: 2px;
+  transition: opacity .3s var(--ease);
 }
 
 /* ─── VIDEO CAROUSEL ────────────────────── */
@@ -434,15 +443,8 @@ body::after {
   margin: 28px 0 12px;
   animation: riseIn .5s .28s var(--ease) both;
 }
-.mh-label {
-  font-size: 9px; letter-spacing: 5px;
-  text-transform: uppercase; color: var(--dim); white-space: nowrap;
-}
-.mh-song {
-  font-family: var(--ff-head); font-weight: 700;
-  font-size: 12px; letter-spacing: 2px;
-  text-transform: uppercase; color: var(--text); white-space: nowrap;
-}
+.mh-label { font-size: 9px; letter-spacing: 5px; text-transform: uppercase; color: var(--dim); white-space: nowrap; }
+.mh-song { font-family: var(--ff-head); font-weight: 700; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--text); white-space: nowrap; }
 .mh-line { flex:1; height:1px; background: var(--border); }
 
 /* ─── SPOTIFY BAR ───────────────────────── */
@@ -459,12 +461,8 @@ body::after {
   margin: 0 auto;
   animation: riseIn .6s .6s var(--ease) both;
 }
-.spotify-embed-wrap {
-  flex: 1; border-radius: 8px; overflow: hidden; height: 80px;
-}
-.spotify-embed-wrap iframe {
-  width: 100%; height: 80px; border: none; display: block;
-}
+.spotify-embed-wrap { flex: 1; border-radius: 8px; overflow: hidden; height: 80px; }
+.spotify-embed-wrap iframe { width: 100%; height: 80px; border: none; display: block; }
 .mute-btn {
   flex-shrink: 0;
   width: 42px; height: 42px;
@@ -484,15 +482,8 @@ body::after {
 
 /* ─── FOOTER ─────────────────────────────── */
 footer { margin-top: 48px; text-align: center; animation: riseIn .5s .5s var(--ease) both; }
-.footer-name {
-  font-family: var(--ff-head); font-weight: 900;
-  font-size: 36px; letter-spacing: 6px;
-  color: var(--border); text-transform: uppercase; user-select: none;
-}
-.footer-sub {
-  font-size: 9px; letter-spacing: 3px;
-  text-transform: uppercase; color: #2a2a2a; margin-top: 4px;
-}
+.footer-name { font-family: var(--ff-head); font-weight: 900; font-size: 36px; letter-spacing: 6px; color: var(--border); text-transform: uppercase; user-select: none; }
+.footer-sub { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: #2a2a2a; margin-top: 4px; }
 
 @keyframes riseIn {
   from { opacity:0; transform:translateY(18px); }
@@ -544,7 +535,7 @@ footer { margin-top: 48px; text-align: center; animation: riseIn .5s .5s var(--e
 
   <!-- VIDEO CAROUSEL -->
   <div class="section-head">
-    <span class="sh-label" id="videoLabel">Neustes Video</span>
+    <span class="sh-label" id="videoLabel">Street Part</span>
     <div class="sh-line"></div>
     <span class="sh-tag" id="videoTag">NEU</span>
   </div>
@@ -552,14 +543,39 @@ footer { margin-top: 48px; text-align: center; animation: riseIn .5s .5s var(--e
   <div class="vcarousel-outer" id="carousel">
     <div class="vcarousel-track" id="carouselTrack">
 
-      <!-- CARD 0 — Neues Video -->
-      <a class="vcard active-card" id="card0" href="https://youtu.be/Hg3gfZjzyjY" target="_blank" rel="noopener noreferrer">
+      <!-- CARD 0 — Street Part -->
+      <a class="vcard active-card" id="card0" href="https://youtu.be/zcM4JspCduA" target="_blank" rel="noopener noreferrer">
+        <div class="vcard-thumb">
+          <img
+            src="https://img.youtube.com/vi/zcM4JspCduA/maxresdefault.jpg"
+            onerror="this.src='https://img.youtube.com/vi/zcM4JspCduA/hqdefault.jpg'"
+            alt="foulnet - PL4STIC Street Part"
+            loading="eager"
+          >
+          <span class="vcorner">Street Part</span>
+          <div class="vplay">
+            <div class="vplay-btn">
+              <svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="vmeta">
+          <div>
+            <div class="vtitle">foulnet —<br>PL4STIC</div>
+            <div class="vsub">Street Part · 2025</div>
+          </div>
+          <div class="vwatch">Watch ↗</div>
+        </div>
+      </a>
+
+      <!-- CARD 1 — Ozeanplastik -->
+      <a class="vcard" id="card1" href="https://youtu.be/Hg3gfZjzyjY" target="_blank" rel="noopener noreferrer">
         <div class="vcard-thumb">
           <img
             src="https://img.youtube.com/vi/Hg3gfZjzyjY/maxresdefault.jpg"
             onerror="this.src='https://img.youtube.com/vi/Hg3gfZjzyjY/hqdefault.jpg'"
             alt="Adidas hat gelogen - Ozeanplastik Board 1 Monat Review"
-            loading="eager"
+            loading="lazy"
           >
           <span class="vcorner">Ozeanplastik</span>
           <div class="vplay">
@@ -577,8 +593,8 @@ footer { margin-top: 48px; text-align: center; animation: riseIn .5s .5s var(--e
         </div>
       </a>
 
-      <!-- CARD 1 — Altes Video -->
-      <a class="vcard" id="card1" href="https://youtu.be/bJM1S0QascU" target="_blank" rel="noopener noreferrer">
+      <!-- CARD 2 — Kape Setup -->
+      <a class="vcard" id="card2" href="https://youtu.be/bJM1S0QascU" target="_blank" rel="noopener noreferrer">
         <div class="vcard-thumb">
           <img
             src="https://img.youtube.com/vi/bJM1S0QascU/maxresdefault.jpg"
@@ -608,6 +624,7 @@ footer { margin-top: 48px; text-align: center; animation: riseIn .5s .5s var(--e
   <div class="vdots">
     <div class="vdot active" id="dot0" onclick="goTo(0)"></div>
     <div class="vdot" id="dot1" onclick="goTo(1)"></div>
+    <div class="vdot" id="dot2" onclick="goTo(2)"></div>
   </div>
   <div class="swipe-hint" id="swipeHint">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -750,47 +767,50 @@ muteBtn.addEventListener('click', () => {
 });
 
 /* CAROUSEL */
-const track    = document.getElementById('carouselTrack');
-const carousel = document.getElementById('carousel');
-const label    = document.getElementById('videoLabel');
-const tag      = document.getElementById('videoTag');
-const hint     = document.getElementById('swipeHint');
-const cards    = [document.getElementById('card0'), document.getElementById('card1')];
-const dots     = [document.getElementById('dot0'), document.getElementById('dot1')];
+const track      = document.getElementById('carouselTrack');
+const carousel   = document.getElementById('carousel');
+const label      = document.getElementById('videoLabel');
+const tag        = document.getElementById('videoTag');
+const hint       = document.getElementById('swipeHint');
+const cards      = [document.getElementById('card0'), document.getElementById('card1'), document.getElementById('card2')];
+const dots       = [document.getElementById('dot0'), document.getElementById('dot1'), document.getElementById('dot2')];
 
-const labels = ['Neustes Video', 'Vorheriges Video'];
-const tags   = ['NEU', ''];
+const labels = ['Street Part', 'Neustes Video', 'Vorheriges Video'];
+const tags   = ['NEU', '', ''];
 
 let current = 0;
 let isDragging = false;
 let startX = 0;
+let startTranslate = 0;
+let currentTranslate = 0;
 
-function getOffset(index) {
-  return index * (carousel.offsetWidth + 16);
-}
+function getCardWidth() { return carousel.offsetWidth; }
+function getOffset(index) { return index * (getCardWidth() + 16); }
 
 function goTo(index, animate = true) {
   if (index < 0 || index >= cards.length) return;
   current = index;
   track.style.transition = animate ? 'transform .45s cubic-bezier(.25,.46,.45,.94)' : 'none';
-  track.style.transform  = `translateX(-${getOffset(index)}px)`;
+  track.style.transform = `translateX(-${getOffset(index)}px)`;
   label.textContent = labels[index];
   tag.textContent   = tags[index];
   tag.style.display = tags[index] ? '' : 'none';
   dots.forEach((d, i) => d.classList.toggle('active', i === index));
   cards.forEach((c, i) => c.classList.toggle('active-card', i === index));
-  hint.classList.toggle('hidden', index > 0);
+  if (index > 0) hint.classList.add('hidden');
+  else hint.classList.remove('hidden');
 }
 
-/* touch */
 carousel.addEventListener('touchstart', e => {
   startX = e.touches[0].clientX;
+  startTranslate = getOffset(current);
   track.style.transition = 'none';
 }, { passive: true });
 
 carousel.addEventListener('touchmove', e => {
   const diff = e.touches[0].clientX - startX;
-  track.style.transform = `translateX(-${getOffset(current) - diff}px)`;
+  currentTranslate = startTranslate - diff;
+  track.style.transform = `translateX(-${currentTranslate}px)`;
 }, { passive: true });
 
 carousel.addEventListener('touchend', e => {
@@ -799,17 +819,21 @@ carousel.addEventListener('touchend', e => {
   else goTo(current);
 });
 
-/* mouse */
 carousel.addEventListener('mousedown', e => {
-  isDragging = true; startX = e.clientX;
-  track.style.transition = 'none'; e.preventDefault();
+  isDragging = true;
+  startX = e.clientX;
+  startTranslate = getOffset(current);
+  track.style.transition = 'none';
+  e.preventDefault();
 });
 window.addEventListener('mousemove', e => {
   if (!isDragging) return;
-  track.style.transform = `translateX(-${getOffset(current) - (e.clientX - startX)}px)`;
+  currentTranslate = startTranslate - (e.clientX - startX);
+  track.style.transform = `translateX(-${currentTranslate}px)`;
 });
 window.addEventListener('mouseup', e => {
-  if (!isDragging) return; isDragging = false;
+  if (!isDragging) return;
+  isDragging = false;
   const diff = startX - e.clientX;
   if (Math.abs(diff) > 50) goTo(diff > 0 ? Math.min(current+1, cards.length-1) : Math.max(current-1, 0));
   else goTo(current);

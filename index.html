@@ -11,11 +11,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 
-/* ─── RESET ─────────────────────────────── */
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 html { -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
 
-/* ─── TOKENS ─────────────────────────────── */
 :root {
   --bg:       #080808;
   --surface:  #111111;
@@ -31,7 +29,6 @@ html { -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
   --ease:     cubic-bezier(.25,.46,.45,.94);
 }
 
-/* ─── BASE ─────────────────────────────── */
 body {
   background: var(--bg);
   color: var(--text);
@@ -41,7 +38,6 @@ body {
   cursor: default;
 }
 
-/* grain */
 body::after {
   content:'';
   position:fixed; inset:0; z-index:9999;
@@ -51,14 +47,8 @@ body::after {
   opacity:0.035;
 }
 
-/* ─── LAYOUT ─────────────────────────────── */
-.page {
-  max-width: 520px;
-  margin: 0 auto;
-  padding: 0 22px 140px;
-}
+.page { max-width:520px; margin:0 auto; padding:0 22px 140px; }
 
-/* ─── HERO ─────────────────────────────── */
 .hero {
   padding-top: 52px;
   padding-bottom: 40px;
@@ -69,32 +59,22 @@ body::after {
   animation: riseIn .7s var(--ease) both;
 }
 
-/* ticker strip */
 .ticker-wrap {
-  width: 100vw;
-  max-width: 520px;
+  width: 100vw; max-width: 520px;
   overflow: hidden;
   background: var(--red);
   padding: 7px 0;
-  margin-bottom: 0;
   position: relative;
 }
 .ticker-track {
-  display: flex;
-  width: max-content;
-  animation: ticker 18s linear infinite;
-  gap: 0;
+  display: flex; width: max-content;
+  animation: ticker 18s linear infinite; gap: 0;
 }
 .ticker-item {
-  font-family: var(--ff-head);
-  font-weight: 900;
-  font-size: 11px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: #fff;
-  padding: 0 28px;
-  white-space: nowrap;
-  opacity: .9;
+  font-family: var(--ff-head); font-weight: 900;
+  font-size: 11px; letter-spacing: 3px;
+  text-transform: uppercase; color: #fff;
+  padding: 0 28px; white-space: nowrap; opacity: .9;
 }
 .ticker-dot { color: rgba(255,255,255,.4); }
 
@@ -103,143 +83,70 @@ body::after {
   to   { transform: translateX(-50%); }
 }
 
-/* wordmark */
 .wordmark-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 42px 0 28px;
+  display: flex; flex-direction: column;
+  align-items: center; padding: 42px 0 28px;
 }
-
 .wordmark {
-  font-family: var(--ff-head);
-  font-weight: 900;
-  font-size: clamp(88px, 22vw, 130px);
-  line-height: .85;
-  letter-spacing: -2px;
-  color: var(--text);
-  position: relative;
-  display: inline-block;
-  user-select: none;
+  font-family: var(--ff-head); font-weight: 900;
+  font-size: clamp(88px, 22vw, 130px); line-height: .85;
+  letter-spacing: -2px; color: var(--text);
+  position: relative; display: inline-block; user-select: none;
 }
-
 .wordmark::before {
-  content: 'FOULNET';
-  position: absolute;
-  inset: 0;
-  color: transparent;
-  -webkit-text-stroke: 1px var(--red);
-  transform: translate(3px, 3px);
-  z-index: -1;
-  letter-spacing: -2px;
+  content: 'FOULNET'; position: absolute; inset: 0;
+  color: transparent; -webkit-text-stroke: 1px var(--red);
+  transform: translate(3px, 3px); z-index: -1; letter-spacing: -2px;
 }
-
-.wordmark-sub {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 12px;
-}
+.wordmark-sub { display: flex; align-items: center; gap: 10px; margin-top: 12px; }
 .ws-line { flex:1; height:1px; background: var(--border); width: 40px; }
-.ws-text {
-  font-size: 9px;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  color: var(--dim);
-}
+.ws-text { font-size: 9px; letter-spacing: 5px; text-transform: uppercase; color: var(--dim); }
 
-/* ─── SECTION HEAD ─────────────────────── */
 .section-head {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 14px;
-  animation: riseIn .6s .05s var(--ease) both;
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 14px; animation: riseIn .6s .05s var(--ease) both;
 }
-.sh-label {
-  font-size: 9px;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  color: var(--dim);
-  transition: color .3s var(--ease);
-}
+.sh-label { font-size: 9px; letter-spacing: 5px; text-transform: uppercase; color: var(--dim); transition: color .3s var(--ease); }
 .sh-line { flex:1; height:1px; background: var(--border); }
 .sh-tag {
-  font-size: 8px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--red);
-  border: 1px solid var(--red);
-  padding: 2px 7px;
-  border-radius: 2px;
-  transition: opacity .3s var(--ease);
+  font-size: 8px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--red); border: 1px solid var(--red);
+  padding: 2px 7px; border-radius: 2px;
 }
 
-/* ─── VIDEO CAROUSEL ────────────────────── */
 .vcarousel-outer {
-  position: relative;
-  overflow: hidden;
-  border-radius: 6px;
+  position: relative; overflow: hidden; border-radius: 6px;
   animation: riseIn .6s .1s var(--ease) both;
-  touch-action: pan-y;
-  user-select: none;
-  cursor: grab;
+  touch-action: pan-y; user-select: none; cursor: grab;
 }
 .vcarousel-outer:active { cursor: grabbing; }
-
-.vcarousel-track {
-  display: flex;
-  transition: transform .45s var(--ease);
-  will-change: transform;
-}
+.vcarousel-track { display: flex; transition: transform .45s var(--ease); will-change: transform; }
 
 .vcard {
-  flex: 0 0 100%;
-  width: 100%;
-  display: block;
-  text-decoration: none;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  overflow: hidden;
-  position: relative;
+  flex: 0 0 100%; width: 100%; display: block;
+  text-decoration: none; background: var(--surface);
+  border: 1px solid var(--border); border-radius: 6px;
+  overflow: hidden; position: relative;
   transition: border-color .3s var(--ease), box-shadow .3s var(--ease);
   pointer-events: none;
 }
 .vcard.active-card { pointer-events: auto; }
-.vcard:hover {
-  border-color: var(--red);
-  box-shadow: 0 0 32px var(--red-glow);
-}
+.vcard:hover { border-color: var(--red); box-shadow: 0 0 32px var(--red-glow); }
 .vcarousel-track .vcard + .vcard { margin-left: 16px; }
 
 .vcard-thumb {
-  position: relative;
-  aspect-ratio: 16/9;
-  overflow: hidden;
-  background: #0d0d0d;
+  position: relative; aspect-ratio: 16/9;
+  overflow: hidden; background: #0d0d0d;
 }
 .vcard-thumb img {
-  width:100%; height:100%;
-  object-fit: cover;
-  display: block;
+  width:100%; height:100%; object-fit: cover; display: block;
   transition: transform .5s var(--ease), filter .4s;
   filter: brightness(.9) saturate(.8);
 }
-.vcard:hover .vcard-thumb img {
-  transform: scale(1.04);
-  filter: brightness(1) saturate(1);
-}
+.vcard:hover .vcard-thumb img { transform: scale(1.04); filter: brightness(1) saturate(1); }
 .vcard-thumb::before {
-  content:'';
-  position:absolute; inset:0; z-index:2;
-  background: repeating-linear-gradient(
-    0deg,
-    rgba(0,0,0,.08) 0px,
-    rgba(0,0,0,.08) 1px,
-    transparent 1px,
-    transparent 3px
-  );
+  content:''; position:absolute; inset:0; z-index:2;
+  background: repeating-linear-gradient(0deg,rgba(0,0,0,.08) 0px,rgba(0,0,0,.08) 1px,transparent 1px,transparent 3px);
   pointer-events:none;
 }
 
@@ -249,151 +156,72 @@ body::after {
   background: radial-gradient(ellipse at center, rgba(0,0,0,.4) 0%, transparent 70%);
   transition: background .3s;
 }
-.vcard:hover .vplay {
-  background: radial-gradient(ellipse at center, rgba(232,19,42,.25) 0%, transparent 70%);
-}
+.vcard:hover .vplay { background: radial-gradient(ellipse at center, rgba(232,19,42,.25) 0%, transparent 70%); }
 .vplay-btn {
-  width: 58px; height: 58px;
-  border-radius: 50%;
-  background: var(--red);
+  width: 58px; height: 58px; border-radius: 50%; background: var(--red);
   display: flex; align-items: center; justify-content: center;
   box-shadow: 0 0 0 10px rgba(232,19,42,.15), 0 4px 24px rgba(0,0,0,.5);
   transition: transform .3s var(--ease), box-shadow .3s;
 }
-.vcard:hover .vplay-btn {
-  transform: scale(1.12);
-  box-shadow: 0 0 0 16px rgba(232,19,42,.12), 0 4px 32px rgba(0,0,0,.6);
-}
+.vcard:hover .vplay-btn { transform: scale(1.12); box-shadow: 0 0 0 16px rgba(232,19,42,.12), 0 4px 32px rgba(0,0,0,.6); }
 .vplay-btn svg { width:22px; height:22px; margin-left:3px; }
 
 .vcorner {
   position:absolute; top:12px; left:12px; z-index:4;
-  background: var(--yellow);
-  color: #000;
-  font-family: var(--ff-head);
-  font-weight: 900;
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: 4px 9px;
-  border-radius: 2px;
+  background: var(--yellow); color: #000;
+  font-family: var(--ff-head); font-weight: 900;
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  padding: 4px 9px; border-radius: 2px;
 }
-.vmeta {
-  padding: 14px 18px 16px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 12px;
-}
-.vtitle {
-  font-family: var(--ff-head);
-  font-weight: 700;
-  font-size: 18px;
-  letter-spacing: .5px;
-  line-height: 1.2;
-  color: var(--text);
-}
-.vsub {
-  font-size: 9px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--dim);
-  margin-top: 5px;
-}
+.vmeta { padding: 14px 18px 16px; display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.vtitle { font-family: var(--ff-head); font-weight: 700; font-size: 18px; letter-spacing: .5px; line-height: 1.2; color: var(--text); }
+.vsub { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--dim); margin-top: 5px; }
 .vwatch {
-  flex-shrink: 0;
-  background: var(--red);
-  color: #fff;
-  font-family: var(--ff-head);
-  font-weight: 700;
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: 8px 14px;
-  border-radius: 3px;
-  align-self: center;
-  white-space: nowrap;
-  transition: background .2s;
+  flex-shrink: 0; background: var(--red); color: #fff;
+  font-family: var(--ff-head); font-weight: 700; font-size: 11px;
+  letter-spacing: 2px; text-transform: uppercase; padding: 8px 14px;
+  border-radius: 3px; align-self: center; white-space: nowrap; transition: background .2s;
 }
 .vcard:hover .vwatch { background: #c80f23; }
 
-/* ─── DOTS ──────────────────────────────── */
-.vdots {
-  display: flex;
-  justify-content: center;
-  gap: 7px;
-  margin-top: 12px;
-}
-.vdot {
-  width: 5px; height: 5px;
-  border-radius: 50%;
-  background: var(--muted);
-  transition: background .3s, transform .3s;
-  cursor: pointer;
-}
+.vdots { display: flex; justify-content: center; align-items: center; gap: 7px; margin-top: 12px; }
+.vdot { width:5px; height:5px; border-radius:50%; background: var(--muted); transition: background .3s, transform .3s; cursor: pointer; }
 .vdot.active { background: var(--red); transform: scale(1.4); }
 
 .swipe-hint {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 5px;
-  margin-top: 8px;
-  opacity: .35;
-  font-size: 8px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--dim);
-  transition: opacity .4s;
-  animation: riseIn .5s .4s var(--ease) both;
+  display: flex; align-items: center; justify-content: flex-end;
+  gap: 5px; margin-top: 8px; opacity: .35; font-size: 8px;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--dim);
+  transition: opacity .4s; animation: riseIn .5s .4s var(--ease) both;
 }
 .swipe-hint.hidden { opacity: 0; }
 .swipe-hint svg { width: 12px; height: 12px; }
 
-/* ─── DIVIDER ───────────────────────────── */
-.sep {
-  margin: 32px 0;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  animation: riseIn .6s .15s var(--ease) both;
-}
+.sep { margin: 32px 0; display: flex; align-items: center; gap: 12px; animation: riseIn .6s .15s var(--ease) both; }
 .sep-line { flex:1; height:1px; background: var(--border); }
 .sep-dot { width:5px; height:5px; border-radius:50%; background: var(--red); }
 
-/* ─── LINKS ─────────────────────────────── */
 .links { display: flex; flex-direction: column; gap: 9px; }
-
 .lbtn {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 15px 18px;
-  text-decoration: none;
-  border-radius: 5px;
-  background: var(--surface);
+  display: flex; align-items: center; gap: 16px; padding: 15px 18px;
+  text-decoration: none; border-radius: 5px; background: var(--surface);
   border: 1px solid var(--border);
   transition: border-color .25s var(--ease), transform .2s var(--ease), box-shadow .25s;
-  position: relative;
-  overflow: hidden;
+  position: relative; overflow: hidden;
 }
 .lbtn::before {
-  content:'';
-  position:absolute; left:0; top:0; bottom:0;
-  width:3px;
-  transform: scaleY(0);
-  transform-origin: bottom;
-  transition: transform .25s var(--ease);
-  border-radius: 0 2px 2px 0;
+  content:''; position:absolute; left:0; top:0; bottom:0; width:3px;
+  transform: scaleY(0); transform-origin: bottom;
+  transition: transform .25s var(--ease); border-radius: 0 2px 2px 0;
 }
 .lbtn:hover::before { transform: scaleY(1); }
 .lbtn:hover { transform: translateX(5px); border-color: var(--muted); }
 
-.lbtn--yt::before    { background: #e8132a; }
-.lbtn--ig::before    { background: linear-gradient(180deg,#f58529,#c13584); }
-.lbtn--sp::before    { background: #1DB954; }
-.lbtn--am::before    { background: #fc3c44; }
-.lbtn--amz::before   { background: #00a8e0; }
+.lbtn--yt::before  { background: #e8132a; }
+.lbtn--ig::before  { background: linear-gradient(180deg,#f58529,#c13584); }
+.lbtn--sp::before  { background: #1DB954; }
+.lbtn--am::before  { background: #fc3c44; }
+.lbtn--amz::before { background: #00a8e0; }
 
 .lbtn:hover.lbtn--yt  { box-shadow: -4px 0 20px rgba(232,19,42,.12); }
 .lbtn:hover.lbtn--ig  { box-shadow: -4px 0 20px rgba(193,53,132,.12); }
@@ -401,35 +229,12 @@ body::after {
 .lbtn:hover.lbtn--am  { box-shadow: -4px 0 20px rgba(252,60,68,.12); }
 .lbtn:hover.lbtn--amz { box-shadow: -4px 0 20px rgba(0,168,224,.12); }
 
-.lbtn-icon {
-  width: 34px; height: 34px;
-  flex-shrink: 0;
-  display:flex; align-items:center; justify-content:center;
-  border-radius:6px;
-  background: var(--muted);
-}
+.lbtn-icon { width:34px; height:34px; flex-shrink:0; display:flex; align-items:center; justify-content:center; border-radius:6px; background: var(--muted); }
 .lbtn-icon svg { width:18px; height:18px; }
 .lbtn-copy { flex:1; }
-.lbtn-name {
-  font-family: var(--ff-head);
-  font-weight: 700;
-  font-size: 16px;
-  letter-spacing: 1px;
-  color: var(--text);
-  text-transform: uppercase;
-}
-.lbtn-handle {
-  font-size: 9px;
-  letter-spacing: 2px;
-  color: var(--dim);
-  margin-top: 2px;
-  text-transform: uppercase;
-}
-.lbtn-arrow {
-  color: var(--muted);
-  font-size: 16px;
-  transition: color .2s, transform .2s;
-}
+.lbtn-name { font-family: var(--ff-head); font-weight:700; font-size:16px; letter-spacing:1px; color: var(--text); text-transform:uppercase; }
+.lbtn-handle { font-size:9px; letter-spacing:2px; color: var(--dim); margin-top:2px; text-transform:uppercase; }
+.lbtn-arrow { color: var(--muted); font-size:16px; transition: color .2s, transform .2s; }
 .lbtn:hover .lbtn-arrow { color: var(--text); transform: translateX(3px); }
 
 .links .lbtn:nth-child(1) { animation: riseIn .5s .18s var(--ease) both; }
@@ -438,61 +243,42 @@ body::after {
 .links .lbtn:nth-child(4) { animation: riseIn .5s .36s var(--ease) both; }
 .links .lbtn:nth-child(5) { animation: riseIn .5s .42s var(--ease) both; }
 
-.music-head {
-  display:flex; align-items:center; gap:10px;
-  margin: 28px 0 12px;
-  animation: riseIn .5s .28s var(--ease) both;
-}
-.mh-label { font-size: 9px; letter-spacing: 5px; text-transform: uppercase; color: var(--dim); white-space: nowrap; }
-.mh-song { font-family: var(--ff-head); font-weight: 700; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--text); white-space: nowrap; }
+.music-head { display:flex; align-items:center; gap:10px; margin:28px 0 12px; animation: riseIn .5s .28s var(--ease) both; }
+.mh-label { font-size:9px; letter-spacing:5px; text-transform:uppercase; color: var(--dim); white-space:nowrap; }
+.mh-song { font-family: var(--ff-head); font-weight:700; font-size:12px; letter-spacing:2px; text-transform:uppercase; color: var(--text); white-space:nowrap; }
 .mh-line { flex:1; height:1px; background: var(--border); }
 
-/* ─── SPOTIFY BAR ───────────────────────── */
 .spotify-bar {
-  position: fixed;
-  bottom: 0; left: 0; right: 0;
-  z-index: 1000;
+  position: fixed; bottom:0; left:0; right:0; z-index:1000;
   background: linear-gradient(to top, #080808 60%, transparent);
-  padding: 16px 22px 20px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  max-width: 520px;
-  margin: 0 auto;
-  animation: riseIn .6s .6s var(--ease) both;
+  padding: 16px 22px 20px; display:flex; align-items:center; gap:12px;
+  max-width:520px; margin:0 auto; animation: riseIn .6s .6s var(--ease) both;
 }
-.spotify-embed-wrap { flex: 1; border-radius: 8px; overflow: hidden; height: 80px; }
-.spotify-embed-wrap iframe { width: 100%; height: 80px; border: none; display: block; }
+.spotify-embed-wrap { flex:1; border-radius:8px; overflow:hidden; height:80px; }
+.spotify-embed-wrap iframe { width:100%; height:80px; border:none; display:block; }
 .mute-btn {
-  flex-shrink: 0;
-  width: 42px; height: 42px;
-  border-radius: 50%;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer;
-  transition: border-color .2s, background .2s, transform .15s;
-  color: var(--text);
+  flex-shrink:0; width:42px; height:42px; border-radius:50%;
+  background: var(--surface); border:1px solid var(--border);
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer; transition: border-color .2s, background .2s, transform .15s; color: var(--text);
 }
 .mute-btn:hover { border-color: var(--red); background: var(--muted); transform: scale(1.08); }
-.mute-btn svg { width: 18px; height: 18px; }
-.mute-btn .icon-muted { display: none; }
-.mute-btn.is-muted .icon-sound { display: none; }
-.mute-btn.is-muted .icon-muted { display: block; }
+.mute-btn svg { width:18px; height:18px; }
+.mute-btn .icon-muted { display:none; }
+.mute-btn.is-muted .icon-sound { display:none; }
+.mute-btn.is-muted .icon-muted { display:block; }
 
-/* ─── FOOTER ─────────────────────────────── */
-footer { margin-top: 48px; text-align: center; animation: riseIn .5s .5s var(--ease) both; }
-.footer-name { font-family: var(--ff-head); font-weight: 900; font-size: 36px; letter-spacing: 6px; color: var(--border); text-transform: uppercase; user-select: none; }
-.footer-sub { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: #2a2a2a; margin-top: 4px; }
+footer { margin-top:48px; text-align:center; animation: riseIn .5s .5s var(--ease) both; }
+.footer-name { font-family: var(--ff-head); font-weight:900; font-size:36px; letter-spacing:6px; color: var(--border); text-transform:uppercase; user-select:none; }
+.footer-sub { font-size:9px; letter-spacing:3px; text-transform:uppercase; color:#2a2a2a; margin-top:4px; }
 
 @keyframes riseIn {
   from { opacity:0; transform:translateY(18px); }
   to   { opacity:1; transform:translateY(0); }
 }
-
 @media (max-width: 400px) {
-  .vwatch { display: none; }
-  .vmeta  { padding: 12px 14px 14px; }
+  .vwatch { display:none; }
+  .vmeta  { padding:12px 14px 14px; }
 }
 
 </style>
@@ -501,7 +287,6 @@ footer { margin-top: 48px; text-align: center; animation: riseIn .5s .5s var(--e
 
 <div class="page">
 
-  <!-- HERO -->
   <div class="hero">
     <div class="ticker-wrap">
       <div class="ticker-track">
@@ -533,9 +318,8 @@ footer { margin-top: 48px; text-align: center; animation: riseIn .5s .5s var(--e
     </div>
   </div>
 
-  <!-- VIDEO CAROUSEL -->
   <div class="section-head">
-    <span class="sh-label" id="videoLabel">Street Part</span>
+    <span class="sh-label" id="videoLabel">Neustes Video</span>
     <div class="sh-line"></div>
     <span class="sh-tag" id="videoTag">NEU</span>
   </div>
@@ -543,21 +327,30 @@ footer { margin-top: 48px; text-align: center; animation: riseIn .5s .5s var(--e
   <div class="vcarousel-outer" id="carousel">
     <div class="vcarousel-track" id="carouselTrack">
 
-      <!-- CARD 0 — Street Part -->
-      <a class="vcard active-card" id="card0" href="https://youtu.be/zcM4JspCduA" target="_blank" rel="noopener noreferrer">
+      <a class="vcard active-card" id="card0" href="https://youtu.be/-LEtlMF6oT0" target="_blank" rel="noopener noreferrer">
         <div class="vcard-thumb">
-          <img
-            src="https://img.youtube.com/vi/zcM4JspCduA/maxresdefault.jpg"
-            onerror="this.src='https://img.youtube.com/vi/zcM4JspCduA/hqdefault.jpg'"
-            alt="foulnet - PL4STIC Street Part"
-            loading="eager"
-          >
-          <span class="vcorner">Street Part</span>
-          <div class="vplay">
-            <div class="vplay-btn">
-              <svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
-            </div>
+          <img src="https://img.youtube.com/vi/-LEtlMF6oT0/maxresdefault.jpg"
+               onerror="this.src='https://img.youtube.com/vi/-LEtlMF6oT0/hqdefault.jpg'"
+               alt="Behind the Scenes: Musikvideodreh & Street Skaten" loading="eager">
+          <span class="vcorner">Behind the Scenes</span>
+          <div class="vplay"><div class="vplay-btn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div></div>
+        </div>
+        <div class="vmeta">
+          <div>
+            <div class="vtitle">Behind the Scenes:<br>Musikvideodreh & Street Skaten</div>
+            <div class="vsub">BTS · Musikvideo · Street</div>
           </div>
+          <div class="vwatch">Watch ↗</div>
+        </div>
+      </a>
+
+      <a class="vcard" id="card1" href="https://youtu.be/zcM4JspCduA" target="_blank" rel="noopener noreferrer">
+        <div class="vcard-thumb">
+          <img src="https://img.youtube.com/vi/zcM4JspCduA/maxresdefault.jpg"
+               onerror="this.src='https://img.youtube.com/vi/zcM4JspCduA/hqdefault.jpg'"
+               alt="foulnet - PL4STIC Street Part" loading="lazy">
+          <span class="vcorner">Street Part</span>
+          <div class="vplay"><div class="vplay-btn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div></div>
         </div>
         <div class="vmeta">
           <div>
@@ -568,51 +361,18 @@ footer { margin-top: 48px; text-align: center; animation: riseIn .5s .5s var(--e
         </div>
       </a>
 
-      <!-- CARD 1 — Ozeanplastik -->
-      <a class="vcard" id="card1" href="https://youtu.be/Hg3gfZjzyjY" target="_blank" rel="noopener noreferrer">
+      <a class="vcard" id="card2" href="https://youtu.be/Hg3gfZjzyjY" target="_blank" rel="noopener noreferrer">
         <div class="vcard-thumb">
-          <img
-            src="https://img.youtube.com/vi/Hg3gfZjzyjY/maxresdefault.jpg"
-            onerror="this.src='https://img.youtube.com/vi/Hg3gfZjzyjY/hqdefault.jpg'"
-            alt="Adidas hat gelogen - Ozeanplastik Board 1 Monat Review"
-            loading="lazy"
-          >
+          <img src="https://img.youtube.com/vi/Hg3gfZjzyjY/maxresdefault.jpg"
+               onerror="this.src='https://img.youtube.com/vi/Hg3gfZjzyjY/hqdefault.jpg'"
+               alt="Adidas hat gelogen - Ozeanplastik" loading="lazy">
           <span class="vcorner">Ozeanplastik</span>
-          <div class="vplay">
-            <div class="vplay-btn">
-              <svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
-            </div>
-          </div>
+          <div class="vplay"><div class="vplay-btn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div></div>
         </div>
         <div class="vmeta">
           <div>
             <div class="vtitle">Adidas hat gelogen —<br>echtes Ozeanplastik?</div>
             <div class="vsub">1 Monat Review · Q&amp;A · Kape Board</div>
-          </div>
-          <div class="vwatch">Watch ↗</div>
-        </div>
-      </a>
-
-      <!-- CARD 2 — Kape Setup -->
-      <a class="vcard" id="card2" href="https://youtu.be/bJM1S0QascU" target="_blank" rel="noopener noreferrer">
-        <div class="vcard-thumb">
-          <img
-            src="https://img.youtube.com/vi/bJM1S0QascU/maxresdefault.jpg"
-            onerror="this.src='https://img.youtube.com/vi/bJM1S0QascU/hqdefault.jpg'"
-            alt="Kape Setup First Session"
-            loading="lazy"
-          >
-          <span class="vcorner">Kape Setup</span>
-          <div class="vplay">
-            <div class="vplay-btn">
-              <svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
-            </div>
-          </div>
-        </div>
-        <div class="vmeta">
-          <div>
-            <div class="vtitle">Neues Setup, neues Level?<br>Kape Deck First Impression</div>
-            <div class="vsub">YouTube · 360 Flip · Noseslide · Big Spin Impossible</div>
           </div>
           <div class="vwatch">Watch ↗</div>
         </div>
@@ -633,14 +393,8 @@ footer { margin-top: 48px; text-align: center; animation: riseIn .5s .5s var(--e
     swipe für älteres video
   </div>
 
-  <!-- DIVIDER -->
-  <div class="sep">
-    <div class="sep-line"></div>
-    <div class="sep-dot"></div>
-    <div class="sep-line"></div>
-  </div>
+  <div class="sep"><div class="sep-line"></div><div class="sep-dot"></div><div class="sep-line"></div></div>
 
-  <!-- SOCIALS -->
   <div class="section-head">
     <span class="sh-label">Socials</span>
     <div class="sh-line"></div>
@@ -651,73 +405,53 @@ footer { margin-top: 48px; text-align: center; animation: riseIn .5s .5s var(--e
       <div class="lbtn-icon">
         <svg viewBox="0 0 24 24" fill="#e8132a"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
       </div>
-      <div class="lbtn-copy">
-        <div class="lbtn-name">YouTube</div>
-        <div class="lbtn-handle">@Foulnet</div>
-      </div>
+      <div class="lbtn-copy"><div class="lbtn-name">YouTube</div><div class="lbtn-handle">@Foulnet</div></div>
       <span class="lbtn-arrow">›</span>
     </a>
 
     <a class="lbtn lbtn--ig" href="https://www.instagram.com/lfoulnet" target="_blank" rel="noopener">
       <div class="lbtn-icon">
         <svg viewBox="0 0 24 24">
-          <defs>
-            <linearGradient id="ig" x1="0%" y1="100%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#f58529"/>
-              <stop offset="50%" stop-color="#e6683c"/>
-              <stop offset="100%" stop-color="#c13584"/>
-            </linearGradient>
-          </defs>
+          <defs><linearGradient id="ig" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#f58529"/><stop offset="50%" stop-color="#e6683c"/><stop offset="100%" stop-color="#c13584"/>
+          </linearGradient></defs>
           <path fill="url(#ig)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
         </svg>
       </div>
-      <div class="lbtn-copy">
-        <div class="lbtn-name">Instagram</div>
-        <div class="lbtn-handle">@lfoulnet</div>
-      </div>
+      <div class="lbtn-copy"><div class="lbtn-name">Instagram</div><div class="lbtn-handle">@lfoulnet</div></div>
       <span class="lbtn-arrow">›</span>
     </a>
   </div>
 
-  <!-- MUSIK -->
   <div class="music-head">
     <span class="mh-label">Musik</span>
     <div class="mh-line"></div>
-    <span class="mh-song">Gute Nacht</span>
+    <span class="mh-song">Traum</span>
     <div class="mh-line" style="max-width:30px"></div>
   </div>
 
   <div class="links">
-    <a class="lbtn lbtn--sp" href="https://open.spotify.com/search/Foulnet%20Gute%20Nacht" target="_blank" rel="noopener">
+    <a class="lbtn lbtn--sp" href="https://open.spotify.com/intl-de/track/4Kf6iwJTKIP4meTjKdaYPT" target="_blank" rel="noopener">
       <div class="lbtn-icon">
         <svg viewBox="0 0 24 24" fill="#1DB954"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
       </div>
-      <div class="lbtn-copy">
-        <div class="lbtn-name">Spotify</div>
-        <div class="lbtn-handle">Foulnet — Gute Nacht</div>
-      </div>
+      <div class="lbtn-copy"><div class="lbtn-name">Spotify</div><div class="lbtn-handle">Foulnet — Traum</div></div>
       <span class="lbtn-arrow">›</span>
     </a>
 
-    <a class="lbtn lbtn--am" href="https://music.apple.com/search?term=Foulnet+Gute+Nacht" target="_blank" rel="noopener">
+    <a class="lbtn lbtn--am" href="https://music.apple.com/de/album/traum/1895599466?i=6764015036" target="_blank" rel="noopener">
       <div class="lbtn-icon">
         <svg viewBox="0 0 24 24" fill="#fc3c44"><path d="M23.994 6.124a9.23 9.23 0 0 0-.24-2.19c-.317-1.31-1.064-2.31-2.24-3.09a5.88 5.88 0 0 0-1.64-.666c-.526-.112-1.07-.173-1.618-.217-.02-.001-.076-.003-.183-.006H5.927c-.183.003-.267.005-.35.006-.96.06-1.85.166-2.68.477C1.5 1.04.56 1.978.19 3.234a8.61 8.61 0 0 0-.166 1.121C.007 4.62 0 4.9 0 5.16v13.68c.006.24.014.48.04.72.07.79.262 1.52.654 2.19.55.944 1.37 1.61 2.4 1.98.51.18 1.05.273 1.61.32.05.003.1.007.15.008.36.016.72.02 1.082.023H18.07c.35-.003.7-.007 1.053-.022.07-.003.14-.006.21-.01.5-.04.983-.115 1.44-.27 1.08-.37 1.918-1.05 2.47-2.034.384-.665.574-1.385.648-2.154.026-.254.034-.51.04-.764.007-.27.008-.54.008-.81V6.124zm-8.16 3.99c-.158-.04-.32-.065-.484-.076a3.8 3.8 0 0 0-.512.02c-.52.059-1.012.232-1.46.504-.22.133-.418.29-.597.47V5.666l-1.76.47v8.97c0 .08.003.158.01.237.047.646.32 1.18.8 1.58.38.317.83.488 1.32.522.11.008.22.01.33.008.4-.01.78-.1 1.12-.29.53-.293.88-.74 1.02-1.326.04-.173.058-.35.058-.53V9.8l.155-.04z"/></svg>
       </div>
-      <div class="lbtn-copy">
-        <div class="lbtn-name">Apple Music</div>
-        <div class="lbtn-handle">Foulnet — Gute Nacht</div>
-      </div>
+      <div class="lbtn-copy"><div class="lbtn-name">Apple Music</div><div class="lbtn-handle">Foulnet — Traum</div></div>
       <span class="lbtn-arrow">›</span>
     </a>
 
-    <a class="lbtn lbtn--amz" href="https://music.amazon.de/search/Foulnet+Gute+Nacht" target="_blank" rel="noopener">
+    <a class="lbtn lbtn--amz" href="https://music.amazon.ca/artists/B0C42Y3LQN/foulnet?marketplaceId=A2EUQ1WTGCTBG2&musicTerritory=CA&ref=dm_sh_2GD2268h7FKCWEDURJdeegOYl" target="_blank" rel="noopener">
       <div class="lbtn-icon">
         <svg viewBox="0 0 24 24" fill="#00a8e0"><path d="M13.958 10.09c0 1.232.029 2.256-.591 3.351-.502.891-1.301 1.438-2.186 1.438-1.214 0-1.922-.924-1.922-2.292 0-2.692 2.415-3.182 4.7-3.182v.685zm3.186 7.705a.66.66 0 0 1-.748.074c-1.051-.873-1.239-1.278-1.814-2.108-1.734 1.769-2.96 2.298-5.208 2.298-2.659 0-4.731-1.641-4.731-4.925 0-2.565 1.391-4.309 3.37-5.164 1.715-.754 4.11-.891 5.942-1.099v-.41c0-.753.059-1.642-.384-2.294-.384-.578-1.124-.817-1.774-.817-1.205 0-2.277.618-2.54 1.899-.054.285-.262.567-.549.581l-3.076-.333c-.259-.056-.548-.266-.472-.66.708-3.726 4.076-4.846 7.093-4.846 1.543 0 3.56.41 4.775 1.575 1.543 1.44 1.395 3.363 1.395 5.457v4.945c0 1.488.616 2.14 1.196 2.943.204.285.249.628-.01.839l-2.465 2.045zm3.27 1.985c-2.089 1.542-5.115 2.359-7.72 2.359-3.653 0-6.938-1.35-9.42-3.596-.195-.176-.021-.417.214-.28 2.682 1.561 5.996 2.501 9.421 2.501 2.31 0 4.847-.48 7.18-1.472.352-.15.647.231.325.488zm.929-1.058c-.266-.342-1.757-.161-2.427-.081-.203.025-.234-.153-.051-.281 1.189-.836 3.137-.595 3.364-.315.228.282-.059 2.234-1.176 3.167-.172.144-.335.067-.259-.121.251-.626.813-2.027.549-2.369z"/></svg>
       </div>
-      <div class="lbtn-copy">
-        <div class="lbtn-name">Amazon Music</div>
-        <div class="lbtn-handle">Foulnet — Gute Nacht</div>
-      </div>
+      <div class="lbtn-copy"><div class="lbtn-name">Amazon Music</div><div class="lbtn-handle">Foulnet — Traum</div></div>
       <span class="lbtn-arrow">›</span>
     </a>
   </div>
@@ -729,15 +463,12 @@ footer { margin-top: 48px; text-align: center; animation: riseIn .5s .5s var(--e
 
 </div>
 
-<!-- SPOTIFY -->
 <div class="spotify-bar">
   <div class="spotify-embed-wrap">
-    <iframe
-      id="spotify-iframe"
-      src="https://open.spotify.com/embed/track/6i4Vl8Txt5rba3QrpKKlpG?utm_source=generator&theme=0&autoplay=1"
+    <iframe id="spotify-iframe"
+      src="https://open.spotify.com/embed/track/4Kf6iwJTKIP4meTjKdaYPT?utm_source=generator&theme=0&autoplay=1"
       allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-      loading="lazy"
-    ></iframe>
+      loading="lazy"></iframe>
   </div>
   <button class="mute-btn" id="muteBtn" title="Stumm schalten" aria-label="Stumm schalten">
     <svg class="icon-sound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -754,7 +485,6 @@ footer { margin-top: 48px; text-align: center; animation: riseIn .5s .5s var(--e
 </div>
 
 <script>
-/* MUTE */
 const muteBtn = document.getElementById('muteBtn');
 const spotifyIframe = document.getElementById('spotify-iframe');
 let muted = false;
@@ -762,30 +492,24 @@ muteBtn.addEventListener('click', () => {
   muted = !muted;
   muteBtn.classList.toggle('is-muted', muted);
   muteBtn.title = muted ? 'Ton an' : 'Stumm schalten';
-  const base = 'https://open.spotify.com/embed/track/6i4Vl8Txt5rba3QrpKKlpG?utm_source=generator&theme=0&autoplay=1';
+  const base = 'https://open.spotify.com/embed/track/4Kf6iwJTKIP4meTjKdaYPT?utm_source=generator&theme=0&autoplay=1';
   spotifyIframe.src = muted ? base + '&volume=0' : base;
 });
 
-/* CAROUSEL */
-const track      = document.getElementById('carouselTrack');
-const carousel   = document.getElementById('carousel');
-const label      = document.getElementById('videoLabel');
-const tag        = document.getElementById('videoTag');
-const hint       = document.getElementById('swipeHint');
-const cards      = [document.getElementById('card0'), document.getElementById('card1'), document.getElementById('card2')];
-const dots       = [document.getElementById('dot0'), document.getElementById('dot1'), document.getElementById('dot2')];
+const track    = document.getElementById('carouselTrack');
+const carousel = document.getElementById('carousel');
+const label    = document.getElementById('videoLabel');
+const tag      = document.getElementById('videoTag');
+const hint     = document.getElementById('swipeHint');
+const cards    = [document.getElementById('card0'), document.getElementById('card1'), document.getElementById('card2')];
+const dots     = [document.getElementById('dot0'), document.getElementById('dot1'), document.getElementById('dot2')];
 
-const labels = ['Street Part', 'Neustes Video', 'Vorheriges Video'];
+const labels = ['Neustes Video', 'Street Part', 'Ozeanplastik Review'];
 const tags   = ['NEU', '', ''];
 
-let current = 0;
-let isDragging = false;
-let startX = 0;
-let startTranslate = 0;
-let currentTranslate = 0;
+let current = 0, isDragging = false, startX = 0, startTranslate = 0, currentTranslate = 0;
 
-function getCardWidth() { return carousel.offsetWidth; }
-function getOffset(index) { return index * (getCardWidth() + 16); }
+function getOffset(i) { return i * (carousel.offsetWidth + 16); }
 
 function goTo(index, animate = true) {
   if (index < 0 || index >= cards.length) return;
@@ -797,8 +521,7 @@ function goTo(index, animate = true) {
   tag.style.display = tags[index] ? '' : 'none';
   dots.forEach((d, i) => d.classList.toggle('active', i === index));
   cards.forEach((c, i) => c.classList.toggle('active-card', i === index));
-  if (index > 0) hint.classList.add('hidden');
-  else hint.classList.remove('hidden');
+  hint.classList.toggle('hidden', index > 0);
 }
 
 carousel.addEventListener('touchstart', e => {
@@ -806,13 +529,10 @@ carousel.addEventListener('touchstart', e => {
   startTranslate = getOffset(current);
   track.style.transition = 'none';
 }, { passive: true });
-
 carousel.addEventListener('touchmove', e => {
-  const diff = e.touches[0].clientX - startX;
-  currentTranslate = startTranslate - diff;
+  currentTranslate = startTranslate - (e.touches[0].clientX - startX);
   track.style.transform = `translateX(-${currentTranslate}px)`;
 }, { passive: true });
-
 carousel.addEventListener('touchend', e => {
   const diff = startX - e.changedTouches[0].clientX;
   if (Math.abs(diff) > 50) goTo(diff > 0 ? Math.min(current+1, cards.length-1) : Math.max(current-1, 0));
@@ -820,11 +540,9 @@ carousel.addEventListener('touchend', e => {
 });
 
 carousel.addEventListener('mousedown', e => {
-  isDragging = true;
-  startX = e.clientX;
+  isDragging = true; startX = e.clientX;
   startTranslate = getOffset(current);
-  track.style.transition = 'none';
-  e.preventDefault();
+  track.style.transition = 'none'; e.preventDefault();
 });
 window.addEventListener('mousemove', e => {
   if (!isDragging) return;
@@ -832,8 +550,7 @@ window.addEventListener('mousemove', e => {
   track.style.transform = `translateX(-${currentTranslate}px)`;
 });
 window.addEventListener('mouseup', e => {
-  if (!isDragging) return;
-  isDragging = false;
+  if (!isDragging) return; isDragging = false;
   const diff = startX - e.clientX;
   if (Math.abs(diff) > 50) goTo(diff > 0 ? Math.min(current+1, cards.length-1) : Math.max(current-1, 0));
   else goTo(current);

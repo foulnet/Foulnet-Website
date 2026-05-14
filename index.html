@@ -53,15 +53,8 @@ body::after {
   color:var(--text); display:block; transform:translateY(110%);
   animation: introSlide 0.6s 0.1s var(--ease) forwards;
 }
-.intro-bar {
-  width:0; height:4px; background:var(--red); margin-top:12px;
-  animation: introBar 0.5s 0.5s var(--ease) forwards;
-}
-.intro-sub {
-  font-size:9px; letter-spacing:6px; text-transform:uppercase;
-  color:var(--dim); opacity:0; margin-top:14px;
-  animation: introFade 0.4s 0.8s ease forwards;
-}
+.intro-bar { width:0; height:4px; background:var(--red); margin-top:12px; animation: introBar 0.5s 0.5s var(--ease) forwards; }
+.intro-sub { font-size:9px; letter-spacing:6px; text-transform:uppercase; color:var(--dim); opacity:0; margin-top:14px; animation: introFade 0.4s 0.8s ease forwards; }
 @keyframes introSlide { to { transform:translateY(0); } }
 @keyframes introBar   { to { width:clamp(120px,30vw,200px); } }
 @keyframes introFade  { to { opacity:1; } }
@@ -69,11 +62,7 @@ body::after {
 
 .page { max-width:520px; margin:0 auto; padding:0 22px 140px; }
 
-.hero {
-  padding-top:52px; padding-bottom:40px;
-  display:flex; flex-direction:column; align-items:center; gap:0;
-  animation: riseIn .7s 2.1s var(--ease) both;
-}
+.hero { padding-top:52px; padding-bottom:40px; display:flex; flex-direction:column; align-items:center; gap:0; animation: riseIn .7s 2.1s var(--ease) both; }
 
 .ticker-wrap { width:100vw; max-width:520px; overflow:hidden; background:var(--red); padding:7px 0; position:relative; }
 .ticker-track { display:flex; width:max-content; animation:ticker 18s linear infinite; gap:0; }
@@ -229,7 +218,7 @@ footer { margin-top:48px; text-align:center; animation:riseIn .5s 2.5s var(--eas
   </div>
 
   <div class="section-head">
-    <span class="sh-label" id="videoLabel">Musikvideo</span>
+    <span class="sh-label" id="videoLabel">Neustes Video</span>
     <div class="sh-line"></div>
     <span class="sh-tag" id="videoTag">NEU</span>
   </div>
@@ -237,41 +226,44 @@ footer { margin-top:48px; text-align:center; animation:riseIn .5s 2.5s var(--eas
   <div class="vcarousel-outer" id="carousel">
     <div class="vcarousel-track" id="carouselTrack">
 
-      <a class="vcard active-card" id="card0" href="https://youtu.be/XAdmjy5zZ48" target="_blank" rel="noopener noreferrer">
+      <!-- CARD 0 -->
+      <a class="vcard active-card" id="card0" href="#" data-ytid="iOGMdIzY9Co">
+        <div class="vcard-thumb">
+          <img src="https://img.youtube.com/vi/iOGMdIzY9Co/maxresdefault.jpg"
+               onerror="this.src='https://img.youtube.com/vi/iOGMdIzY9Co/hqdefault.jpg'"
+               alt="FUERTEVENTURA ESKALATION" loading="eager">
+          <span class="vcorner">Vlog</span>
+          <div class="vplay"><div class="vplay-btn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div></div>
+        </div>
+        <div class="vmeta">
+          <div>
+            <div class="vtitle">FUERTEVENTURA ESKALATION 🛹🔩<br>l krumme Geschäfte</div>
+            <div class="vsub">Vlog · 2026</div>
+          </div>
+          <div class="vwatch">Watch ↗</div>
+        </div>
+      </a>
+
+      <!-- CARD 1 -->
+      <a class="vcard" id="card1" href="#" data-ytid="XAdmjy5zZ48">
         <div class="vcard-thumb">
           <img src="https://img.youtube.com/vi/XAdmjy5zZ48/maxresdefault.jpg"
                onerror="this.src='https://img.youtube.com/vi/XAdmjy5zZ48/hqdefault.jpg'"
-               alt="foulnet - nicht gleichgesinnt feat. JVZO & IDVY" loading="eager">
+               alt="foulnet - NICHT GLEICHGESINNT feat. JVZO & IDVY" loading="lazy">
           <span class="vcorner">Musikvideo</span>
           <div class="vplay"><div class="vplay-btn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div></div>
         </div>
         <div class="vmeta">
           <div>
-            <div class="vtitle">foulnet — nicht gleichgesinnt<br>feat. JVZO & IDVY</div>
+            <div class="vtitle">foulnet — NICHT GLEICHGESINNT<br>feat. JVZO & IDVY</div>
             <div class="vsub">Musikvideo · 2026</div>
           </div>
           <div class="vwatch">Watch ↗</div>
         </div>
       </a>
 
-      <a class="vcard" id="card1" href="https://youtu.be/-LEtlMF6oT0" target="_blank" rel="noopener noreferrer">
-        <div class="vcard-thumb">
-          <img src="https://img.youtube.com/vi/-LEtlMF6oT0/maxresdefault.jpg"
-               onerror="this.src='https://img.youtube.com/vi/-LEtlMF6oT0/hqdefault.jpg'"
-               alt="Behind the Scenes: Musikvideodreh & Street Skaten" loading="lazy">
-          <span class="vcorner">Behind the Scenes</span>
-          <div class="vplay"><div class="vplay-btn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div></div>
-        </div>
-        <div class="vmeta">
-          <div>
-            <div class="vtitle">Behind the Scenes:<br>Musikvideodreh & Street Skaten</div>
-            <div class="vsub">BTS · Musikvideo · Street</div>
-          </div>
-          <div class="vwatch">Watch ↗</div>
-        </div>
-      </a>
-
-      <a class="vcard" id="card2" href="https://youtu.be/zcM4JspCduA" target="_blank" rel="noopener noreferrer">
+      <!-- CARD 2 -->
+      <a class="vcard" id="card2" href="#" data-ytid="zcM4JspCduA">
         <div class="vcard-thumb">
           <img src="https://img.youtube.com/vi/zcM4JspCduA/maxresdefault.jpg"
                onerror="this.src='https://img.youtube.com/vi/zcM4JspCduA/hqdefault.jpg'"
@@ -395,6 +387,7 @@ footer { margin-top:48px; text-align:center; animation:riseIn .5s 2.5s var(--eas
 </div>
 
 <script>
+/* MUTE */
 const muteBtn = document.getElementById('muteBtn');
 const spotifyIframe = document.getElementById('spotify-iframe');
 let muted = false;
@@ -406,8 +399,19 @@ muteBtn.addEventListener('click', () => {
   spotifyIframe.src = muted ? base + '&volume=0' : base;
 });
 
+/* INTRO */
 setTimeout(() => { const i = document.getElementById('intro'); if(i) i.remove(); }, 2400);
 
+/* YOUTUBE APP DEEP LINK */
+function openYouTube(e, videoId) {
+  e.preventDefault();
+  const appUrl = 'youtube://youtu.be/' + videoId;
+  const webUrl = 'https://youtu.be/' + videoId;
+  window.location.href = appUrl;
+  setTimeout(() => { window.location.href = webUrl; }, 800);
+}
+
+/* CAROUSEL */
 const track    = document.getElementById('carouselTrack');
 const carousel = document.getElementById('carousel');
 const label    = document.getElementById('videoLabel');
@@ -416,7 +420,7 @@ const hint     = document.getElementById('swipeHint');
 const cards    = [document.getElementById('card0'), document.getElementById('card1'), document.getElementById('card2')];
 const dots     = [document.getElementById('dot0'), document.getElementById('dot1'), document.getElementById('dot2')];
 
-const labels = ['Musikvideo', 'Behind the Scenes', 'Street Part'];
+const labels = ['Neustes Video', 'Musikvideo', 'Street Part'];
 const tags   = ['NEU', '', ''];
 
 let current = 0, isDragging = false, startX = 0, startTranslate = 0, currentTranslate = 0;
@@ -443,7 +447,15 @@ carousel.addEventListener('touchend', e => { const diff = startX - e.changedTouc
 carousel.addEventListener('mousedown', e => { isDragging = true; startX = e.clientX; startTranslate = getOffset(current); track.style.transition = 'none'; e.preventDefault(); });
 window.addEventListener('mousemove', e => { if (!isDragging) return; currentTranslate = startTranslate - (e.clientX - startX); track.style.transform = `translateX(-${currentTranslate}px)`; });
 window.addEventListener('mouseup', e => { if (!isDragging) return; isDragging = false; const diff = startX - e.clientX; if (Math.abs(diff) > 50) goTo(diff > 0 ? Math.min(current+1, cards.length-1) : Math.max(current-1, 0)); else goTo(current); });
-cards.forEach(card => { card.addEventListener('click', e => { if (Math.abs(startX - (e.clientX||startX)) > 5) e.preventDefault(); }); });
+
+/* Click handler mit YouTube App Deep Link */
+cards.forEach(card => {
+  card.addEventListener('click', e => {
+    if (Math.abs(startX - (e.clientX || startX)) > 5) { e.preventDefault(); return; }
+    const videoId = card.getAttribute('data-ytid');
+    if (videoId) openYouTube(e, videoId);
+  });
+});
 
 goTo(0, false);
 window.addEventListener('resize', () => goTo(current, false));

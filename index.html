@@ -227,18 +227,18 @@ footer { margin-top:48px; text-align:center; animation:riseIn .5s 2.5s var(--eas
     <div class="vcarousel-track" id="carouselTrack">
 
       <!-- CARD 0 -->
-      <a class="vcard active-card" id="card0" href="#" data-ytid="iOGMdIzY9Co">
+      <a class="vcard active-card" id="card0" href="#" data-ytid="M3FTovO2OmU">
         <div class="vcard-thumb">
-          <img src="https://img.youtube.com/vi/iOGMdIzY9Co/maxresdefault.jpg"
-               onerror="this.src='https://img.youtube.com/vi/iOGMdIzY9Co/hqdefault.jpg'"
-               alt="FUERTEVENTURA ESKALATION" loading="eager">
-          <span class="vcorner">Vlog</span>
+          <img src="https://img.youtube.com/vi/M3FTovO2OmU/maxresdefault.jpg"
+               onerror="this.src='https://img.youtube.com/vi/M3FTovO2OmU/hqdefault.jpg'"
+               alt="Köln Street Tour" loading="eager">
+          <span class="vcorner">Street Tour</span>
           <div class="vplay"><div class="vplay-btn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div></div>
         </div>
         <div class="vmeta">
           <div>
-            <div class="vtitle">FUERTEVENTURA ESKALATION 🛹🔩<br>l krumme Geschäfte</div>
-            <div class="vsub">Vlog · 2026</div>
+            <div class="vtitle">Köln Street Tour 🛹<br>DE BRECHER, JASON SKATEHAM & SHANOAH</div>
+            <div class="vsub">Street · Köln · 2026</div>
           </div>
           <div class="vwatch">Watch ↗</div>
         </div>
@@ -405,10 +405,8 @@ setTimeout(() => { const i = document.getElementById('intro'); if(i) i.remove();
 /* YOUTUBE APP DEEP LINK */
 function openYouTube(e, videoId) {
   e.preventDefault();
-  const appUrl = 'youtube://youtu.be/' + videoId;
-  const webUrl = 'https://youtu.be/' + videoId;
-  window.location.href = appUrl;
-  setTimeout(() => { window.location.href = webUrl; }, 800);
+  window.location.href = 'youtube://youtu.be/' + videoId;
+  setTimeout(() => { window.location.href = 'https://youtu.be/' + videoId; }, 800);
 }
 
 /* CAROUSEL */
@@ -448,7 +446,6 @@ carousel.addEventListener('mousedown', e => { isDragging = true; startX = e.clie
 window.addEventListener('mousemove', e => { if (!isDragging) return; currentTranslate = startTranslate - (e.clientX - startX); track.style.transform = `translateX(-${currentTranslate}px)`; });
 window.addEventListener('mouseup', e => { if (!isDragging) return; isDragging = false; const diff = startX - e.clientX; if (Math.abs(diff) > 50) goTo(diff > 0 ? Math.min(current+1, cards.length-1) : Math.max(current-1, 0)); else goTo(current); });
 
-/* Click handler mit YouTube App Deep Link */
 cards.forEach(card => {
   card.addEventListener('click', e => {
     if (Math.abs(startX - (e.clientX || startX)) > 5) { e.preventDefault(); return; }

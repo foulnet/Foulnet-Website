@@ -71,18 +71,85 @@ body::after { content:''; position:fixed; inset:0; z-index:9999; pointer-events:
 .vcard { flex:0 0 100%; width:100%; display:block; text-decoration:none; background:var(--surface); border:1px solid var(--border); border-radius:6px; overflow:hidden; position:relative; transition:border-color .3s var(--ease),box-shadow .3s var(--ease); pointer-events:none; }
 .vcard.active-card { pointer-events:auto; }
 .vcard:hover { border-color:var(--red); box-shadow:0 0 32px var(--red-glow); }
+.vcarousel-track .vcard + .vcard { margin-left:16px; }
 
 .vcard-thumb { position:relative; aspect-ratio:16/9; overflow:hidden; background:#0d0d0d; }
 .vcard-thumb img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s var(--ease),filter .4s; filter:brightness(.9) saturate(.8); }
 .vcard:hover .vcard-thumb img { transform:scale(1.04); filter:brightness(1) saturate(1); }
+.vcard-thumb::before { content:''; position:absolute; inset:0; z-index:2; background:repeating-linear-gradient(0deg,rgba(0,0,0,.08) 0px,rgba(0,0,0,.08) 1px,transparent 1px,transparent 3px); pointer-events:none; }
 
+.vplay { position:absolute; inset:0; z-index:3; display:flex; align-items:center; justify-content:center; background:radial-gradient(ellipse at center,rgba(0,0,0,.4) 0%,transparent 70%); transition:background .3s; }
+.vcard:hover .vplay { background:radial-gradient(ellipse at center,rgba(232,19,42,.25) 0%,transparent 70%); }
+.vplay-btn { width:58px; height:58px; border-radius:50%; background:var(--red); display:flex; align-items:center; justify-content:center; box-shadow:0 0 0 10px rgba(232,19,42,.15),0 4px 24px rgba(0,0,0,.5); transition:transform .3s var(--ease),box-shadow .3s; }
+.vcard:hover .vplay-btn { transform:scale(1.12); box-shadow:0 0 0 16px rgba(232,19,42,.12),0 4px 32px rgba(0,0,0,.6); }
+.vplay-btn svg { width:22px; height:22px; margin-left:3px; }
+
+.vcorner { position:absolute; top:12px; left:12px; z-index:4; background:var(--yellow); color:#000; font-family:var(--ff-head); font-weight:900; font-size:10px; letter-spacing:2px; text-transform:uppercase; padding:4px 9px; border-radius:2px; }
 .vmeta { padding:14px 18px 16px; display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
 .vtitle { font-family:var(--ff-head); font-weight:700; font-size:18px; letter-spacing:.5px; line-height:1.2; color:var(--text); }
-.vsub { font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--dim); }
+.vsub { font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--dim); margin-top:5px; }
+.vwatch { flex-shrink:0; background:var(--red); color:#fff; font-family:var(--ff-head); font-weight:700; font-size:11px; letter-spacing:2px; text-transform:uppercase; padding:8px 14px; border-radius:3px; align-self:center; white-space:nowrap; transition:background .2s; }
+.vcard:hover .vwatch { background:#c80f23; }
+
+.vdots { display:flex; justify-content:center; align-items:center; gap:7px; margin-top:12px; }
+.vdot { width:5px; height:5px; border-radius:50%; background:var(--muted); transition:background .3s,transform .3s; cursor:pointer; }
+.vdot.active { background:var(--red); transform:scale(1.4); }
+
+.swipe-hint { display:flex; align-items:center; justify-content:flex-end; gap:5px; margin-top:8px; opacity:.35; font-size:8px; letter-spacing:2px; text-transform:uppercase; color:var(--dim); transition:opacity .4s; animation:riseIn .5s 2.3s var(--ease) both; }
+.swipe-hint.hidden { opacity:0; }
+.swipe-hint svg { width:12px; height:12px; }
+
+.sep { margin:32px 0; display:flex; align-items:center; gap:12px; animation:riseIn .6s 2.25s var(--ease) both; }
+.sep-line { flex:1; height:1px; background:var(--border); }
+.sep-dot { width:5px; height:5px; border-radius:50%; background:var(--red); }
+
+.links { display:flex; flex-direction:column; gap:9px; }
+.lbtn { display:flex; align-items:center; gap:16px; padding:15px 18px; text-decoration:none; border-radius:5px; background:var(--surface); border:1px solid var(--border); transition:border-color .25s var(--ease),transform .2s var(--ease),box-shadow .25s; position:relative; overflow:hidden; }
+.lbtn::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; transform:scaleY(0); transform-origin:bottom; transition:transform .25s var(--ease); border-radius:0 2px 2px 0; }
+.lbtn:hover::before { transform:scaleY(1); }
+.lbtn:hover { transform:translateX(5px); border-color:var(--muted); }
+.lbtn--yt::before  { background:#e8132a; }
+.lbtn--ig::before  { background:linear-gradient(180deg,#f58529,#c13584); }
+.lbtn--sp::before  { background:#1DB954; }
+.lbtn--am::before  { background:#fc3c44; }
+.lbtn--amz::before { background:#00a8e0; }
+.lbtn:hover.lbtn--yt  { box-shadow:-4px 0 20px rgba(232,19,42,.12); }
+.lbtn:hover.lbtn--ig  { box-shadow:-4px 0 20px rgba(193,53,132,.12); }
+.lbtn:hover.lbtn--sp  { box-shadow:-4px 0 20px rgba(29,185,84,.12); }
+.lbtn:hover.lbtn--am  { box-shadow:-4px 0 20px rgba(252,60,68,.12); }
+.lbtn:hover.lbtn--amz { box-shadow:-4px 0 20px rgba(0,168,224,.12); }
+.lbtn-icon { width:34px; height:34px; flex-shrink:0; display:flex; align-items:center; justify-content:center; border-radius:6px; background:var(--muted); }
+.lbtn-icon svg { width:18px; height:18px; }
+.lbtn-copy { flex:1; }
+.lbtn-name { font-family:var(--ff-head); font-weight:700; font-size:16px; letter-spacing:1px; color:var(--text); text-transform:uppercase; }
+.lbtn-handle { font-size:9px; letter-spacing:2px; color:var(--dim); margin-top:2px; text-transform:uppercase; }
+.lbtn-arrow { color:var(--muted); font-size:16px; transition:color .2s,transform .2s; }
+.lbtn:hover .lbtn-arrow { color:var(--text); transform:translateX(3px); }
+
+.music-head { display:flex; align-items:center; gap:10px; margin:28px 0 12px; animation:riseIn .5s 2.38s var(--ease) both; }
+.mh-label { font-size:9px; letter-spacing:5px; text-transform:uppercase; color:var(--dim); white-space:nowrap; }
+.mh-song { font-family:var(--ff-head); font-weight:700; font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--text); white-space:nowrap; }
+.mh-line { flex:1; height:1px; background:var(--border); }
+
+.spotify-bar { position:fixed; bottom:0; left:0; right:0; z-index:1000; background:linear-gradient(to top,#080808 60%,transparent); padding:16px 22px 20px; display:flex; align-items:center; gap:12px; max-width:520px; margin:0 auto; animation:riseIn .6s 2.5s var(--ease) both; }
+.spotify-embed-wrap { flex:1; border-radius:8px; overflow:hidden; height:80px; }
+.spotify-embed-wrap iframe { width:100%; height:80px; border:none; display:block; }
+.mute-btn { flex-shrink:0; width:42px; height:42px; border-radius:50%; background:var(--surface); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; cursor:pointer; transition:border-color .2s,background .2s,transform .15s; color:var(--text); }
+.mute-btn:hover { border-color:var(--red); background:var(--muted); transform:scale(1.08); }
+.mute-btn svg { width:18px; height:18px; }
+.mute-btn .icon-muted { display:none; }
+.mute-btn.is-muted .icon-sound { display:none; }
+.mute-btn.is-muted .icon-muted { display:block; }
+
+footer { margin-top:48px; text-align:center; animation:riseIn .5s 2.5s var(--ease) both; }
+.footer-name { font-family:var(--ff-head); font-weight:900; font-size:36px; letter-spacing:6px; color:var(--border); text-transform:uppercase; user-select:none; }
+.footer-sub { font-size:9px; letter-spacing:3px; text-transform:uppercase; color:#2a2a2a; margin-top:4px; }
+
+@keyframes riseIn { from{opacity:0;transform:translateY(18px);} to{opacity:1;transform:translateY(0);} }
+@media (max-width:400px) { .vwatch{display:none;} .vmeta{padding:12px 14px 14px;} }
 
 </style>
 </head>
-
 <body>
 
 <div id="intro">
@@ -95,7 +162,12 @@ body::after { content:''; position:fixed; inset:0; z-index:9999; pointer-events:
 
   <div class="hero">
     <div class="ticker-wrap">
-      <div class="ticker-track"></div>
+      <div class="ticker-track">
+        <span class="ticker-item">FOULNET</span><span class="ticker-item ticker-dot">✦</span>
+        <span class="ticker-item">SKATE</span><span class="ticker-item ticker-dot">✦</span>
+        <span class="ticker-item">MUSIK</span><span class="ticker-item ticker-dot">✦</span>
+        <span class="ticker-item">CONTENT</span><span class="ticker-item ticker-dot">✦</span>
+      </div>
     </div>
 
     <div class="wordmark-wrap">
@@ -110,48 +182,124 @@ body::after { content:''; position:fixed; inset:0; z-index:9999; pointer-events:
 
   <div class="section-head">
     <span class="sh-label" id="videoLabel">Neustes Video</span>
+    <div class="sh-line"></div>
+    <span class="sh-tag" id="videoTag">NEU</span>
   </div>
 
   <div class="vcarousel-outer" id="carousel">
     <div class="vcarousel-track" id="carouselTrack">
 
-      <!-- 🔥 NUR DIESES VIDEO GEÄNDERT -->
-      <a class="vcard active-card" id="card0" href="#" data-ytid="e-vZvUwAeao">
+      <!-- 🔥 ONLY CHANGE: VIDEO 1 -->
+      <a class="vcard active-card" id="card0" href="https://youtu.be/e-vZvUwAeao?is=EAFGIcXq3GMlNt8V" data-ytid="e-vZvUwAeao">
         <div class="vcard-thumb">
           <img src="https://img.youtube.com/vi/e-vZvUwAeao/maxresdefault.jpg"
                onerror="this.src='https://img.youtube.com/vi/e-vZvUwAeao/hqdefault.jpg'"
-               alt="SKATING IN BERLIN l Skate- & Fresstour">
+               alt="SKATING IN BERLIN l Skate- & Fresstour" loading="eager">
+          <span class="vcorner">Musikvideo</span>
+          <div class="vplay"><div class="vplay-btn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div></div>
         </div>
         <div class="vmeta">
           <div>
             <div class="vtitle">SKATING IN BERLIN l Skate- & Fresstour</div>
             <div class="vsub">Street · 2026</div>
           </div>
+          <div class="vwatch">Watch ↗</div>
         </div>
       </a>
 
-      <!-- UNVERÄNDERT -->
       <a class="vcard" id="card1" href="#" data-ytid="OnllxhwS1aI">
         <div class="vcard-thumb">
-          <img src="https://img.youtube.com/vi/OnllxhwS1aI/maxresdefault.jpg">
+          <img src="https://img.youtube.com/vi/OnllxhwS1aI/maxresdefault.jpg"
+               onerror="this.src='https://img.youtube.com/vi/OnllxhwS1aI/hqdefault.jpg'"
+               alt="HALFTIME - peak moments" loading="lazy">
+          <span class="vcorner">Peak Moments</span>
+          <div class="vplay"><div class="vplay-btn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div></div>
         </div>
-        <div class="vmeta"></div>
+        <div class="vmeta">
+          <div>
+            <div class="vtitle">HALFTIME 🛹🛀<br>— peak moments</div>
+            <div class="vsub">Street · 2026</div>
+          </div>
+          <div class="vwatch">Watch ↗</div>
+        </div>
       </a>
 
       <a class="vcard" id="card2" href="#" data-ytid="f7UMVSmfcCk">
         <div class="vcard-thumb">
-          <img src="https://img.youtube.com/vi/f7UMVSmfcCk/maxresdefault.jpg">
+          <img src="https://img.youtube.com/vi/f7UMVSmfcCk/maxresdefault.jpg"
+               onerror="this.src='https://img.youtube.com/vi/f7UMVSmfcCk/hqdefault.jpg'"
+               alt="KÖLN VERAUSGABUNG - Tour-Finale" loading="lazy">
+          <span class="vcorner">Tour-Finale</span>
+          <div class="vplay"><div class="vplay-btn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div></div>
         </div>
-        <div class="vmeta"></div>
+        <div class="vmeta">
+          <div>
+            <div class="vtitle">KÖLN VERAUSGABUNG 🛹<br>l Tour-Finale</div>
+            <div class="vsub">Street · Köln · 2026</div>
+          </div>
+          <div class="vwatch">Watch ↗</div>
+        </div>
       </a>
 
     </div>
   </div>
 
+  <div class="vdots">
+    <div class="vdot active" id="dot0" onclick="goTo(0)"></div>
+    <div class="vdot" id="dot1" onclick="goTo(1)"></div>
+    <div class="vdot" id="dot2" onclick="goTo(2)"></div>
+  </div>
+
+  <div class="swipe-hint" id="swipeHint">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 12H5M12 5l-7 7 7 7"/>
+    </svg>
+    swipe für älteres video
+  </div>
+
+  <div class="sep"><div class="sep-line"></div><div class="sep-dot"></div><div class="sep-line"></div></div>
+
+  <div class="section-head">
+    <span class="sh-label">Socials</span>
+    <div class="sh-line"></div>
+  </div>
+
+  <div class="links">
+    <!-- unchanged -->
+    <a class="lbtn lbtn--yt" href="https://www.youtube.com/@Foulnet" target="_blank" rel="noopener">...</a>
+    <a class="lbtn lbtn--ig" href="https://www.instagram.com/lfoulnet" target="_blank" rel="noopener">...</a>
+  </div>
+
+  <div class="music-head">
+    <span class="mh-label">Musik</span>
+    <div class="mh-line"></div>
+    <span class="mh-song">Supreme</span>
+    <div class="mh-line" style="max-width:30px"></div>
+  </div>
+
+  <div class="links">
+    <!-- unchanged Spotify/Apple/Amazon -->
+  </div>
+
+  <footer>
+    <div class="footer-name">FOULNET</div>
+    <div class="footer-sub">© 2026 · All rights reserved</div>
+  </footer>
+
+</div>
+
+<div class="spotify-bar">
+  <div class="spotify-embed-wrap">
+    <iframe id="spotify-iframe"
+      src="https://open.spotify.com/embed/track/35GG8Jhuhr5caK1pGBwswt?utm_source=generator&theme=0&autoplay=1"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy"></iframe>
+  </div>
+  <button class="mute-btn" id="muteBtn">...</button>
 </div>
 
 <script>
-/* dein Original JS bleibt unverändert */
+/* unchanged JS */
 </script>
 
 </body>

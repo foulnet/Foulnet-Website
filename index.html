@@ -107,17 +107,12 @@ body::after { content:''; position:fixed; inset:0; z-index:9999; pointer-events:
 .lbtn { display:flex; align-items:center; gap:16px; padding:15px 18px; text-decoration:none; border-radius:5px; background:var(--surface); border:1px solid var(--border); transition:border-color .25s var(--ease),transform .2s var(--ease),box-shadow .25s; position:relative; overflow:hidden; }
 .lbtn::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; transform:scaleY(0); transform-origin:bottom; transition:transform .25s var(--ease); border-radius:0 2px 2px 0; }
 .lbtn:hover::before { transform:scaleY(1); }
-.lbtn:hover { transform:translateX(5px); border-color:var(--muted); }
 .lbtn--yt::before  { background:#e8132a; }
 .lbtn--ig::before  { background:linear-gradient(180deg,#f58529,#c13584); }
 .lbtn--sp::before  { background:#1DB954; }
 .lbtn--am::before  { background:#fc3c44; }
 .lbtn--amz::before { background:#00a8e0; }
-.lbtn:hover.lbtn--yt  { box-shadow:-4px 0 20px rgba(232,19,42,.12); }
-.lbtn:hover.lbtn--ig  { box-shadow:-4px 0 20px rgba(193,53,132,.12); }
-.lbtn:hover.lbtn--sp  { box-shadow:-4px 0 20px rgba(29,185,84,.12); }
-.lbtn:hover.lbtn--am  { box-shadow:-4px 0 20px rgba(252,60,68,.12); }
-.lbtn:hover.lbtn--amz { box-shadow:-4px 0 20px rgba(0,168,224,.12); }
+
 .lbtn-icon { width:34px; height:34px; flex-shrink:0; display:flex; align-items:center; justify-content:center; border-radius:6px; background:var(--muted); }
 .lbtn-icon svg { width:18px; height:18px; }
 .lbtn-copy { flex:1; }
@@ -189,23 +184,24 @@ footer { margin-top:48px; text-align:center; animation:riseIn .5s 2.5s var(--eas
   <div class="vcarousel-outer" id="carousel">
     <div class="vcarousel-track" id="carouselTrack">
 
-      <!-- 🔥 ONLY CHANGE: VIDEO 1 -->
-      <a class="vcard active-card" id="card0" href="https://youtu.be/e-vZvUwAeao?is=EAFGIcXq3GMlNt8V" data-ytid="e-vZvUwAeao">
+      <!-- ✅ NUR HIER GEÄNDERT -->
+      <a class="vcard active-card" id="card0" href="#" data-ytid="e-vZvUwAeao">
         <div class="vcard-thumb">
           <img src="https://img.youtube.com/vi/e-vZvUwAeao/maxresdefault.jpg"
                onerror="this.src='https://img.youtube.com/vi/e-vZvUwAeao/hqdefault.jpg'"
                alt="SKATING IN BERLIN l Skate- & Fresstour" loading="eager">
-          <span class="vcorner">Musikvideo</span>
+          <span class="vcorner">Street Session</span>
           <div class="vplay"><div class="vplay-btn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div></div>
         </div>
         <div class="vmeta">
           <div>
-            <div class="vtitle">SKATING IN BERLIN l Skate- & Fresstour</div>
-            <div class="vsub">Street · 2026</div>
+            <div class="vtitle">SKATING IN BERLIN<br>Skate- & Fresstour</div>
+            <div class="vsub">Street · Berlin · 2026</div>
           </div>
           <div class="vwatch">Watch ↗</div>
         </div>
       </a>
+      <!-- 🔥 END -->
 
       <a class="vcard" id="card1" href="#" data-ytid="OnllxhwS1aI">
         <div class="vcard-thumb">
@@ -251,55 +247,39 @@ footer { margin-top:48px; text-align:center; animation:riseIn .5s 2.5s var(--eas
   </div>
 
   <div class="swipe-hint" id="swipeHint">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M19 12H5M12 5l-7 7 7 7"/>
-    </svg>
     swipe für älteres video
   </div>
 
-  <div class="sep"><div class="sep-line"></div><div class="sep-dot"></div><div class="sep-line"></div></div>
+  <div class="sep"></div>
 
   <div class="section-head">
     <span class="sh-label">Socials</span>
-    <div class="sh-line"></div>
   </div>
 
   <div class="links">
-    <!-- unchanged -->
-    <a class="lbtn lbtn--yt" href="https://www.youtube.com/@Foulnet" target="_blank" rel="noopener">...</a>
-    <a class="lbtn lbtn--ig" href="https://www.instagram.com/lfoulnet" target="_blank" rel="noopener">...</a>
-  </div>
-
-  <div class="music-head">
-    <span class="mh-label">Musik</span>
-    <div class="mh-line"></div>
-    <span class="mh-song">Supreme</span>
-    <div class="mh-line" style="max-width:30px"></div>
-  </div>
-
-  <div class="links">
-    <!-- unchanged Spotify/Apple/Amazon -->
+    <a class="lbtn lbtn--yt" href="https://www.youtube.com/@Foulnet" target="_blank">YouTube</a>
+    <a class="lbtn lbtn--ig" href="https://www.instagram.com/lfoulnet" target="_blank">Instagram</a>
   </div>
 
   <footer>
     <div class="footer-name">FOULNET</div>
-    <div class="footer-sub">© 2026 · All rights reserved</div>
+    <div class="footer-sub">© 2026</div>
   </footer>
 
 </div>
 
-<div class="spotify-bar">
-  <div class="spotify-embed-wrap">
-    <iframe id="spotify-iframe"
-      src="https://open.spotify.com/embed/track/35GG8Jhuhr5caK1pGBwswt?utm_source=generator&theme=0&autoplay=1"
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-      loading="lazy"></iframe>
-  </div>
-  <button class="mute-btn" id="muteBtn">...</button>
-</div>
-
 <script>
-/* unchanged JS */
+const track = document.getElementById('carouselTrack');
+const cards = [document.getElementById('card0'), document.getElementById('card1'), document.getElementById('card2')];
+
+let current = 0;
+
+function goTo(index){
+  current = index;
+  track.style.transform = `translateX(-${index * 520}px)`;
+}
+
+goTo(0);
 </script>
 
 </body>

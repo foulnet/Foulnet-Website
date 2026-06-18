@@ -205,11 +205,28 @@ footer { margin-top:48px; text-align:center; animation:riseIn .5s 2.5s var(--eas
   <div class="vcarousel-outer" id="carousel">
     <div class="vcarousel-track" id="carouselTrack">
 
-      <a class="vcard active-card" id="card0" href="#" data-ytid="e-vZvUwAeao">
+      <a class="vcard active-card" id="card0" href="#" data-ytid="RT2c2sIg2rk">
+        <div class="vcard-thumb">
+          <img src="https://img.youtube.com/vi/RT2c2sIg2rk/maxresdefault.jpg"
+               onerror="this.src='https://img.youtube.com/vi/RT2c2sIg2rk/hqdefault.jpg'"
+               alt="SKATING IN BERLIN - rainy days" loading="eager">
+          <span class="vcorner">Berlin Vlog</span>
+          <div class="vplay"><div class="vplay-btn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div></div>
+        </div>
+        <div class="vmeta">
+          <div>
+            <div class="vtitle">SKATING IN BERLIN 🛹🌧️<br>rainy days</div>
+            <div class="vsub">Vlog · Berlin · 2026</div>
+          </div>
+          <div class="vwatch">Watch ↗</div>
+        </div>
+      </a>
+
+      <a class="vcard" id="card1" href="#" data-ytid="e-vZvUwAeao">
         <div class="vcard-thumb">
           <img src="https://img.youtube.com/vi/e-vZvUwAeao/maxresdefault.jpg"
                onerror="this.src='https://img.youtube.com/vi/e-vZvUwAeao/hqdefault.jpg'"
-               alt="SKATEN IN BERLIN - Skate- & Fresstour" loading="eager">
+               alt="SKATEN IN BERLIN - Skate- & Fresstour" loading="lazy">
           <span class="vcorner">Berlin Vlog</span>
           <div class="vplay"><div class="vplay-btn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div></div>
         </div>
@@ -222,7 +239,7 @@ footer { margin-top:48px; text-align:center; animation:riseIn .5s 2.5s var(--eas
         </div>
       </a>
 
-      <a class="vcard" id="card1" href="#" data-ytid="oKk136n797k">
+      <a class="vcard" id="card2" href="#" data-ytid="oKk136n797k">
         <div class="vcard-thumb">
           <img src="https://img.youtube.com/vi/oKk136n797k/maxresdefault.jpg"
                onerror="this.src='https://img.youtube.com/vi/oKk136n797k/hqdefault.jpg'"
@@ -234,23 +251,6 @@ footer { margin-top:48px; text-align:center; animation:riseIn .5s 2.5s var(--eas
           <div>
             <div class="vtitle">foulnet — Supreme<br>feat. Veintales</div>
             <div class="vsub">Musikvideo · 2026</div>
-          </div>
-          <div class="vwatch">Watch ↗</div>
-        </div>
-      </a>
-
-      <a class="vcard" id="card2" href="#" data-ytid="OnllxhwS1aI">
-        <div class="vcard-thumb">
-          <img src="https://img.youtube.com/vi/OnllxhwS1aI/maxresdefault.jpg"
-               onerror="this.src='https://img.youtube.com/vi/OnllxhwS1aI/hqdefault.jpg'"
-               alt="HALFTIME - peak moments" loading="lazy">
-          <span class="vcorner">Peak Moments</span>
-          <div class="vplay"><div class="vplay-btn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div></div>
-        </div>
-        <div class="vmeta">
-          <div>
-            <div class="vtitle">HALFTIME 🛹🛀<br>— peak moments</div>
-            <div class="vsub">Street · 2026</div>
           </div>
           <div class="vwatch">Watch ↗</div>
         </div>
@@ -387,7 +387,7 @@ const hint     = document.getElementById('swipeHint');
 const cards    = [document.getElementById('card0'), document.getElementById('card1'), document.getElementById('card2')];
 const dots     = [document.getElementById('dot0'), document.getElementById('dot1'), document.getElementById('dot2')];
 
-const labels = ['Neustes Video', 'Musikvideo', 'Peak Moments'];
+const labels = ['Neustes Video', 'Berlin Vlog', 'Musikvideo'];
 const tags   = ['NEU', '', ''];
 
 let current = 0, isDragging = false, startX = 0, startTranslate = 0, currentTranslate = 0;

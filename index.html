@@ -31,7 +31,6 @@ html { -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
 }
 
 body { background:var(--bg); color:var(--text); font-family:var(--ff-mono); min-height:100vh; overflow-x:hidden; cursor:default; }
-
 body::after { content:''; position:fixed; inset:0; z-index:9999; pointer-events:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)' opacity='1'/%3E%3C/svg%3E"); opacity:0.035; }
 
 #intro { position:fixed; inset:0; z-index:10000; background:var(--bg); display:flex; flex-direction:column; align-items:center; justify-content:center; animation:introOut 0.5s 1.8s var(--ease) forwards; pointer-events:none; }
@@ -47,8 +46,8 @@ body::after { content:''; position:fixed; inset:0; z-index:9999; pointer-events:
 .page { max-width:520px; margin:0 auto; padding:0 22px 140px; }
 .hero { padding-top:52px; padding-bottom:40px; display:flex; flex-direction:column; align-items:center; gap:0; animation:riseIn .7s 2.1s var(--ease) both; }
 
-.ticker-wrap { width:100vw; max-width:520px; overflow:hidden; background:var(--red); padding:7px 0; position:relative; }
-.ticker-track { display:flex; width:max-content; animation:ticker 18s linear infinite; gap:0; }
+.ticker-wrap { width:100vw; max-width:520px; overflow:hidden; background:var(--red); padding:7px 0; }
+.ticker-track { display:flex; width:max-content; animation:ticker 18s linear infinite; }
 .ticker-item { font-family:var(--ff-head); font-weight:900; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:#fff; padding:0 28px; white-space:nowrap; opacity:.9; }
 .ticker-dot { color:rgba(255,255,255,.4); }
 @keyframes ticker { from{transform:translateX(0);} to{transform:translateX(-50%);} }
@@ -205,11 +204,28 @@ footer { margin-top:48px; text-align:center; animation:riseIn .5s 2.5s var(--eas
   <div class="vcarousel-outer" id="carousel">
     <div class="vcarousel-track" id="carouselTrack">
 
-      <a class="vcard active-card" id="card0" href="#" data-ytid="3KEZsECCWfc">
+      <a class="vcard active-card" id="card0" href="#" data-ytid="_Z_8stALQpM">
+        <div class="vcard-thumb">
+          <img src="https://img.youtube.com/vi/_Z_8stALQpM/maxresdefault.jpg"
+               onerror="this.src='https://img.youtube.com/vi/_Z_8stALQpM/hqdefault.jpg'"
+               alt="GO SKATEBOARDING DAY - Münster & Hamm" loading="eager">
+          <span class="vcorner">Go Skate Day</span>
+          <div class="vplay"><div class="vplay-btn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div></div>
+        </div>
+        <div class="vmeta">
+          <div>
+            <div class="vtitle">GO SKATEBOARDING DAY 🛹<br>Münster & Hamm</div>
+            <div class="vsub">Vlog · 2026</div>
+          </div>
+          <div class="vwatch">Watch ↗</div>
+        </div>
+      </a>
+
+      <a class="vcard" id="card1" href="#" data-ytid="3KEZsECCWfc">
         <div class="vcard-thumb">
           <img src="https://img.youtube.com/vi/3KEZsECCWfc/maxresdefault.jpg"
                onerror="this.src='https://img.youtube.com/vi/3KEZsECCWfc/hqdefault.jpg'"
-               alt="Lippepark Contest - Hamm rollt bunt" loading="eager">
+               alt="Lippepark Contest - Hamm rollt bunt" loading="lazy">
           <span class="vcorner">Contest</span>
           <div class="vplay"><div class="vplay-btn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div></div>
         </div>
@@ -222,7 +238,7 @@ footer { margin-top:48px; text-align:center; animation:riseIn .5s 2.5s var(--eas
         </div>
       </a>
 
-      <a class="vcard" id="card1" href="#" data-ytid="RT2c2sIg2rk">
+      <a class="vcard" id="card2" href="#" data-ytid="RT2c2sIg2rk">
         <div class="vcard-thumb">
           <img src="https://img.youtube.com/vi/RT2c2sIg2rk/maxresdefault.jpg"
                onerror="this.src='https://img.youtube.com/vi/RT2c2sIg2rk/hqdefault.jpg'"
@@ -233,23 +249,6 @@ footer { margin-top:48px; text-align:center; animation:riseIn .5s 2.5s var(--eas
         <div class="vmeta">
           <div>
             <div class="vtitle">SKATING IN BERLIN 🛹🌧️<br>rainy days</div>
-            <div class="vsub">Vlog · Berlin · 2026</div>
-          </div>
-          <div class="vwatch">Watch ↗</div>
-        </div>
-      </a>
-
-      <a class="vcard" id="card2" href="#" data-ytid="e-vZvUwAeao">
-        <div class="vcard-thumb">
-          <img src="https://img.youtube.com/vi/e-vZvUwAeao/maxresdefault.jpg"
-               onerror="this.src='https://img.youtube.com/vi/e-vZvUwAeao/hqdefault.jpg'"
-               alt="SKATEN IN BERLIN - Skate- & Fresstour" loading="lazy">
-          <span class="vcorner">Berlin Vlog</span>
-          <div class="vplay"><div class="vplay-btn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div></div>
-        </div>
-        <div class="vmeta">
-          <div>
-            <div class="vtitle">SKATEN IN BERLIN 🛹<br>l Skate- & Fresstour</div>
             <div class="vsub">Vlog · Berlin · 2026</div>
           </div>
           <div class="vwatch">Watch ↗</div>
@@ -387,7 +386,7 @@ const hint     = document.getElementById('swipeHint');
 const cards    = [document.getElementById('card0'), document.getElementById('card1'), document.getElementById('card2')];
 const dots     = [document.getElementById('dot0'), document.getElementById('dot1'), document.getElementById('dot2')];
 
-const labels = ['Neustes Video', 'Berlin Vlog', 'Berlin Vlog'];
+const labels = ['Neustes Video', 'Contest', 'Berlin Vlog'];
 const tags   = ['NEU', '', ''];
 
 let current = 0, isDragging = false, startX = 0, startTranslate = 0, currentTranslate = 0;

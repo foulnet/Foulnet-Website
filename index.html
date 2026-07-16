@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -168,11 +169,28 @@ footer{margin-top:48px;text-align:center}
   <div class="vcarousel-outer" id="carousel">
     <div class="vcarousel-track" id="carouselTrack">
 
-      <a class="vcard active-card" id="card0" href="#" data-ytid="ic_TxPndVV4">
+      <a class="vcard active-card" id="card0" href="#" data-ytid="gvT-V7NEdl8">
+        <div class="vcard-thumb">
+          <img src="https://img.youtube.com/vi/gvT-V7NEdl8/maxresdefault.jpg"
+               onerror="this.src='https://img.youtube.com/vi/gvT-V7NEdl8/hqdefault.jpg'"
+               alt="LIPPSTADT SKATE CONTEST - Fast geschmolzen bei 30 Grad" loading="eager">
+          <span class="vcorner">Contest</span>
+          <div class="vplay"><div class="vplay-btn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div></div>
+        </div>
+        <div class="vmeta">
+          <div>
+            <div class="vtitle">LIPPSTADT SKATE CONTEST 🛹<br>Fast geschmolzen bei 30°</div>
+            <div class="vsub">Contest · Lippstadt · 2026</div>
+          </div>
+          <div class="vwatch">Watch ↗</div>
+        </div>
+      </a>
+
+      <a class="vcard" id="card1" href="#" data-ytid="ic_TxPndVV4">
         <div class="vcard-thumb">
           <img src="https://img.youtube.com/vi/ic_TxPndVV4/maxresdefault.jpg"
                onerror="this.src='https://img.youtube.com/vi/ic_TxPndVV4/hqdefault.jpg'"
-               alt="Board gebrochen bei 30 Grad - Pelkum Skatesession" loading="eager">
+               alt="Board gebrochen bei 30 Grad Pelkum Skatesession" loading="lazy">
           <span class="vcorner">Pelkum Session</span>
           <div class="vplay"><div class="vplay-btn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div></div>
         </div>
@@ -185,7 +203,7 @@ footer{margin-top:48px;text-align:center}
         </div>
       </a>
 
-      <a class="vcard" id="card1" href="#" data-ytid="_Z_8stALQpM">
+      <a class="vcard" id="card2" href="#" data-ytid="_Z_8stALQpM">
         <div class="vcard-thumb">
           <img src="https://img.youtube.com/vi/_Z_8stALQpM/maxresdefault.jpg"
                onerror="this.src='https://img.youtube.com/vi/_Z_8stALQpM/hqdefault.jpg'"
@@ -197,23 +215,6 @@ footer{margin-top:48px;text-align:center}
           <div>
             <div class="vtitle">GO SKATEBOARDING DAY 🛹<br>Münster &amp; Hamm</div>
             <div class="vsub">Vlog · 2026</div>
-          </div>
-          <div class="vwatch">Watch ↗</div>
-        </div>
-      </a>
-
-      <a class="vcard" id="card2" href="#" data-ytid="3KEZsECCWfc">
-        <div class="vcard-thumb">
-          <img src="https://img.youtube.com/vi/3KEZsECCWfc/maxresdefault.jpg"
-               onerror="this.src='https://img.youtube.com/vi/3KEZsECCWfc/hqdefault.jpg'"
-               alt="Lippepark Contest Hamm rollt bunt" loading="lazy">
-          <span class="vcorner">Contest</span>
-          <div class="vplay"><div class="vplay-btn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div></div>
-        </div>
-        <div class="vmeta">
-          <div>
-            <div class="vtitle">Lippepark Contest 🌈<br>Hamm rollt bunt</div>
-            <div class="vsub">Contest · Hamm · 2026</div>
           </div>
           <div class="vwatch">Watch ↗</div>
         </div>
@@ -322,7 +323,7 @@ const tag=document.getElementById('videoTag');
 const hint=document.getElementById('swipeHint');
 const cards=[document.getElementById('card0'),document.getElementById('card1'),document.getElementById('card2')];
 const dots=[document.getElementById('dot0'),document.getElementById('dot1'),document.getElementById('dot2')];
-const labels=['Neustes Video','Go Skate Day','Contest'];
+const labels=['Neustes Video','Pelkum Session','Go Skate Day'];
 const tags=['NEU','',''];
 let current=0,isDragging=false,startX=0,startTranslate=0,currentTranslate=0;
 function getOffset(i){return i*(carousel.offsetWidth+16);}
@@ -350,3 +351,4 @@ window.addEventListener('resize',()=>goTo(current,false));
 </script>
 </body>
 </html>
+```

@@ -1,3 +1,6 @@
+Ich sehe du hast den alten Code als Dokument geschickt — gut, ich hab alles. Hier der komplette neue Code:
+
+```html
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -168,31 +171,41 @@ footer{margin-top:48px;text-align:center}
   <div class="vcarousel-outer" id="carousel">
     <div class="vcarousel-track" id="carouselTrack">
 
-      <a class="vcard active-card" id="card0" href="#" data-ytid="0MkRJKRbwEc">
-  <div class="vcard-thumb">
-    <img src="https://img.youtube.com/vi/0MkRJKRbwEc/maxresdefault.jpg"
-         onerror="this.src='https://img.youtube.com/vi/0MkRJKRbwEc/hqdefault.jpg'"
-         alt="HANNOVER TRIP #1 – Neues Kape Deck, 2 Parks, krasse Session"
-         loading="eager">
-    <span class="vcorner">Neu</span>
-    <div class="vplay">
-      <div class="vplay-btn">
-        <svg viewBox="0 0 24 24" fill="#fff">
-          <path d="M8 5v14l11-7z"/>
-        </svg>
-      </div>
-    </div>
-  </div>
-  <div class="vmeta">
-    <div>
-      <div class="vtitle">HANNOVER TRIP #1 🛹<br>Neues Kape Deck, 2 Parks, krasse Session 🔥</div>
-      <div class="vsub">Hannover · 2026</div>
-    </div>
-    <div class="vwatch">Watch ↗</div>
-  </div>
-</a>
+      <a class="vcard active-card" id="card0" href="#" data-ytid="NQQhUesqxKo">
+        <div class="vcard-thumb">
+          <img src="https://img.youtube.com/vi/NQQhUesqxKo/maxresdefault.jpg"
+               onerror="this.src='https://img.youtube.com/vi/NQQhUesqxKo/hqdefault.jpg'"
+               alt="HAMBURG - HEFTIGSTE SKATESESSION" loading="eager">
+          <span class="vcorner">Hamburg</span>
+          <div class="vplay"><div class="vplay-btn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div></div>
+        </div>
+        <div class="vmeta">
+          <div>
+            <div class="vtitle">HAMBURG – HEFTIGSTE SKATESESSION<br>mit Yuto, Foy, Sheckler...</div>
+            <div class="vsub">Vlog · Hamburg · 2026</div>
+          </div>
+          <div class="vwatch">Watch ↗</div>
+        </div>
+      </a>
 
-      <a class="vcard" id="card1" href="#" data-ytid="gvT-V7NEdl8">
+      <a class="vcard" id="card1" href="#" data-ytid="87_JgU-Ty8k">
+        <div class="vcard-thumb">
+          <img src="https://img.youtube.com/vi/87_JgU-Ty8k/maxresdefault.jpg"
+               onerror="this.src='https://img.youtube.com/vi/87_JgU-Ty8k/hqdefault.jpg'"
+               alt="Warum ich zurück zu Kape gewechselt bin" loading="lazy">
+          <span class="vcorner">Kape Session</span>
+          <div class="vplay"><div class="vplay-btn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div></div>
+        </div>
+        <div class="vmeta">
+          <div>
+            <div class="vtitle">Warum ich zurück zu Kape gewechselt bin...<br>Hövel Session + Streets</div>
+            <div class="vsub">Session · Hamm · 2026</div>
+          </div>
+          <div class="vwatch">Watch ↗</div>
+        </div>
+      </a>
+
+      <a class="vcard" id="card2" href="#" data-ytid="gvT-V7NEdl8">
         <div class="vcard-thumb">
           <img src="https://img.youtube.com/vi/gvT-V7NEdl8/maxresdefault.jpg"
                onerror="this.src='https://img.youtube.com/vi/gvT-V7NEdl8/hqdefault.jpg'"
@@ -204,23 +217,6 @@ footer{margin-top:48px;text-align:center}
           <div>
             <div class="vtitle">LIPPSTADT SKATE CONTEST 🛹<br>Fast geschmolzen bei 30°</div>
             <div class="vsub">Contest · Lippstadt · 2026</div>
-          </div>
-          <div class="vwatch">Watch ↗</div>
-        </div>
-      </a>
-
-      <a class="vcard" id="card2" href="#" data-ytid="ic_TxPndVV4">
-        <div class="vcard-thumb">
-          <img src="https://img.youtube.com/vi/ic_TxPndVV4/maxresdefault.jpg"
-               onerror="this.src='https://img.youtube.com/vi/ic_TxPndVV4/hqdefault.jpg'"
-               alt="Board gebrochen bei 30 Grad Pelkum Skatesession" loading="lazy">
-          <span class="vcorner">Pelkum Session</span>
-          <div class="vplay"><div class="vplay-btn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div></div>
-        </div>
-        <div class="vmeta">
-          <div>
-            <div class="vtitle">Board gebrochen bei 30 Grad 🌡️🛹<br>Pelkum Skatesession</div>
-            <div class="vsub">Session · Hamm · 2026</div>
           </div>
           <div class="vwatch">Watch ↗</div>
         </div>
@@ -329,7 +325,7 @@ const tag=document.getElementById('videoTag');
 const hint=document.getElementById('swipeHint');
 const cards=[document.getElementById('card0'),document.getElementById('card1'),document.getElementById('card2')];
 const dots=[document.getElementById('dot0'),document.getElementById('dot1'),document.getElementById('dot2')];
-const labels=['Neustes Video','Contest','Pelkum Session'];
+const labels=['Neustes Video','Kape Session','Contest'];
 const tags=['NEU','',''];
 let current=0,isDragging=false,startX=0,startTranslate=0,currentTranslate=0;
 function getOffset(i){return i*(carousel.offsetWidth+16);}
@@ -357,3 +353,4 @@ window.addEventListener('resize',()=>goTo(current,false));
 </script>
 </body>
 </html>
+```

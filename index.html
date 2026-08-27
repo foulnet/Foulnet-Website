@@ -171,11 +171,28 @@ footer{margin-top:48px;text-align:center}
   <div class="vcarousel-outer" id="carousel">
     <div class="vcarousel-track" id="carouselTrack">
 
-      <a class="vcard active-card" id="card0" href="#" data-ytid="gV4FL_d475E">
+      <a class="vcard active-card" id="card0" href="#" data-ytid="tP2-3yrK2m8">
+        <div class="vcard-thumb">
+          <img src="https://img.youtube.com/vi/tP2-3yrK2m8/maxresdefault.jpg"
+               onerror="this.src='https://img.youtube.com/vi/tP2-3yrK2m8/hqdefault.jpg'"
+               alt="Regenbogen Musikvideo" loading="eager">
+          <span class="vcorner">Musikvideo</span>
+          <div class="vplay"><div class="vplay-btn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div></div>
+        </div>
+        <div class="vmeta">
+          <div>
+            <div class="vtitle">Regenbogen 🌈<br>Musikvideo</div>
+            <div class="vsub">Musikvideo · 2026</div>
+          </div>
+          <div class="vwatch">Watch ↗</div>
+        </div>
+      </a>
+
+      <a class="vcard" id="card1" href="#" data-ytid="gV4FL_d475E">
         <div class="vcard-thumb">
           <img src="https://img.youtube.com/vi/gV4FL_d475E/maxresdefault.jpg"
                onerror="this.src='https://img.youtube.com/vi/gV4FL_d475E/hqdefault.jpg'"
-               alt="Live Studiosession mit Mighty" loading="eager">
+               alt="Live Studiosession mit Mighty" loading="lazy">
           <span class="vcorner">Studio</span>
           <div class="vplay"><div class="vplay-btn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div></div>
         </div>
@@ -188,7 +205,7 @@ footer{margin-top:48px;text-align:center}
         </div>
       </a>
 
-      <a class="vcard" id="card1" href="#" data-ytid="jseVR6F0wh8">
+      <a class="vcard" id="card2" href="#" data-ytid="jseVR6F0wh8">
         <div class="vcard-thumb">
           <img src="https://img.youtube.com/vi/jseVR6F0wh8/maxresdefault.jpg"
                onerror="this.src='https://img.youtube.com/vi/jseVR6F0wh8/hqdefault.jpg'"
@@ -200,23 +217,6 @@ footer{margin-top:48px;text-align:center}
           <div>
             <div class="vtitle">Die heftigste<br>Hannover Session 🛹🔥</div>
             <div class="vsub">Vlog · Hannover · 2026</div>
-          </div>
-          <div class="vwatch">Watch ↗</div>
-        </div>
-      </a>
-
-      <a class="vcard" id="card2" href="#" data-ytid="gr1EloqfNRc">
-        <div class="vcard-thumb">
-          <img src="https://img.youtube.com/vi/gr1EloqfNRc/maxresdefault.jpg"
-               onerror="this.src='https://img.youtube.com/vi/gr1EloqfNRc/hqdefault.jpg'"
-               alt="Highway 2 Heaven" loading="lazy">
-          <span class="vcorner">Musikvideo</span>
-          <div class="vplay"><div class="vplay-btn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div></div>
-        </div>
-        <div class="vmeta">
-          <div>
-            <div class="vtitle">Highway 2 Heaven 🛹</div>
-            <div class="vsub">Musikvideo · 2026</div>
           </div>
           <div class="vwatch">Watch ↗</div>
         </div>
@@ -332,7 +332,7 @@ const tag=document.getElementById('videoTag');
 const hint=document.getElementById('swipeHint');
 const cards=[document.getElementById('card0'),document.getElementById('card1'),document.getElementById('card2')];
 const dots=[document.getElementById('dot0'),document.getElementById('dot1'),document.getElementById('dot2')];
-const labels=['Neustes Video','Hannover','Musikvideo'];
+const labels=['Neustes Video','Studio','Hannover'];
 const tags=['NEU','',''];
 let current=0,isDragging=false,startX=0,startTranslate=0,currentTranslate=0;
 function getOffset(i){return i*(carousel.offsetWidth+16);}

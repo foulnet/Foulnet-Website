@@ -20,7 +20,6 @@ html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 }
 @media(min-width:600px){
   body{background:#000}
-  .page-wrap{max-width:430px;margin:0 auto;min-height:100vh;background:var(--bg);box-shadow:0 0 80px rgba(0,0,0,.8);position:relative}
   .spotify-bar{max-width:430px!important;left:50%!important;transform:translateX(-50%)!important;right:auto!important}
 }
 body{background:var(--bg);color:var(--text);font-family:var(--ff-mono);min-height:100vh;overflow-x:hidden;cursor:default}
@@ -89,7 +88,7 @@ body::after{content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;b
 .drop-flash-right{font-family:var(--ff-head);font-weight:900;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#000;opacity:.7}
 .drop-header{padding:16px 18px 12px}
 .drop-eyebrow{font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--yellow);margin-bottom:4px}
-.drop-name{font-family:var(--ff-head);font-weight:900;font-size:34px;letter-spacing:0px;line-height:.95;color:var(--text);text-transform:uppercase}
+.drop-name{font-family:var(--ff-head);font-weight:900;font-size:34px;line-height:.95;color:var(--text);text-transform:uppercase}
 .drop-name span{color:var(--yellow)}
 .drop-sub{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-top:6px}
 .drop-sig{font-family:Georgia,serif;font-style:italic;font-size:18px;color:var(--red);margin-top:8px;letter-spacing:1px}
@@ -221,14 +220,14 @@ footer{margin-top:48px;text-align:center}
         <div class="vcard-thumb">
           <img src="https://img.youtube.com/vi/AOyxxHgY93Q/maxresdefault.jpg"
                onerror="this.src='https://img.youtube.com/vi/AOyxxHgY93Q/hqdefault.jpg'"
-               alt="Neustes Video" loading="eager">
-          <span class="vcorner">NEU</span>
+               alt="Werries Skatepark erster Eindruck" loading="eager">
+          <span class="vcorner">Werries Park</span>
           <div class="vplay"><div class="vplay-btn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div></div>
         </div>
         <div class="vmeta">
           <div>
-            <div class="vtitle" id="card0title">Neustes Video 🛹</div>
-            <div class="vsub">2026</div>
+            <div class="vtitle">Werries Skatepark<br>erster Eindruck 🛹</div>
+            <div class="vsub">Vlog · Hamm · 2026</div>
           </div>
           <div class="vwatch">Watch ↗</div>
         </div>
@@ -289,6 +288,7 @@ footer{margin-top:48px;text-align:center}
     <span class="sh-tag" style="background:var(--yellow);color:#000;border-color:var(--yellow)">⚡ JETZT PREORDER</span>
   </div>
 
+  <!-- SKATEWAX -->
   <div class="drop-banner">
     <div class="drop-flash">
       <span class="drop-flash-left">🛹 Limited Edition · Nur 30 Stück</span>
@@ -300,10 +300,10 @@ footer{margin-top:48px;text-align:center}
       <div class="drop-sub">Handgemacht · Von Skatern für Skater</div>
     </div>
     <div class="drop-gallery">
-      <img class="drop-main-img" id="waxMain" src="Skatewachs frontal .jpg" alt="FOULNET Skatewax" onclick="openImg(this.src)">
+      <img class="drop-main-img" id="waxMain" src="Skatewachs frontal .jpg" alt="FOULNET Skatewax frontal" onclick="openImg(this.src)">
       <div class="drop-thumbs">
         <img class="drop-thumb active" src="Skatewachs frontal .jpg" alt="frontal" onclick="switchImg('waxMain',this)">
-        <img class="drop-thumb" src="Skatewachs seitlich .jpg" alt="seitlich" onclick="switchImg('waxMain',this)">
+        <img class="drop-thumb" src="Skatewachs seitlich .JPG" alt="seitlich" onclick="switchImg('waxMain',this)">
       </div>
     </div>
     <div class="drop-body">
@@ -327,6 +327,7 @@ footer{margin-top:48px;text-align:center}
     <div class="drop-note">PayPal · Bitte <strong>12 €</strong> eingeben + Nachricht <strong>„Wax + dein Name"</strong> · Versand nach Produktion</div>
   </div>
 
+  <!-- KERZE -->
   <div class="drop-banner">
     <div class="drop-flash">
       <span class="drop-flash-left">🕯️ Limited Edition · Nur 20 Stück</span>
@@ -339,7 +340,7 @@ footer{margin-top:48px;text-align:center}
       <div class="drop-sig">— Foulnet</div>
     </div>
     <div class="drop-gallery">
-      <img class="drop-main-img" id="candleMain" src="Kerze frontal .jpg" alt="FOULNET Kerze" onclick="openImg(this.src)">
+      <img class="drop-main-img" id="candleMain" src="Kerze frontal .jpg" alt="FOULNET Kerze frontal" onclick="openImg(this.src)">
       <div class="drop-thumbs">
         <img class="drop-thumb active" src="Kerze frontal .jpg" alt="frontal" onclick="switchImg('candleMain',this)">
         <img class="drop-thumb" src="Kerze seitlich .jpg" alt="seitlich" onclick="switchImg('candleMain',this)">
@@ -524,3 +525,4 @@ function openImg(src){
 </script>
 </body>
 </html>
+

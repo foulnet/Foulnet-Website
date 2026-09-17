@@ -53,25 +53,22 @@ body::after{content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;b
 .vcarousel-outer{position:relative;overflow:hidden;border-radius:6px;touch-action:pan-y;user-select:none;cursor:grab}
 .vcarousel-outer:active{cursor:grabbing}
 .vcarousel-track{display:flex;transition:transform .45s var(--ease);will-change:transform}
-.vcard{flex:0 0 100%;width:100%;display:block;text-decoration:none;background:var(--surface);border:1px solid var(--border);border-radius:6px;overflow:hidden;position:relative;transition:border-color .3s var(--ease),box-shadow .3s var(--ease);pointer-events:none}
+.vcard{flex:0 0 100%;width:100%;display:block;text-decoration:none;background:var(--surface);border:1px solid var(--border);border-radius:6px;overflow:hidden;position:relative;transition:border-color .3s,box-shadow .3s;pointer-events:none}
 .vcard.active-card{pointer-events:auto}
 .vcard:hover{border-color:var(--red);box-shadow:0 0 32px var(--red-glow)}
 .vcarousel-track .vcard+.vcard{margin-left:16px}
 .vcard-thumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:#0d0d0d}
-.vcard-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s var(--ease),filter .4s;filter:brightness(.9) saturate(.8)}
+.vcard-thumb img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.9) saturate(.8);transition:transform .5s,filter .4s}
 .vcard:hover .vcard-thumb img{transform:scale(1.04);filter:brightness(1) saturate(1)}
 .vcard-thumb::before{content:'';position:absolute;inset:0;z-index:2;background:repeating-linear-gradient(0deg,rgba(0,0,0,.08) 0px,rgba(0,0,0,.08) 1px,transparent 1px,transparent 3px);pointer-events:none}
-.vplay{position:absolute;inset:0;z-index:3;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at center,rgba(0,0,0,.4) 0%,transparent 70%);transition:background .3s}
-.vcard:hover .vplay{background:radial-gradient(ellipse at center,rgba(232,19,42,.25) 0%,transparent 70%)}
-.vplay-btn{width:58px;height:58px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 10px rgba(232,19,42,.15),0 4px 24px rgba(0,0,0,.5);transition:transform .3s var(--ease),box-shadow .3s}
-.vcard:hover .vplay-btn{transform:scale(1.12);box-shadow:0 0 0 16px rgba(232,19,42,.12),0 4px 32px rgba(0,0,0,.6)}
+.vplay{position:absolute;inset:0;z-index:3;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at center,rgba(0,0,0,.4) 0%,transparent 70%)}
+.vplay-btn{width:58px;height:58px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 10px rgba(232,19,42,.15),0 4px 24px rgba(0,0,0,.5)}
 .vplay-btn svg{width:22px;height:22px;margin-left:3px}
 .vcorner{position:absolute;top:12px;left:12px;z-index:4;background:var(--yellow);color:#000;font-family:var(--ff-head);font-weight:900;font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:4px 9px;border-radius:2px}
 .vmeta{padding:14px 18px 16px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
 .vtitle{font-family:var(--ff-head);font-weight:700;font-size:18px;letter-spacing:.5px;line-height:1.2;color:var(--text)}
 .vsub{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-top:5px}
-.vwatch{flex-shrink:0;background:var(--red);color:#fff;font-family:var(--ff-head);font-weight:700;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:8px 14px;border-radius:3px;align-self:center;white-space:nowrap;transition:background .2s}
-.vcard:hover .vwatch{background:#c80f23}
+.vwatch{flex-shrink:0;background:var(--red);color:#fff;font-family:var(--ff-head);font-weight:700;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:8px 14px;border-radius:3px;align-self:center;white-space:nowrap}
 .vdots{display:flex;justify-content:center;align-items:center;gap:7px;margin-top:12px}
 .vdot{width:5px;height:5px;border-radius:50%;background:var(--muted);transition:background .3s,transform .3s;cursor:pointer}
 .vdot.active{background:var(--red);transform:scale(1.4)}
@@ -82,7 +79,6 @@ body::after{content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;b
 .sep-line{flex:1;height:1px;background:var(--border)}
 .sep-dot{width:5px;height:5px;border-radius:50%;background:var(--red)}
 .drop-banner{background:linear-gradient(135deg,#0d0d0d 0%,#1a0a00 100%);border:2px solid var(--yellow);border-radius:8px;overflow:hidden;margin-bottom:14px;position:relative}
-.drop-banner::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 8px,rgba(255,193,26,.02) 8px,rgba(255,193,26,.02) 9px);pointer-events:none}
 .drop-flash{background:var(--yellow);padding:6px 18px;display:flex;align-items:center;justify-content:space-between}
 .drop-flash-left{font-family:var(--ff-head);font-weight:900;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#000}
 .drop-flash-right{font-family:var(--ff-head);font-weight:900;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#000;opacity:.7}
@@ -91,8 +87,8 @@ body::after{content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;b
 .drop-name{font-family:var(--ff-head);font-weight:900;font-size:34px;line-height:.95;color:var(--text);text-transform:uppercase}
 .drop-name span{color:var(--yellow)}
 .drop-sub{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-top:6px}
-.drop-sig{font-family:Georgia,serif;font-style:italic;font-size:18px;color:var(--red);margin-top:8px;letter-spacing:1px}
-.drop-gallery{background:#0d0d0d;position:relative}
+.drop-sig{font-family:Georgia,serif;font-style:italic;font-size:18px;color:var(--red);margin-top:8px}
+.drop-gallery{background:#0d0d0d}
 .drop-main-img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;cursor:zoom-in}
 .drop-thumbs{display:flex;gap:6px;padding:8px}
 .drop-thumb{width:60px;height:60px;object-fit:cover;border-radius:3px;cursor:pointer;border:2px solid transparent;transition:border-color .2s,opacity .2s;opacity:.55}
@@ -106,13 +102,13 @@ body::after{content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;b
 .drop-price-wrap{display:flex;flex-direction:column}
 .drop-price{font-family:var(--ff-head);font-weight:900;font-size:30px;color:#fff}
 .drop-stock{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-top:4px}
-.drop-btn{background:var(--yellow);color:#000;font-family:var(--ff-head);font-weight:900;font-size:13px;letter-spacing:2px;text-transform:uppercase;padding:13px 20px;border-radius:3px;text-decoration:none;border:none;cursor:pointer;transition:background .2s,transform .15s;white-space:nowrap;display:inline-block}
+.drop-btn{background:var(--yellow);color:#000;font-family:var(--ff-head);font-weight:900;font-size:13px;letter-spacing:2px;text-transform:uppercase;padding:13px 20px;border-radius:3px;text-decoration:none;display:inline-block;transition:background .2s,transform .15s}
 .drop-btn:hover{background:#d4a600;transform:translateY(-1px)}
-.drop-note{font-size:9px;letter-spacing:1px;color:var(--dim);text-align:center;padding:10px 18px 14px;line-height:1.6}
+.drop-note{font-size:9px;color:var(--dim);text-align:center;padding:10px 18px 14px;line-height:1.6}
 .drop-note strong{color:var(--text)}
 .links{display:flex;flex-direction:column;gap:9px}
-.lbtn{display:flex;align-items:center;gap:16px;padding:15px 18px;text-decoration:none;border-radius:5px;background:var(--surface);border:1px solid var(--border);transition:border-color .25s var(--ease),transform .2s var(--ease),box-shadow .25s;position:relative;overflow:hidden}
-.lbtn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;transform:scaleY(0);transform-origin:bottom;transition:transform .25s var(--ease);border-radius:0 2px 2px 0}
+.lbtn{display:flex;align-items:center;gap:16px;padding:15px 18px;text-decoration:none;border-radius:5px;background:var(--surface);border:1px solid var(--border);transition:border-color .25s,transform .2s,box-shadow .25s;position:relative;overflow:hidden}
+.lbtn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;transform:scaleY(0);transform-origin:bottom;transition:transform .25s;border-radius:0 2px 2px 0}
 .lbtn:hover::before{transform:scaleY(1)}
 .lbtn:hover{transform:translateX(5px);border-color:var(--muted)}
 .lbtn--yt::before{background:#e8132a}
@@ -207,13 +203,13 @@ footer{margin-top:48px;text-align:center}
         <div class="vcard-thumb">
           <img src="https://img.youtube.com/vi/uZ8qakstJ58/maxresdefault.jpg"
                onerror="this.src='https://img.youtube.com/vi/uZ8qakstJ58/hqdefault.jpg'"
-               alt="WERRIES Jam" loading="eager">
+               alt="Werries Skate Event" loading="eager">
           <span class="vcorner">Werries Jam</span>
           <div class="vplay"><div class="vplay-btn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div></div>
         </div>
         <div class="vmeta">
           <div>
-            <div class="vtitle">WERRIES Jam 🛹</div>
+            <div class="vtitle">Werries Skate Event 🛹</div>
             <div class="vsub">Vlog · Hamm · 2026</div>
           </div>
           <div class="vwatch">Watch ↗</div>
@@ -241,13 +237,13 @@ footer{margin-top:48px;text-align:center}
         <div class="vcard-thumb">
           <img src="https://img.youtube.com/vi/hQdeBQqtQwo/maxresdefault.jpg"
                onerror="this.src='https://img.youtube.com/vi/hQdeBQqtQwo/hqdefault.jpg'"
-               alt="Hamm-Werries Skateparkeröffnung" loading="lazy">
+               alt="Skateparkeröffnung Hamm" loading="lazy">
           <span class="vcorner">Skateparkeröffnung</span>
           <div class="vplay"><div class="vplay-btn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div></div>
         </div>
         <div class="vmeta">
           <div>
-            <div class="vtitle">Hamm-Werries Skateparkeröffnung 🛹<br>Der beste Park in Hamm?</div>
+            <div class="vtitle">Hamm-Werries Skateparkeröffnung 🛹</div>
             <div class="vsub">Vlog · Hamm · 2026</div>
           </div>
           <div class="vwatch">Watch ↗</div>
@@ -264,7 +260,7 @@ footer{margin-top:48px;text-align:center}
   </div>
   <div class="swipe-hint" id="swipeHint">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 5l-7 7 7 7"/></svg>
-    swipe für älteres video
+    swipe fuer aelteres video
   </div>
 
   <div class="sep"><div class="sep-line"></div><div class="sep-dot"></div><div class="sep-line"></div></div>
@@ -272,78 +268,76 @@ footer{margin-top:48px;text-align:center}
   <div class="section-head">
     <span class="sh-label">FOULNET Drop</span>
     <div class="sh-line"></div>
-    <span class="sh-tag" style="background:var(--yellow);color:#000;border-color:var(--yellow)">⚡ JETZT KAUFEN</span>
+    <span class="sh-tag" style="background:var(--yellow);color:#000;border-color:var(--yellow)">JETZT KAUFEN</span>
   </div>
 
-  <!-- SKATEWAX -->
   <div class="drop-banner">
     <div class="drop-flash">
-      <span class="drop-flash-left">🛹 Limited Edition · Nur 30 Stück</span>
-      <span class="drop-flash-right">JETZT VERFÜGBAR</span>
+      <span class="drop-flash-left">Skatewax - Nur 30 Stueck</span>
+      <span class="drop-flash-right">VERFUEGBAR</span>
     </div>
     <div class="drop-header">
       <div class="drop-eyebrow">FOULNET Original</div>
       <div class="drop-name">APPLE &amp;<br><span>EUKALYPTUS</span><br>SKATEWAX</div>
-      <div class="drop-sub">Handgemacht · Von Skatern für Skater</div>
+      <div class="drop-sub">Handgemacht - Von Skatern fuer Skater</div>
     </div>
     <div class="drop-gallery">
-      <img class="drop-main-img" src="Skatewachs frontal .jpg" alt="FOULNET Skatewax frontal" onclick="openImg(this.src)">
+      <img class="drop-main-img" src="Skatewachs frontal .jpg" alt="FOULNET Skatewax" onclick="openImg(this.src)">
     </div>
     <div class="drop-body">
-      <div class="drop-desc">Premium Skatewax mit frischem Apfel-Eukalyptus-Duft und 100 % natürlichen Inhaltsstoffen. Entwickelt für maximalen Slide auf Ledges, Curbs und Rails — mit dem unverwechselbaren FOULNET-Charakter.</div>
+      <div class="drop-desc">Premium Skatewax mit frischem Apfel-Eukalyptus-Duft und 100% natuerlichen Inhaltsstoffen. Entwickelt fuer maximalen Slide auf Ledges, Curbs und Rails.</div>
       <div class="drop-tags">
-        <span class="drop-tag drop-tag--yellow">Apfel · Eukalyptus</span>
-        <span class="drop-tag">100% natürlich</span>
-        <span class="drop-tag">Für Ledges &amp; Rails</span>
-        <span class="drop-tag">Von Skatern entwickelt</span>
+        <span class="drop-tag drop-tag--yellow">Apfel - Eukalyptus</span>
+        <span class="drop-tag">100% natuerlich</span>
+        <span class="drop-tag">Fuer Ledges</span>
+        <span class="drop-tag">Von Skatern</span>
       </div>
     </div>
     <div class="drop-footer">
       <div class="drop-price-wrap">
-        <div class="drop-price">7 €</div>
-        <div class="drop-stock">⚠ NUR 30 STÜCK</div>
+        <div class="drop-price">7 EUR</div>
+        <div class="drop-stock">NUR 30 STUECK</div>
       </div>
-      <a class="drop-btn" href="https://buy.stripe.com/28E3cvcSUdwi53Qckvbo404" target="_blank" rel="noopener">Jetzt kaufen →</a>
+      <a class="drop-btn" href="https://buy.stripe.com/28E3cvcSUdwi53Qckvbo404" target="_blank" rel="noopener">Jetzt kaufen</a>
     </div>
-    <div class="drop-note">Sichere Zahlung über <strong>Stripe</strong> · Versand wird im Bestellvorgang berechnet</div>
+    <div class="drop-note">Sichere Zahlung ueber <strong>Stripe</strong> - Versand wird im Bestellvorgang berechnet</div>
   </div>
 
-  <!-- KERZE -->
   <div class="drop-banner">
     <div class="drop-flash">
-      <span class="drop-flash-left">🕯️ Limited Edition · Nur 20 Stück</span>
-      <span class="drop-flash-right">JETZT VERFÜGBAR</span>
+      <span class="drop-flash-left">Skate Candle - Nur 20 Stueck</span>
+      <span class="drop-flash-right">VERFUEGBAR</span>
     </div>
     <div class="drop-header">
       <div class="drop-eyebrow">FOULNET Signature</div>
       <div class="drop-name">APPLE &amp;<br><span>EUKALYPTUS</span><br>SKATE CANDLE</div>
-      <div class="drop-sub">Handgegossen · Premium Duftkerze</div>
-      <div class="drop-sig">— Foulnet</div>
+      <div class="drop-sub">Handgegossen - Premium Duftkerze</div>
+      <div class="drop-sig">- Foulnet</div>
     </div>
     <div class="drop-gallery">
       <img class="drop-main-img" id="candleMain" src="Kerze frontal .jpg" alt="FOULNET Kerze frontal" onclick="openImg(this.src)">
       <div class="drop-thumbs">
-        <img class="drop-thumb active" src="Kerze frontal .jpg" alt="frontal" onclick="switchImg('candleMain',this)">
-        <img class="drop-thumb" src="Kerze seitlich .jpg" alt="seitlich" onclick="switchImg('candleMain',this)">
+        <img class="drop-thumb active" src="Kerze frontal .jpg" alt="frontal" onclick="switchImg('candleMain', this)">
+        <img class="drop-thumb" src="Kerze seitlich .jpg" alt="seitlich" onclick="switchImg('candleMain', this)">
       </div>
     </div>
     <div class="drop-body">
-      <div class="drop-desc">Die FOULNET Signature Candle mit frischem Apfel-Eukalyptus-Duft. Handgegossen mit 100 % natürlichen Duftstoffen — für alle die Skateboarding nicht nur fahren, sondern leben. Jede Kerze trägt die FOULNET Unterschrift.</div>
+      <div class="drop-desc">Die FOULNET Signature Candle mit frischem Apfel-Eukalyptus-Duft. Handgegossen mit 100% natuerlichen Duftstoffen. Jede Kerze traegt die FOULNET Unterschrift.</div>
       <div class="drop-tags">
-        <span class="drop-tag drop-tag--yellow">Apfel · Eukalyptus</span>
-        <span class="drop-tag">100% natürlich</span>
+        <span class="drop-tag drop-tag--yellow">Apfel - Eukalyptus</span>
+        <span class="drop-tag">100% natuerlich</span>
         <span class="drop-tag">Handgegossen</span>
         <span class="drop-tag">Signature Edition</span>
       </div>
     </div>
     <div class="drop-footer">
       <div class="drop-price-wrap">
-        <div class="drop-price">8,50 €</div>
-        <div class="drop-stock">⚠ NUR 20 STÜCK</div>
+        <div class="drop-price">8,50 EUR</div>
+        <div class="drop-stock">NUR 20 STUECK</div>
       </div>
-      <a class="drop-btn" href="https://buy.stripe.com/8x2eVd4mo4ZMfIudozbo403" target="_blank" rel="noopener">Jetzt kaufen →</a>
+      <a class="drop-btn" href="https://buy.stripe.com/8x2eVd4mo4ZMfIudozbo403" target="_blank" rel="noopener">Jetzt kaufen</a>
     </div>
-    <div class="drop-note">Sichere Zahlung über <strong>Stripe</strong> · Versand wird im Bestellvorgang berechnet</div>
+    <div class="drop-note">Sichere Zahlung ueber <strong>Stripe</strong> - Versand wird im Bestellvorgang berechnet</div>
   </div>
 
   <div class="sep"><div class="sep-line"></div><div class="sep-dot"></div><div class="sep-line"></div></div>
@@ -357,14 +351,14 @@ footer{margin-top:48px;text-align:center}
     <a class="lbtn lbtn--yt" href="https://www.youtube.com/@Foulnet" target="_blank" rel="noopener">
       <div class="lbtn-icon"><svg viewBox="0 0 24 24" fill="#e8132a"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></div>
       <div class="lbtn-copy"><div class="lbtn-name">YouTube</div><div class="lbtn-handle">@Foulnet</div></div>
-      <span class="lbtn-arrow">›</span>
+      <span class="lbtn-arrow">&#8250;</span>
     </a>
     <a class="lbtn lbtn--ig" href="https://www.instagram.com/lfoulnet" target="_blank" rel="noopener">
       <div class="lbtn-icon">
         <svg viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f58529"/><stop offset="50%" stop-color="#e6683c"/><stop offset="100%" stop-color="#c13584"/></linearGradient></defs><path fill="url(#ig)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
       </div>
       <div class="lbtn-copy"><div class="lbtn-name">Instagram</div><div class="lbtn-handle">@lfoulnet</div></div>
-      <span class="lbtn-arrow">›</span>
+      <span class="lbtn-arrow">&#8250;</span>
     </a>
   </div>
 
@@ -378,18 +372,207 @@ footer{margin-top:48px;text-align:center}
   <div class="links">
     <a class="lbtn lbtn--sp" href="https://open.spotify.com/intl-de/album/2TkU7Hb47cJzBQCLFSmY6x" target="_blank" rel="noopener">
       <div class="lbtn-icon"><svg viewBox="0 0 24 24" fill="#1DB954"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></div>
-      <div class="lbtn-copy"><div class="lbtn-name">Spotify</div><div class="lbtn-handle">Foulnet — Regenbogen</div></div>
-      <span class="lbtn-arrow">›</span>
+      <div class="lbtn-copy"><div class="lbtn-name">Spotify</div><div class="lbtn-handle">Foulnet - Regenbogen</div></div>
+      <span class="lbtn-arrow">&#8250;</span>
     </a>
     <a class="lbtn lbtn--am" href="https://music.apple.com/de/album/regenbogen-single/6805293749" target="_blank" rel="noopener">
       <div class="lbtn-icon"><svg viewBox="0 0 24 24" fill="#fc3c44"><path d="M23.994 6.124a9.23 9.23 0 0 0-.24-2.19c-.317-1.31-1.064-2.31-2.24-3.09a5.88 5.88 0 0 0-1.64-.666c-.526-.112-1.07-.173-1.618-.217-.02-.001-.076-.003-.183-.006H5.927c-.183.003-.267.005-.35.006-.96.06-1.85.166-2.68.477C1.5 1.04.56 1.978.19 3.234a8.61 8.61 0 0 0-.166 1.121C.007 4.62 0 4.9 0 5.16v13.68c.006.24.014.48.04.72.07.79.262 1.52.654 2.19.55.944 1.37 1.61 2.4 1.98.51.18 1.05.273 1.61.32.05.003.1.007.15.008.36.016.72.02 1.082.023H18.07c.35-.003.7-.007 1.053-.022.07-.003.14-.006.21-.01.5-.04.983-.115 1.44-.27 1.08-.37 1.918-1.05 2.47-2.034.384-.665.574-1.385.648-2.154.026-.254.034-.51.04-.764.007-.27.008-.54.008-.81V6.124zm-8.16 3.99c-.158-.04-.32-.065-.484-.076a3.8 3.8 0 0 0-.512.02c-.52.059-1.012.232-1.46.504-.22.133-.418.29-.597.47V5.666l-1.76.47v8.97c0 .08.003.158.01.237.047.646.32 1.18.8 1.58.38.317.83.488 1.32.522.11.008.22.01.33.008.4-.01.78-.1 1.12-.29.53-.293.88-.74 1.02-1.326.04-.173.058-.35.058-.53V9.8l.155-.04z"/></svg></div>
-      <div class="lbtn-copy"><div class="lbtn-name">Apple Music</div><div class="lbtn-handle">Foulnet — Regenbogen</div></div>
-      <span class="lbtn-arrow">›</span>
+      <div class="lbtn-copy"><div class="lbtn-name">Apple Music</div><div class="lbtn-handle">Foulnet - Regenbogen</div></div>
+      <span class="lbtn-arrow">&#8250;</span>
     </a>
     <a class="lbtn lbtn--dz" href="https://link.deezer.com/s/34eDTzYym7S9Mv5UMvVp5" target="_blank" rel="noopener">
       <div class="lbtn-icon"><svg viewBox="0 0 24 24" fill="#EF5466"><path d="M18.81 4.16v3.03H24V4.16h-5.19zm-6.48 0v3.03h5.19V4.16h-5.19zM5.85 4.16v3.03h5.19V4.16H5.85zM0 7.81v3.03h5.19V7.81H0zm6.48 0v3.03h5.19V7.81H6.48zm6.48 0v3.03h5.19V7.81h-5.19zm6.48 0v3.03H24V7.81h-5.19zM0 11.46v3.03h5.19v-3.03H0zm6.48 0v3.03h5.19v-3.03H6.48zm6.48 0v3.03h5.19v-3.03h-5.19zm6.48 0v3.03H24v-3.03h-5.19zM0 15.11v3.03h5.19v-3.03H0zm6.48 0v3.03h5.19v-3.03H6.48zm6.48 0v3.03h5.19v-3.03h-5.19zm6.48 0v3.03H24v-3.03h-5.19zM0 18.77v3.03h5.19v-3.03H0zm6.48 0v3.03h5.19v-3.03H6.48zm6.48 0v3.03h5.19v-3.03h-5.19zm6.48 0v3.03H24v-3.03h-5.19z"/></svg></div>
-      <div class="lbtn-copy"><div class="lbtn-name">Deezer</div><div class="lbtn-handle">Foulnet — Regenbogen</div></div>
-      <span class="lbtn-arrow">›</span>
+      <div class="lbtn-copy"><div class="lbtn-name">Deezer</div><div class="lbtn-handle">Foulnet - Regenbogen</div></div>
+      <span class="lbtn-arrow">&#8250;</span>
     </a>
     <a class="lbtn lbtn--amz" href="https://music.amazon.de/albums/B0HGL7B6MG?ref=dm_sh_MAeFGgm3Wwg4x8kLLd84YqAQV" target="_blank" rel="noopener">
-      <div class="lbtn-icon"><svg viewBox="0 0 24 24" fill="#00a8e0"><path d="M13.958 10.09c0 1.232.029 2.256-.591 3.351-.502.891-1.301 1.438-2.186 1.438-1.214 0-1.922-.924-1.922-2.292 0-2.692 2.415-3.182 4.7-3.182v.685zm3.186 7.705a.66.66 0 0 1-.748.074c-1.051-.873-1.239-1.278-1.814-2.108-1.734 1.769-2.96 2.298-5.208 2.298-2.659 0-4.731-1.641-4.731-4.925 0-2.565 1.391-4.309 3.37-5.164 1.715-.754 4.11
+      <div class="lbtn-icon"><svg viewBox="0 0 24 24" fill="#00a8e0"><path d="M13.958 10.09c0 1.232.029 2.256-.591 3.351-.502.891-1.301 1.438-2.186 1.438-1.214 0-1.922-.924-1.922-2.292 0-2.692 2.415-3.182 4.7-3.182v.685zm3.186 7.705a.66.66 0 0 1-.748.074c-1.051-.873-1.239-1.278-1.814-2.108-1.734 1.769-2.96 2.298-5.208 2.298-2.659 0-4.731-1.641-4.731-4.925 0-2.565 1.391-4.309 3.37-5.164 1.715-.754 4.11-.891 5.942-1.099v-.41c0-.753.059-1.642-.384-2.294-.384-.578-1.124-.817-1.774-.817-1.205 0-2.277.618-2.54 1.899-.054.285-.262.567-.549.581l-3.076-.333c-.259-.056-.548-.266-.472-.66.708-3.726 4.076-4.846 7.093-4.846 1.543 0 3.56.41 4.775 1.575 1.543 1.44 1.395 3.363 1.395 5.457v4.945c0 1.488.616 2.14 1.196 2.943.204.285.249.628-.01.839l-2.465 2.045zm3.27 1.985c-2.089 1.542-5.115 2.359-7.72 2.359-3.653 0-6.938-1.35-9.42-3.596-.195-.176-.021-.417.214-.28 2.682 1.561 5.996 2.501 9.421 2.501 2.31 0 4.847-.48 7.18-1.472.352-.15.647.231.325.488zm.929-1.058c-.266-.342-1.757-.161-2.427-.081-.203.025-.234-.153-.051-.281 1.189-.836 3.137-.595 3.364-.315.228.282-.059 2.234-1.176 3.167-.172.144-.335.067-.259-.121.251-.626.813-2.027.549-2.369z"/></svg></div>
+      <div class="lbtn-copy"><div class="lbtn-name">Amazon Music</div><div class="lbtn-handle">Foulnet - Regenbogen</div></div>
+      <span class="lbtn-arrow">&#8250;</span>
+    </a>
+  </div>
+
+  <footer>
+    <div class="footer-name">FOULNET</div>
+    <div class="footer-sub">2026 - All rights reserved</div>
+  </footer>
+</div>
+
+<div class="spotify-bar">
+  <div class="spotify-embed-wrap">
+    <iframe id="spotifyFrame"
+      src="https://open.spotify.com/embed/album/2TkU7Hb47cJzBQCLFSmY6x?utm_source=generator&theme=0&autoplay=1"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy"></iframe>
+  </div>
+  <button class="mute-btn" id="muteBtn" title="Stumm schalten" aria-label="Stumm schalten">
+    <svg class="icon-sound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+    <svg class="icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+  </button>
+</div>
+
+<script>
+// MUTE
+var muteBtn = document.getElementById('muteBtn');
+var spotifyFrame = document.getElementById('spotifyFrame');
+var muted = false;
+var spotifyBase = 'https://open.spotify.com/embed/album/2TkU7Hb47cJzBQCLFSmY6x?utm_source=generator&theme=0&autoplay=1';
+
+muteBtn.addEventListener('click', function() {
+  muted = !muted;
+  muteBtn.classList.toggle('is-muted', muted);
+  spotifyFrame.src = muted ? spotifyBase + '&volume=0' : spotifyBase;
+});
+
+// INTRO
+setTimeout(function() {
+  var intro = document.getElementById('intro');
+  if (intro) intro.remove();
+}, 2400);
+
+// YOUTUBE
+function openYouTube(videoId) {
+  window.location.href = 'youtube://youtu.be/' + videoId;
+  setTimeout(function() {
+    window.location.href = 'https://youtu.be/' + videoId;
+  }, 800);
+}
+
+// CAROUSEL
+var carousel = document.getElementById('carousel');
+var carouselTrack = document.getElementById('carouselTrack');
+var videoLabel = document.getElementById('videoLabel');
+var videoTag = document.getElementById('videoTag');
+var swipeHint = document.getElementById('swipeHint');
+
+var cardEls = [
+  document.getElementById('card0'),
+  document.getElementById('card1'),
+  document.getElementById('card2')
+];
+var dotEls = [
+  document.getElementById('dot0'),
+  document.getElementById('dot1'),
+  document.getElementById('dot2')
+];
+
+var labels = ['Neustes Video', 'Werries Park', 'Skateparkeröffnung'];
+var tags = ['NEU', '', ''];
+
+var current = 0;
+var dragStartX = 0;
+var dragStartTranslate = 0;
+var dragging = false;
+var dragMoved = false;
+
+function getCardWidth() {
+  return carousel.offsetWidth + 16;
+}
+
+function goTo(index, animate) {
+  if (animate === undefined) animate = true;
+  if (index < 0 || index >= cardEls.length) return;
+  current = index;
+  carouselTrack.style.transition = animate ? 'transform .45s cubic-bezier(.25,.46,.45,.94)' : 'none';
+  carouselTrack.style.transform = 'translateX(-' + (getCardWidth() * index) + 'px)';
+  videoLabel.textContent = labels[index];
+  videoTag.textContent = tags[index];
+  videoTag.style.display = tags[index] ? '' : 'none';
+  dotEls.forEach(function(d, i) {
+    d.classList.toggle('active', i === index);
+  });
+  cardEls.forEach(function(c, i) {
+    c.classList.toggle('active-card', i === index);
+  });
+  swipeHint.classList.toggle('hidden', index > 0);
+}
+
+// Touch
+carousel.addEventListener('touchstart', function(e) {
+  dragStartX = e.touches[0].clientX;
+  dragStartTranslate = getCardWidth() * current;
+  carouselTrack.style.transition = 'none';
+  dragMoved = false;
+}, { passive: true });
+
+carousel.addEventListener('touchmove', function(e) {
+  var diff = e.touches[0].clientX - dragStartX;
+  carouselTrack.style.transform = 'translateX(-' + (dragStartTranslate - diff) + 'px)';
+  dragMoved = true;
+}, { passive: true });
+
+carousel.addEventListener('touchend', function(e) {
+  var diff = dragStartX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 50) {
+    goTo(diff > 0 ? Math.min(current + 1, cardEls.length - 1) : Math.max(current - 1, 0));
+  } else {
+    goTo(current);
+  }
+});
+
+// Mouse
+carousel.addEventListener('mousedown', function(e) {
+  dragging = true;
+  dragMoved = false;
+  dragStartX = e.clientX;
+  dragStartTranslate = getCardWidth() * current;
+  carouselTrack.style.transition = 'none';
+  e.preventDefault();
+});
+
+window.addEventListener('mousemove', function(e) {
+  if (!dragging) return;
+  var diff = e.clientX - dragStartX;
+  carouselTrack.style.transform = 'translateX(-' + (dragStartTranslate - diff) + 'px)';
+  if (Math.abs(diff) > 5) dragMoved = true;
+});
+
+window.addEventListener('mouseup', function(e) {
+  if (!dragging) return;
+  dragging = false;
+  var diff = dragStartX - e.clientX;
+  if (Math.abs(diff) > 50) {
+    goTo(diff > 0 ? Math.min(current + 1, cardEls.length - 1) : Math.max(current - 1, 0));
+  } else {
+    goTo(current);
+  }
+});
+
+// Card click -> YouTube
+cardEls.forEach(function(card) {
+  card.addEventListener('click', function(e) {
+    e.preventDefault();
+    if (dragMoved) return;
+    var videoId = card.getAttribute('data-ytid');
+    if (videoId) openYouTube(videoId);
+  });
+});
+
+// Init
+goTo(0, false);
+window.addEventListener('resize', function() { goTo(current, false); });
+
+// Product image switch
+function switchImg(mainId, thumb) {
+  document.getElementById(mainId).src = thumb.src;
+  var gallery = thumb.closest('.drop-gallery');
+  gallery.querySelectorAll('.drop-thumb').forEach(function(t) {
+    t.classList.remove('active');
+  });
+  thumb.classList.add('active');
+}
+
+// Lightbox
+function openImg(src) {
+  var overlay = document.createElement('div');
+  overlay.style.cssText = 'position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.95);display:flex;align-items:center;justify-content:center;cursor:zoom-out';
+  var img = document.createElement('img');
+  img.src = src;
+  img.style.cssText = 'max-width:95vw;max-height:90vh;object-fit:contain;border-radius:4px';
+  overlay.appendChild(img);
+  overlay.addEventListener('click', function() { overlay.remove(); });
+  document.body.appendChild(overlay);
+}
+</script>
+</body>
+</html>

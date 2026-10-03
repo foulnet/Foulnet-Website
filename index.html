@@ -94,7 +94,9 @@ body::after{content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;b
 .drop-thumb{width:60px;height:60px;object-fit:cover;border-radius:3px;cursor:pointer;border:2px solid transparent;transition:border-color .2s,opacity .2s;opacity:.55}
 .drop-thumb.active,.drop-thumb:hover{border-color:var(--yellow);opacity:1}
 .drop-body{padding:14px 18px}
-.drop-desc{font-size:10px;line-height:1.75;color:var(--dim);margin-bottom:12px}
+.drop-desc{font-size:10px;line-height:1.75;color:var(--dim);margin-bottom:8px}
+.drop-ingredients{font-size:9px;color:var(--dim);margin-bottom:12px;line-height:1.6}
+.drop-ingredients strong{color:#888;letter-spacing:1px;text-transform:uppercase;font-size:8px}
 .drop-tags{display:flex;flex-wrap:wrap;gap:6px}
 .drop-tag{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--text);background:#0d0d0d;border:1px solid var(--border);padding:4px 9px;border-radius:2px}
 .drop-tag--yellow{border-color:var(--yellow);color:var(--yellow)}
@@ -163,7 +165,6 @@ footer{margin-top:48px;text-align:center;padding-bottom:10px}
 </head>
 <body>
 
-<!-- IMPRESSUM -->
 <div class="legal-overlay" id="overlay-impressum">
   <button class="legal-close" onclick="closeLegal('impressum')">&#8592; Zurück</button>
   <div class="legal-title">Impressum</div>
@@ -178,7 +179,6 @@ footer{margin-top:48px;text-align:center;padding-bottom:10px}
   </div>
 </div>
 
-<!-- DATENSCHUTZ -->
 <div class="legal-overlay" id="overlay-datenschutz">
   <button class="legal-close" onclick="closeLegal('datenschutz')">&#8592; Zurück</button>
   <div class="legal-title">Datenschutzerklärung</div>
@@ -186,37 +186,33 @@ footer{margin-top:48px;text-align:center;padding-bottom:10px}
     <h2>1. Verantwortlicher</h2>
     <p>Julien Uschok<br>Richard-Wagner-Straße 44<br>59063 Hamm<br>E-Mail: <a href="mailto:uschokaufjagd@gmail.com">uschokaufjagd@gmail.com</a></p>
     <h2>2. Hosting</h2>
-    <p>Diese Website wird über GitHub Pages (GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA) gehostet. Beim Aufruf der Seite erfasst GitHub automatisch Server-Logfiles (IP-Adresse, Browsertyp, Betriebssystem, Referrer-URL, Datum/Uhrzeit). Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse am Betrieb der Website).</p>
+    <p>Diese Website wird über GitHub Pages (GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA) gehostet. Beim Aufruf der Seite erfasst GitHub automatisch Server-Logfiles (IP-Adresse, Browsertyp, Betriebssystem, Referrer-URL, Datum/Uhrzeit). Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO.</p>
     <h2>3. Externe Dienste</h2>
     <p><strong>YouTube (Google LLC):</strong> Beim Klick auf ein Video wirst du zu YouTube weitergeleitet. Es gelten die Datenschutzbestimmungen von Google: <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></p>
     <p><strong>Spotify AB:</strong> Die eingebettete Spotify-Vorschau lädt Inhalte von Spotify-Servern. Es gelten deren Datenschutzbestimmungen: <a href="https://www.spotify.com/de/legal/privacy-policy/" target="_blank">spotify.com/legal/privacy-policy</a></p>
-    <p><strong>Stripe Payments Europe Ltd.:</strong> Zahlungen werden über Stripe abgewickelt. Stripe verarbeitet Zahlungsdaten gemäß deren Datenschutzrichtlinie: <a href="https://stripe.com/de/privacy" target="_blank">stripe.com/de/privacy</a>. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung).</p>
+    <p><strong>Stripe Payments Europe Ltd.:</strong> Zahlungen werden über Stripe abgewickelt. Stripe verarbeitet Zahlungsdaten gemäß deren Datenschutzrichtlinie: <a href="https://stripe.com/de/privacy" target="_blank">stripe.com/de/privacy</a>. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO.</p>
     <p><strong>Google Fonts:</strong> Diese Seite lädt Schriften von Google Fonts (Google LLC). Dabei wird deine IP-Adresse an Google-Server übermittelt. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO.</p>
     <h2>4. Deine Rechte</h2>
     <p>Du hast das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18) sowie Datenübertragbarkeit (Art. 20). Wende dich dafür an: <a href="mailto:uschokaufjagd@gmail.com">uschokaufjagd@gmail.com</a></p>
-    <p>Du hast außerdem das Recht, dich bei der zuständigen Datenschutz-Aufsichtsbehörde zu beschweren. In NRW: Landesbeauftragte für Datenschutz und Informationsfreiheit NRW — <a href="https://www.ldi.nrw.de" target="_blank">ldi.nrw.de</a></p>
+    <p>Zuständige Aufsichtsbehörde: Landesbeauftragte für Datenschutz und Informationsfreiheit NRW — <a href="https://www.ldi.nrw.de" target="_blank">ldi.nrw.de</a></p>
     <h2>5. Cookies</h2>
     <p>Diese Website setzt keine eigenen Cookies. Externe Dienste (Spotify, Google Fonts) können eigene Cookies setzen, auf die wir keinen Einfluss haben.</p>
   </div>
 </div>
 
-<!-- WIDERRUF -->
 <div class="legal-overlay" id="overlay-widerruf">
   <button class="legal-close" onclick="closeLegal('widerruf')">&#8592; Zurück</button>
   <div class="legal-title">Widerrufsbelehrung</div>
   <div class="legal-body">
     <h2>Widerrufsrecht</h2>
-    <p>Du hast das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen.</p>
-    <p>Die Widerrufsfrist beträgt vierzehn Tage ab dem Tag, an dem du oder ein von dir benannter Dritter (der nicht der Beförderer ist) die Waren in Besitz genommen hast.</p>
-    <p>Um dein Widerrufsrecht auszuüben, musst du uns</p>
-    <p><strong>Julien Uschok<br>Richard-Wagner-Straße 44<br>59063 Hamm<br>E-Mail: uschokaufjagd@gmail.com</strong></p>
-    <p>mittels einer eindeutigen Erklärung (z. B. per E-Mail) über deinen Entschluss, diesen Vertrag zu widerrufen, informieren. Zur Wahrung der Widerrufsfrist reicht es aus, dass du die Mitteilung vor Ablauf der Widerrufsfrist absendest.</p>
+    <p>Du hast das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen. Die Widerrufsfrist beträgt vierzehn Tage ab dem Tag, an dem du oder ein von dir benannter Dritter die Waren in Besitz genommen hast.</p>
+    <p>Um dein Widerrufsrecht auszuüben, musst du uns mitteilen:<br><strong>Julien Uschok, Richard-Wagner-Straße 44, 59063 Hamm<br>E-Mail: uschokaufjagd@gmail.com</strong></p>
+    <p>Zur Wahrung der Widerrufsfrist reicht es aus, dass du die Mitteilung vor Ablauf der Widerrufsfrist absendest.</p>
     <h2>Folgen des Widerrufs</h2>
-    <p>Wenn du diesen Vertrag widerrufst, haben wir dir alle Zahlungen, die wir von dir erhalten haben, einschließlich der Lieferkosten (mit Ausnahme der zusätzlichen Kosten, die sich daraus ergeben, dass du eine andere Art der Lieferung als die von uns angebotene günstigste Standardlieferung gewählt hast), unverzüglich und spätestens binnen vierzehn Tagen ab dem Tag zurückzuzahlen, an dem die Mitteilung über deinen Widerruf bei uns eingegangen ist. Für diese Rückzahlung verwenden wir dasselbe Zahlungsmittel, das du bei der ursprünglichen Transaktion eingesetzt hast.</p>
-    <p>Wir können die Rückzahlung verweigern, bis wir die Waren zurückerhalten haben oder bis du nachgewiesen hast, dass du die Waren zurückgesandt hast.</p>
-    <p>Du trägst die unmittelbaren Kosten der Rücksendung der Waren.</p>
+    <p>Wenn du diesen Vertrag widerrufst, haben wir dir alle Zahlungen, die wir von dir erhalten haben, einschließlich der Lieferkosten, unverzüglich und spätestens binnen vierzehn Tagen zurückzuzahlen. Für diese Rückzahlung verwenden wir dasselbe Zahlungsmittel, das du bei der ursprünglichen Transaktion eingesetzt hast.</p>
+    <p>Wir können die Rückzahlung verweigern, bis wir die Waren zurückerhalten haben. Du trägst die unmittelbaren Kosten der Rücksendung.</p>
     <h2>Ausschluss des Widerrufsrechts</h2>
-    <p>Das Widerrufsrecht besteht nicht bei Waren, die nach Kundenspezifikation angefertigt wurden oder eindeutig auf die persönlichen Bedürfnisse zugeschnitten sind (z. B. individuell beschriftete Produkte).</p>
+    <p>Das Widerrufsrecht besteht nicht bei Waren, die nach Kundenspezifikation angefertigt wurden oder eindeutig auf persönliche Bedürfnisse zugeschnitten sind.</p>
   </div>
 </div>
 
@@ -339,6 +335,7 @@ footer{margin-top:48px;text-align:center;padding-bottom:10px}
     <span class="sh-tag" style="background:var(--yellow);color:#000;border-color:var(--yellow)">JETZT KAUFEN</span>
   </div>
 
+  <!-- SKATEWAX -->
   <div class="drop-banner">
     <div class="drop-flash">
       <span class="drop-flash-left">🛹 Limited Edition · Nur 30 Stück</span>
@@ -354,6 +351,7 @@ footer{margin-top:48px;text-align:center;padding-bottom:10px}
     </div>
     <div class="drop-body">
       <div class="drop-desc">Premium Skatewax mit frischem Apfel-Eukalyptus-Duft und 100 % natürlichen Inhaltsstoffen. Entwickelt für maximalen Slide auf Ledges, Curbs und Rails — mit dem unverwechselbaren FOULNET-Charakter.</div>
+      <div class="drop-ingredients"><strong>Inhaltsstoffe:</strong> Paraffinwachs, Bienenwachs, ätherisches Eukalyptusöl</div>
       <div class="drop-tags">
         <span class="drop-tag drop-tag--yellow">Apfel · Eukalyptus</span>
         <span class="drop-tag">100% natürlich</span>
@@ -371,6 +369,7 @@ footer{margin-top:48px;text-align:center;padding-bottom:10px}
     <div class="drop-note">Sichere Zahlung über <strong>Stripe</strong> · Versand wird im Bestellvorgang berechnet</div>
   </div>
 
+  <!-- KERZE -->
   <div class="drop-banner">
     <div class="drop-flash">
       <span class="drop-flash-left">🕯️ Limited Edition · Nur 20 Stück</span>
@@ -391,6 +390,7 @@ footer{margin-top:48px;text-align:center;padding-bottom:10px}
     </div>
     <div class="drop-body">
       <div class="drop-desc">Die FOULNET Signature Candle mit frischem Apfel-Eukalyptus-Duft. Handgegossen mit 100 % natürlichen Duftstoffen — für alle die Skateboarding nicht nur fahren, sondern leben. Jede Kerze trägt die FOULNET Unterschrift.</div>
+      <div class="drop-ingredients"><strong>Inhaltsstoffe:</strong> Paraffinwachs, Bienenwachs, ätherisches Eukalyptusöl, Kerzensand</div>
       <div class="drop-tags">
         <span class="drop-tag drop-tag--yellow">Apfel · Eukalyptus</span>
         <span class="drop-tag">100% natürlich</span>

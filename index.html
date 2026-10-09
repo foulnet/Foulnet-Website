@@ -263,12 +263,29 @@ footer{margin-top:48px;text-align:center;padding-bottom:10px}
   <div class="vcarousel-outer" id="carousel">
     <div class="vcarousel-track" id="carouselTrack">
 
-      <a class="vcard active-card" id="card0" href="#" data-ytid="79qQXNLcNzQ">
+      <a class="vcard active-card" id="card0" href="#" data-ytid="BH4y9GEIW8Q">
+        <div class="vcard-thumb">
+          <img src="https://img.youtube.com/vi/BH4y9GEIW8Q/maxresdefault.jpg"
+               onerror="this.src='https://img.youtube.com/vi/BH4y9GEIW8Q/hqdefault.jpg'"
+               alt="Manchmal muss es einfach sein" loading="eager">
+          <span class="vcorner">NEU</span>
+          <div class="vplay"><div class="vplay-btn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div></div>
+        </div>
+        <div class="vmeta">
+          <div>
+            <div class="vtitle">Manchmal muss es einfach sein... 🛹</div>
+            <div class="vsub">Hamm Streets · 2026</div>
+          </div>
+          <div class="vwatch">Watch ↗</div>
+        </div>
+      </a>
+
+      <a class="vcard" id="card1" href="#" data-ytid="79qQXNLcNzQ">
         <div class="vcard-thumb">
           <img src="https://img.youtube.com/vi/79qQXNLcNzQ/maxresdefault.jpg"
                onerror="this.src='https://img.youtube.com/vi/79qQXNLcNzQ/hqdefault.jpg'"
-               alt="Die beste Gap in Hamm?" loading="eager">
-          <span class="vcorner">NEU</span>
+               alt="Die beste Gap in Hamm?" loading="lazy">
+          <span class="vcorner">Hamm</span>
           <div class="vplay"><div class="vplay-btn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div></div>
         </div>
         <div class="vmeta">
@@ -280,7 +297,7 @@ footer{margin-top:48px;text-align:center;padding-bottom:10px}
         </div>
       </a>
 
-      <a class="vcard" id="card1" href="#" data-ytid="uZ8qakstJ58">
+      <a class="vcard" id="card2" href="#" data-ytid="uZ8qakstJ58">
         <div class="vcard-thumb">
           <img src="https://img.youtube.com/vi/uZ8qakstJ58/maxresdefault.jpg"
                onerror="this.src='https://img.youtube.com/vi/uZ8qakstJ58/hqdefault.jpg'"
@@ -291,23 +308,6 @@ footer{margin-top:48px;text-align:center;padding-bottom:10px}
         <div class="vmeta">
           <div>
             <div class="vtitle">Werries Skate Event 🛹</div>
-            <div class="vsub">Vlog · Hamm · 2026</div>
-          </div>
-          <div class="vwatch">Watch ↗</div>
-        </div>
-      </a>
-
-      <a class="vcard" id="card2" href="#" data-ytid="AOyxxHgY93Q">
-        <div class="vcard-thumb">
-          <img src="https://img.youtube.com/vi/AOyxxHgY93Q/maxresdefault.jpg"
-               onerror="this.src='https://img.youtube.com/vi/AOyxxHgY93Q/hqdefault.jpg'"
-               alt="Werries Skatepark erster Eindruck" loading="lazy">
-          <span class="vcorner">Werries Park</span>
-          <div class="vplay"><div class="vplay-btn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div></div>
-        </div>
-        <div class="vmeta">
-          <div>
-            <div class="vtitle">Werries Skatepark<br>erster Eindruck 🛹</div>
             <div class="vsub">Vlog · Hamm · 2026</div>
           </div>
           <div class="vwatch">Watch ↗</div>
@@ -335,7 +335,6 @@ footer{margin-top:48px;text-align:center;padding-bottom:10px}
     <span class="sh-tag" style="background:var(--yellow);color:#000;border-color:var(--yellow)">JETZT KAUFEN</span>
   </div>
 
-  <!-- SKATEWAX -->
   <div class="drop-banner">
     <div class="drop-flash">
       <span class="drop-flash-left">🛹 Limited Edition · Nur 30 Stück</span>
@@ -369,7 +368,6 @@ footer{margin-top:48px;text-align:center;padding-bottom:10px}
     <div class="drop-note">Sichere Zahlung über <strong>Stripe</strong> · Versand wird im Bestellvorgang berechnet</div>
   </div>
 
-  <!-- KERZE -->
   <div class="drop-banner">
     <div class="drop-flash">
       <span class="drop-flash-left">🕯️ Limited Edition · Nur 20 Stück</span>
@@ -529,7 +527,7 @@ var dotEls = [
   document.getElementById('dot1'),
   document.getElementById('dot2')
 ];
-var labels = ['Neustes Video', 'Werries Jam', 'Werries Park'];
+var labels = ['Neustes Video', 'Die beste Gap', 'Werries Jam'];
 var tags = ['NEU', '', ''];
 var current = 0;
 var dragStartX = 0;

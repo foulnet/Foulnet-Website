@@ -2,635 +2,669 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080808">
-<meta property="og:title" content="FOULNET">
-<meta property="og:description" content="Skate · Music · Content">
-<title>FOULNET</title>
+<title>FOULNET — Skate · Music · Content</title>
+<meta name="description" content="FOULNET aus Hamm: Skate-Videos, neue Single, handgemachtes Skatewax und Kerzen in limitierter Auflage.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="FOULNET — Skate · Music · Content">
+<meta property="og:description" content="Skate-Videos, Musik und handgemachte Produkte aus Hamm.">
+<meta property="og:locale" content="de_DE">
+<script>document.documentElement.className += ' js';</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:64px}
 :root{
-  --bg:#080808;--surface:#111111;--border:#1f1f1f;--muted:#2e2e2e;--dim:#555;
-  --text:#e8e2d9;--red:#e8132a;--red-glow:rgba(232,19,42,0.18);--yellow:#f5c11a;
-  --ff-head:'Barlow Condensed',sans-serif;--ff-mono:'DM Mono',monospace;
-  --ease:cubic-bezier(.25,.46,.45,.94)
+  --bg:#080808;--ink:#e8e2d9;--mute:rgba(232,226,217,.62);--line:rgba(232,226,217,.12);
+  --red:#e8132a;--yel:#f5c11a;--glass:rgba(8,8,8,.72);
+  --head:'Barlow Condensed',sans-serif;--mono:'DM Mono',monospace;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  /* Bildausschnitt des Banners: bei Bedarf anpassen, z. B. 50% 20% */
+  --banner-pos:50% 28%;
 }
-@media(min-width:600px){
-  body{background:#000}
-  .spotify-bar{max-width:430px!important;left:50%!important;transform:translateX(-50%)!important;right:auto!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--mono);font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+ul{list-style:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.wrap{width:100%;max-width:1320px;margin:0 auto;padding:0 clamp(18px,4vw,56px)}
+.skip{position:absolute;left:-9999px;top:8px;z-index:500;background:var(--ink);color:var(--bg);padding:10px 14px;text-decoration:none}
+.skip:focus{left:8px}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;border-bottom:1px solid transparent;transition:background .35s,border-color .35s}
+.nav.solid{background:var(--glass);border-bottom-color:var(--line);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{font-family:var(--head);font-weight:900;font-size:22px;letter-spacing:.08em;text-decoration:none;text-transform:uppercase}
+.nav-links{display:flex;gap:clamp(14px,3vw,34px)}
+.nav-links a{font-size:11px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;padding:14px 2px;opacity:.82;transition:opacity .2s}
+.nav-links a:hover{opacity:1}
+
+/* HERO */
+.hero{position:relative;height:88vh;height:88svh;min-height:520px;max-height:1000px;background:#0d0d0d;overflow:hidden;display:flex;align-items:flex-end}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--banner-pos)}
+.hero.noimg .hero-img{display:none}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,8,8,.55) 0,rgba(8,8,8,0) 22%),linear-gradient(to top,rgba(8,8,8,.94) 0,rgba(8,8,8,.4) 34%,rgba(8,8,8,0) 60%)}
+.hero-in{position:relative;z-index:2;width:100%;padding-bottom:clamp(22px,4vw,56px)}
+.hero-top{display:flex;justify-content:space-between;gap:12px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:12px}
+.logo{font-family:var(--head);font-weight:900;font-size:clamp(64px,25vw,320px);line-height:.8;letter-spacing:-.02em;text-transform:uppercase;margin-left:-.04em}
+
+/* SECTIONS */
+.sec{padding:clamp(64px,9vw,128px) 0}
+.sh{display:flex;align-items:center;gap:16px;margin-bottom:clamp(28px,4.5vw,56px);font-size:11px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.sh b{color:var(--ink);font-weight:400}
+.sh i{flex:1;height:1px;background:var(--line)}
+.kick{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:12px}
+
+/* MUSIC */
+.music{display:grid;gap:28px}
+.music h3{font-family:var(--head);font-weight:900;font-size:clamp(56px,13vw,190px);line-height:.85;text-transform:uppercase;letter-spacing:-.01em}
+.music-side p{color:var(--mute);margin-bottom:22px;max-width:36ch}
+.btn{display:inline-flex;align-items:center;justify-content:space-between;gap:16px;min-height:52px;padding:17px 22px;border:1px solid var(--red);font-size:12px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;transition:background .25s,color .25s}
+.btn:hover{background:var(--red);color:var(--bg)}
+.music-links{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:18px}
+.music-links a{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);text-decoration:none;border-bottom:1px solid var(--line);padding:12px 0 6px;transition:color .2s,border-color .2s}
+.music-links a:hover{color:var(--ink);border-color:var(--ink)}
+@media(max-width:599px){.music-side .btn{width:100%}}
+@media(min-width:900px){.music{grid-template-columns:1.5fr 1fr;align-items:end;gap:64px}}
+
+/* VIDEO CAROUSEL */
+.vc-view{overflow:hidden;touch-action:pan-y;cursor:grab}
+.vc-view.drag{cursor:grabbing}
+.vc-track{position:relative;display:flex;gap:12px;transition:transform .55s var(--ease);will-change:transform}
+.vc-slide{flex:0 0 100%;display:block;text-decoration:none;opacity:.4;transition:opacity .5s;-webkit-user-select:none;user-select:none;-webkit-user-drag:none}
+.vc-slide.on{opacity:1}
+.vc-slide:focus-visible{outline-offset:-3px}
+.vc-thumb{position:relative;aspect-ratio:16/9;background:#111;overflow:hidden}
+.vc-thumb img{width:100%;height:100%;object-fit:cover;pointer-events:none}
+.vc-play{position:absolute;left:12px;bottom:12px;padding:8px 12px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;background:var(--glass);border:1px solid var(--line);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.vc-meta{padding-top:16px}
+.vc-meta .kick{color:var(--mute);margin-bottom:8px}
+.vc-slide:first-child .vc-meta .kick{color:var(--red)}
+.vc-meta h3{font-family:var(--head);font-weight:700;font-size:clamp(24px,3.4vw,44px);line-height:1.02;text-transform:uppercase;max-width:22ch}
+.vc-ctrl{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:20px}
+.vc-dots{display:flex}
+.vc-dot{position:relative;width:40px;height:44px}
+.vc-dot::before{content:'';position:absolute;left:6px;right:6px;top:50%;height:2px;background:var(--line);transition:background .3s}
+.vc-dot.on::before{background:var(--red)}
+.vc-nav{display:flex;align-items:center;gap:8px}
+.vc-count{font-size:11px;letter-spacing:.18em;color:var(--mute);margin-right:6px}
+.vc-arrow{width:44px;height:44px;border:1px solid var(--line);font-size:16px;transition:border-color .2s}
+.vc-arrow:hover:not(:disabled){border-color:var(--ink)}
+.vc-arrow:disabled{opacity:.3;cursor:default}
+@media(min-width:900px){.vc-track{gap:20px}.vc-slide{flex-basis:78%}}
+
+/* SHOP */
+.lead{color:var(--mute);margin:-20px 0 clamp(28px,4vw,48px);max-width:48ch}
+.shop{display:grid;gap:56px}
+@media(min-width:900px){.shop{grid-template-columns:1fr 1fr;gap:64px;align-items:start}}
+.prod-media{position:relative}
+.prod-main{display:block;position:relative;width:100%;aspect-ratio:1/1;background:#111;overflow:hidden;cursor:zoom-in}
+.prod-main img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.prod-main:hover img{transform:scale(1.03)}
+.tag{position:absolute;z-index:2;top:12px;left:12px;padding:6px 10px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;background:var(--glass);border:1px solid var(--line);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);pointer-events:none}
+.tag.r{left:auto;right:12px;color:var(--mute)}
+.thumbs{display:flex;gap:8px;margin-top:8px}
+.thumb{width:64px;height:64px;border:1px solid var(--line);overflow:hidden;opacity:.55;transition:opacity .2s,border-color .2s}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.thumb.on,.thumb:hover{opacity:1;border-color:var(--yel)}
+.prod-body{padding-top:22px}
+.prod-kick{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--yel)}
+.prod h3{font-family:var(--head);font-weight:900;text-transform:uppercase;font-size:clamp(36px,5vw,58px);line-height:.95;margin:10px 0 14px}
+.prod-desc{color:var(--mute);max-width:46ch;margin-bottom:20px}
+.sig{font-family:Georgia,serif;font-style:italic;color:var(--red);margin-left:4px}
+.spec{border-top:1px solid var(--line);margin-bottom:24px}
+.spec div{display:flex;gap:18px;padding:10px 0;border-bottom:1px solid var(--line);font-size:12px}
+.spec dt{flex:0 0 100px;color:var(--mute);letter-spacing:.14em;text-transform:uppercase;font-size:10px;padding-top:2px}
+.spec dd{flex:1}
+.buy{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.price{font-family:var(--head);font-weight:900;font-size:46px;line-height:1}
+.btn-y{display:inline-flex;align-items:center;gap:12px;min-height:52px;padding:16px 26px;background:var(--yel);color:var(--bg);font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;transition:transform .2s,background .2s}
+.btn-y:hover{background:var(--ink);transform:translateY(-2px)}
+.pay-note{margin-top:40px;font-size:11px;letter-spacing:.12em;color:var(--mute);text-transform:uppercase}
+
+/* SOCIALS */
+.soc a{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:clamp(18px,3vw,30px) 0;border-top:1px solid var(--line);text-decoration:none;transition:padding .35s var(--ease)}
+.soc li:last-child a{border-bottom:1px solid var(--line)}
+.soc .n{font-family:var(--head);font-weight:900;text-transform:uppercase;font-size:clamp(40px,9vw,120px);line-height:.9;transition:color .25s}
+.soc .h{font-size:12px;letter-spacing:.16em;color:var(--mute);white-space:nowrap}
+.soc a:hover{padding-left:14px}
+.soc a:hover .n{color:var(--red)}
+
+/* FOOTER */
+.foot{padding:clamp(40px,6vw,80px) 0 28px;overflow:hidden;border-top:1px solid var(--line)}
+.foot-logo{font-family:var(--head);font-weight:900;font-size:clamp(80px,27vw,360px);line-height:.78;letter-spacing:-.02em;text-transform:uppercase;color:#141414;white-space:nowrap;margin:0 0 clamp(24px,4vw,48px) -.04em;-webkit-user-select:none;user-select:none}
+.foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 28px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.foot-links{display:flex;flex-wrap:wrap;gap:0 22px}
+.foot-links button{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);padding:12px 0;transition:color .2s}
+.foot-links button:hover{color:var(--ink)}
+.foot-meta{padding:12px 0}
+
+/* LEGAL OVERLAYS */
+.legal{display:none;position:fixed;inset:0;z-index:300;background:var(--bg);overflow-y:auto}
+.legal.open{display:block}
+.legal-bar{position:sticky;top:0;z-index:2;background:var(--glass);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.legal-bar .wrap{display:flex;align-items:center;height:60px}
+.legal-close{font-size:11px;letter-spacing:.18em;text-transform:uppercase;border:1px solid var(--red);padding:12px 16px;transition:background .2s,color .2s}
+.legal-close:hover{background:var(--red);color:var(--bg)}
+.legal-wrap{max-width:760px;margin:0 auto;padding:40px clamp(18px,4vw,56px) 100px}
+.legal-wrap h2{font-family:var(--head);font-weight:900;font-size:clamp(40px,8vw,72px);line-height:.95;text-transform:uppercase;margin-bottom:28px}
+.legal-wrap h3{font-family:var(--head);font-weight:700;font-size:18px;letter-spacing:.06em;text-transform:uppercase;margin:28px 0 8px}
+.legal-wrap p{font-size:12.5px;line-height:1.85;color:rgba(232,226,217,.78);margin-bottom:12px}
+.legal-wrap a{color:var(--red)}
+
+/* LIGHTBOX */
+.lb{display:none;position:fixed;inset:0;z-index:400;background:rgba(8,8,8,.96);align-items:center;justify-content:center;padding:20px;cursor:zoom-out}
+.lb.open{display:flex}
+.lb img{max-width:100%;max-height:88vh;object-fit:contain}
+.lb-close{position:absolute;top:14px;right:14px;width:48px;height:48px;border:1px solid var(--line);font-size:18px}
+
+/* REVEAL */
+.js .rv{opacity:0;transform:translateY(16px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.js .rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+  .js .rv{opacity:1!important;transform:none!important}
 }
-body{background:var(--bg);color:var(--text);font-family:var(--ff-mono);min-height:100vh;overflow-x:hidden;cursor:default}
-body::after{content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)' opacity='1'/%3E%3C/svg%3E");opacity:.035}
-#intro{position:fixed;inset:0;z-index:10000;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;animation:introOut .5s 1.8s var(--ease) forwards;pointer-events:none}
-.intro-line{overflow:hidden;height:clamp(60px,16vw,100px)}
-.intro-word{font-family:var(--ff-head);font-weight:900;font-size:clamp(60px,16vw,100px);letter-spacing:-2px;line-height:1;color:var(--text);display:block;transform:translateY(110%);animation:introSlide .6s .1s var(--ease) forwards}
-.intro-bar{width:0;height:4px;background:var(--red);margin-top:12px;animation:introBar .5s .5s var(--ease) forwards}
-.intro-sub{font-size:9px;letter-spacing:6px;text-transform:uppercase;color:var(--dim);opacity:0;margin-top:14px;animation:introFade .4s .8s ease forwards}
-@keyframes introSlide{to{transform:translateY(0)}}
-@keyframes introBar{to{width:clamp(120px,30vw,200px)}}
-@keyframes introFade{to{opacity:1}}
-@keyframes introOut{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(-100%)}}
-.page{max-width:520px;margin:0 auto;padding:0 22px 140px}
-.hero{padding-top:52px;padding-bottom:40px;display:flex;flex-direction:column;align-items:center;animation:riseIn .7s 2.1s var(--ease) both}
-.ticker-wrap{width:100vw;max-width:520px;overflow:hidden;background:var(--red);padding:7px 0}
-.ticker-track{display:flex;width:max-content;animation:ticker 18s linear infinite}
-.ticker-item{font-family:var(--ff-head);font-weight:900;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#fff;padding:0 28px;white-space:nowrap;opacity:.9}
-.ticker-dot{color:rgba(255,255,255,.4)}
-@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.wordmark-wrap{display:flex;flex-direction:column;align-items:center;padding:42px 0 28px}
-.wordmark{font-family:var(--ff-head);font-weight:900;font-size:clamp(88px,22vw,130px);line-height:.85;letter-spacing:-2px;color:var(--text);position:relative;display:inline-block;user-select:none}
-.wordmark::before{content:'FOULNET';position:absolute;inset:0;color:transparent;-webkit-text-stroke:1px var(--red);transform:translate(3px,3px);z-index:-1;letter-spacing:-2px}
-.wordmark-sub{display:flex;align-items:center;gap:10px;margin-top:12px}
-.ws-line{flex:1;height:1px;background:var(--border);width:40px}
-.ws-text{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--dim)}
-.section-head{display:flex;align-items:center;gap:10px;margin-bottom:14px}
-.sh-label{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--dim)}
-.sh-line{flex:1;height:1px;background:var(--border)}
-.sh-tag{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--red);border:1px solid var(--red);padding:2px 7px;border-radius:2px}
-.vcarousel-outer{position:relative;overflow:hidden;border-radius:6px;touch-action:pan-y;user-select:none;cursor:grab}
-.vcarousel-outer:active{cursor:grabbing}
-.vcarousel-track{display:flex;transition:transform .45s var(--ease);will-change:transform}
-.vcard{flex:0 0 100%;width:100%;display:block;text-decoration:none;background:var(--surface);border:1px solid var(--border);border-radius:6px;overflow:hidden;position:relative;transition:border-color .3s,box-shadow .3s;pointer-events:none}
-.vcard.active-card{pointer-events:auto}
-.vcard:hover{border-color:var(--red);box-shadow:0 0 32px var(--red-glow)}
-.vcarousel-track .vcard+.vcard{margin-left:16px}
-.vcard-thumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:#0d0d0d}
-.vcard-thumb img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.9) saturate(.8);transition:transform .5s,filter .4s}
-.vcard:hover .vcard-thumb img{transform:scale(1.04);filter:brightness(1) saturate(1)}
-.vcard-thumb::before{content:'';position:absolute;inset:0;z-index:2;background:repeating-linear-gradient(0deg,rgba(0,0,0,.08) 0px,rgba(0,0,0,.08) 1px,transparent 1px,transparent 3px);pointer-events:none}
-.vplay{position:absolute;inset:0;z-index:3;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at center,rgba(0,0,0,.4) 0%,transparent 70%)}
-.vplay-btn{width:58px;height:58px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 10px rgba(232,19,42,.15),0 4px 24px rgba(0,0,0,.5)}
-.vplay-btn svg{width:22px;height:22px;margin-left:3px}
-.vcorner{position:absolute;top:12px;left:12px;z-index:4;background:var(--yellow);color:#000;font-family:var(--ff-head);font-weight:900;font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:4px 9px;border-radius:2px}
-.vmeta{padding:14px 18px 16px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
-.vtitle{font-family:var(--ff-head);font-weight:700;font-size:18px;letter-spacing:.5px;line-height:1.2;color:var(--text)}
-.vsub{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-top:5px}
-.vwatch{flex-shrink:0;background:var(--red);color:#fff;font-family:var(--ff-head);font-weight:700;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:8px 14px;border-radius:3px;align-self:center;white-space:nowrap}
-.vdots{display:flex;justify-content:center;align-items:center;gap:7px;margin-top:12px}
-.vdot{width:5px;height:5px;border-radius:50%;background:var(--muted);transition:background .3s,transform .3s;cursor:pointer}
-.vdot.active{background:var(--red);transform:scale(1.4)}
-.swipe-hint{display:flex;align-items:center;justify-content:flex-end;gap:5px;margin-top:8px;opacity:.35;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);transition:opacity .4s}
-.swipe-hint.hidden{opacity:0}
-.swipe-hint svg{width:12px;height:12px}
-.sep{margin:32px 0;display:flex;align-items:center;gap:12px}
-.sep-line{flex:1;height:1px;background:var(--border)}
-.sep-dot{width:5px;height:5px;border-radius:50%;background:var(--red)}
-.drop-banner{background:linear-gradient(135deg,#0d0d0d 0%,#1a0a00 100%);border:2px solid var(--yellow);border-radius:8px;overflow:hidden;margin-bottom:14px;position:relative}
-.drop-flash{background:var(--yellow);padding:6px 18px;display:flex;align-items:center;justify-content:space-between}
-.drop-flash-left{font-family:var(--ff-head);font-weight:900;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#000}
-.drop-flash-right{font-family:var(--ff-head);font-weight:900;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#000;opacity:.7}
-.drop-header{padding:16px 18px 12px}
-.drop-eyebrow{font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--yellow);margin-bottom:4px}
-.drop-name{font-family:var(--ff-head);font-weight:900;font-size:34px;line-height:.95;color:var(--text);text-transform:uppercase}
-.drop-name span{color:var(--yellow)}
-.drop-sub{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-top:6px}
-.drop-sig{font-family:Georgia,serif;font-style:italic;font-size:18px;color:var(--red);margin-top:8px}
-.drop-gallery{background:#0d0d0d}
-.drop-main-img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;cursor:zoom-in}
-.drop-thumbs{display:flex;gap:6px;padding:8px}
-.drop-thumb{width:60px;height:60px;object-fit:cover;border-radius:3px;cursor:pointer;border:2px solid transparent;transition:border-color .2s,opacity .2s;opacity:.55}
-.drop-thumb.active,.drop-thumb:hover{border-color:var(--yellow);opacity:1}
-.drop-body{padding:14px 18px}
-.drop-desc{font-size:10px;line-height:1.75;color:var(--dim);margin-bottom:8px}
-.drop-ingredients{font-size:9px;color:var(--dim);margin-bottom:12px;line-height:1.6}
-.drop-ingredients strong{color:#888;letter-spacing:1px;text-transform:uppercase;font-size:8px}
-.drop-tags{display:flex;flex-wrap:wrap;gap:6px}
-.drop-tag{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--text);background:#0d0d0d;border:1px solid var(--border);padding:4px 9px;border-radius:2px}
-.drop-tag--yellow{border-color:var(--yellow);color:var(--yellow)}
-.drop-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-top:1px solid #2a1a00;background:#0a0500}
-.drop-price-wrap{display:flex;flex-direction:column}
-.drop-price{font-family:var(--ff-head);font-weight:900;font-size:30px;color:#fff}
-.drop-stock{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-top:4px}
-.drop-btn{background:var(--yellow);color:#000;font-family:var(--ff-head);font-weight:900;font-size:13px;letter-spacing:2px;text-transform:uppercase;padding:13px 20px;border-radius:3px;text-decoration:none;display:inline-block;transition:background .2s,transform .15s}
-.drop-btn:hover{background:#d4a600;transform:translateY(-1px)}
-.drop-note{font-size:9px;color:var(--dim);text-align:center;padding:10px 18px 14px;line-height:1.6}
-.drop-note strong{color:var(--text)}
-.links{display:flex;flex-direction:column;gap:9px}
-.lbtn{display:flex;align-items:center;gap:16px;padding:15px 18px;text-decoration:none;border-radius:5px;background:var(--surface);border:1px solid var(--border);transition:border-color .25s,transform .2s,box-shadow .25s;position:relative;overflow:hidden}
-.lbtn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;transform:scaleY(0);transform-origin:bottom;transition:transform .25s;border-radius:0 2px 2px 0}
-.lbtn:hover::before{transform:scaleY(1)}
-.lbtn:hover{transform:translateX(5px);border-color:var(--muted)}
-.lbtn--yt::before{background:#e8132a}
-.lbtn--ig::before{background:linear-gradient(180deg,#f58529,#c13584)}
-.lbtn--sp::before{background:#1DB954}
-.lbtn--am::before{background:#fc3c44}
-.lbtn--dz::before{background:#EF5466}
-.lbtn--amz::before{background:#00a8e0}
-.lbtn:hover.lbtn--yt{box-shadow:-4px 0 20px rgba(232,19,42,.12)}
-.lbtn:hover.lbtn--ig{box-shadow:-4px 0 20px rgba(193,53,132,.12)}
-.lbtn:hover.lbtn--sp{box-shadow:-4px 0 20px rgba(29,185,84,.12)}
-.lbtn:hover.lbtn--am{box-shadow:-4px 0 20px rgba(252,60,68,.12)}
-.lbtn:hover.lbtn--dz{box-shadow:-4px 0 20px rgba(239,84,102,.12)}
-.lbtn:hover.lbtn--amz{box-shadow:-4px 0 20px rgba(0,168,224,.12)}
-.lbtn-icon{width:34px;height:34px;flex-shrink:0;display:flex;align-items:center;justify-content:center;border-radius:6px;background:var(--muted)}
-.lbtn-icon svg{width:18px;height:18px}
-.lbtn-copy{flex:1}
-.lbtn-name{font-family:var(--ff-head);font-weight:700;font-size:16px;letter-spacing:1px;color:var(--text);text-transform:uppercase}
-.lbtn-handle{font-size:9px;letter-spacing:2px;color:var(--dim);margin-top:2px;text-transform:uppercase}
-.lbtn-arrow{color:var(--muted);font-size:16px;transition:color .2s,transform .2s}
-.lbtn:hover .lbtn-arrow{color:var(--text);transform:translateX(3px)}
-.music-head{display:flex;align-items:center;gap:10px;margin:28px 0 12px}
-.mh-label{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--dim);white-space:nowrap}
-.mh-song{font-family:var(--ff-head);font-weight:700;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--text);white-space:nowrap}
-.mh-line{flex:1;height:1px;background:var(--border)}
-.spotify-bar{position:fixed;bottom:0;left:0;right:0;z-index:1000;background:linear-gradient(to top,#080808 60%,transparent);padding:16px 22px 20px;max-width:520px;margin:0 auto;display:flex;align-items:center;gap:12px}
-.spotify-embed-wrap{flex:1;border-radius:8px;overflow:hidden;height:80px}
-.spotify-embed-wrap iframe{width:100%;height:80px;border:none;display:block}
-.mute-btn{flex-shrink:0;width:42px;height:42px;border-radius:50%;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .2s,background .2s,transform .15s;color:var(--text)}
-.mute-btn:hover{border-color:var(--red);background:var(--muted);transform:scale(1.08)}
-.mute-btn svg{width:18px;height:18px}
-.mute-btn .icon-muted{display:none}
-.mute-btn.is-muted .icon-sound{display:none}
-.mute-btn.is-muted .icon-muted{display:block}
-footer{margin-top:48px;text-align:center;padding-bottom:10px}
-.footer-name{font-family:var(--ff-head);font-weight:900;font-size:36px;letter-spacing:6px;color:var(--border);text-transform:uppercase;user-select:none}
-.footer-sub{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#2a2a2a;margin-top:4px}
-.footer-links{display:flex;justify-content:center;gap:18px;margin-top:14px;flex-wrap:wrap}
-.footer-links a{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:color .2s}
-.footer-links a:hover{color:var(--text)}
-.legal-overlay{display:none;position:fixed;inset:0;z-index:20000;background:var(--bg);overflow-y:auto;padding:32px 24px 80px}
-.legal-overlay.active{display:block}
-.legal-close{font-family:var(--ff-head);font-weight:900;font-size:14px;letter-spacing:3px;text-transform:uppercase;color:var(--red);background:none;border:1px solid var(--red);padding:8px 18px;border-radius:3px;cursor:pointer;margin-bottom:28px;display:inline-block}
-.legal-title{font-family:var(--ff-head);font-weight:900;font-size:36px;color:var(--text);margin-bottom:24px;line-height:1}
-.legal-body{font-size:11px;line-height:1.9;color:#aaa;max-width:520px}
-.legal-body h2{font-family:var(--ff-head);font-weight:700;font-size:16px;color:var(--text);margin:24px 0 8px;letter-spacing:1px;text-transform:uppercase}
-.legal-body p{margin-bottom:12px}
-.legal-body a{color:var(--red)}
-@keyframes riseIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:400px){.vwatch{display:none}.vmeta{padding:12px 14px 14px}.drop-btn{padding:11px 14px;font-size:12px}.drop-price{font-size:26px}}
 </style>
 </head>
-<body>
+<body id="top">
+<a class="skip" href="#main">Zum Inhalt springen</a>
 
-<div class="legal-overlay" id="overlay-impressum">
-  <button class="legal-close" onclick="closeLegal('impressum')">&#8592; Zurück</button>
-  <div class="legal-title">Impressum</div>
-  <div class="legal-body">
-    <h2>Angaben gemäß § 5 TMG</h2>
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">FOULNET</a>
+    <nav class="nav-links" aria-label="Hauptnavigation">
+      <a href="#videos">Videos</a>
+      <a href="#musik">Musik</a>
+      <a href="#shop">Shop</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO: Das Banner wird exakt unter diesem Dateinamen geladen (Dateiname im Repo muss identisch sein). -->
+<section class="hero" id="hero" aria-label="FOULNET">
+  <img class="hero-img" id="heroImg" src="banner.jpg .HEIC" alt="Julien von FOULNET" fetchpriority="high" decoding="async">
+  <div class="wrap hero-in">
+    <div class="hero-top"><span>Skate · Music · Content</span><span>Hamm / NRW</span></div>
+    <h1 class="logo">FOULNET</h1>
+  </div>
+</section>
+
+<main id="main">
+
+<!-- MUSIK -->
+<section class="sec" id="musik" aria-labelledby="h-musik">
+  <div class="wrap">
+    <h2 class="sh" id="h-musik"><b>01</b><span>Musik</span><i></i></h2>
+    <div class="music rv">
+      <div>
+        <span class="kick">Neuester Song</span>
+        <h3>Regenbogen</h3>
+      </div>
+      <div class="music-side">
+        <p>Die neue Single von FOULNET.</p>
+        <a class="btn" href="https://open.spotify.com/intl-de/album/2TkU7Hb47cJzBQCLFSmY6x" target="_blank" rel="noopener"><span>Anhören auf Spotify</span><span aria-hidden="true">→</span></a>
+        <div class="music-links">
+          <a href="https://music.apple.com/de/album/regenbogen-single/6805293749" target="_blank" rel="noopener">Apple Music</a>
+          <a href="https://link.deezer.com/s/34eDTzYym7S9Mv5UMvVp5" target="_blank" rel="noopener">Deezer</a>
+          <a href="https://music.amazon.de/albums/B0HGL7B6MG?ref=dm_sh_MAeFGgm3Wwg4x8kLLd84YqAQV" target="_blank" rel="noopener">Amazon Music</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section class="sec" id="videos" aria-labelledby="h-videos" style="padding-top:0">
+  <div class="wrap">
+    <h2 class="sh" id="h-videos"><b>02</b><span>Videos</span><i></i></h2>
+    <div class="rv">
+      <div class="vc-view" id="vcView" aria-roledescription="Karussell" aria-label="FOULNET Videos">
+        <div class="vc-track" id="vcTrack">
+
+          <a class="vc-slide on" href="https://youtu.be/v42JXbRKiso" data-id="v42JXbRKiso">
+            <div class="vc-thumb">
+              <img src="https://img.youtube.com/vi/v42JXbRKiso/maxresdefault.jpg" data-fallback="https://img.youtube.com/vi/v42JXbRKiso/hqdefault.jpg" alt="Vorschaubild: 12 Stufen, 2 Tage &amp; mentale Blockaden" width="1280" height="720" draggable="false">
+              <span class="vc-play">▶ Auf YouTube öffnen</span>
+            </div>
+            <div class="vc-meta"><span class="kick">Neuestes Video</span><h3>12 Stufen, 2 Tage &amp; mentale Blockaden</h3></div>
+          </a>
+
+          <a class="vc-slide" href="https://youtu.be/OhBFzeq4qts" data-id="OhBFzeq4qts">
+            <div class="vc-thumb">
+              <img src="https://img.youtube.com/vi/OhBFzeq4qts/maxresdefault.jpg" data-fallback="https://img.youtube.com/vi/OhBFzeq4qts/hqdefault.jpg" alt="Vorschaubild: Haben sich die 12 Stufen gelohnt?" width="1280" height="720" draggable="false">
+              <span class="vc-play">▶ Auf YouTube öffnen</span>
+            </div>
+            <div class="vc-meta"><span class="kick">Archiv</span><h3>Haben sich die 12 Stufen gelohnt?</h3></div>
+          </a>
+
+          <a class="vc-slide" href="https://youtu.be/DCM6FP7jxgo" data-id="DCM6FP7jxgo">
+            <div class="vc-thumb">
+              <img src="https://img.youtube.com/vi/DCM6FP7jxgo/maxresdefault.jpg" data-fallback="https://img.youtube.com/vi/DCM6FP7jxgo/hqdefault.jpg" alt="Vorschaubild: Park voller Kids?!" width="1280" height="720" draggable="false">
+              <span class="vc-play">▶ Auf YouTube öffnen</span>
+            </div>
+            <div class="vc-meta"><span class="kick">Archiv</span><h3>Park voller Kids?!</h3></div>
+          </a>
+
+        </div>
+      </div>
+      <div class="vc-ctrl">
+        <div class="vc-dots" role="group" aria-label="Video auswählen">
+          <button class="vc-dot on" type="button" data-i="0" aria-label="Video 1"></button>
+          <button class="vc-dot" type="button" data-i="1" aria-label="Video 2"></button>
+          <button class="vc-dot" type="button" data-i="2" aria-label="Video 3"></button>
+        </div>
+        <div class="vc-nav">
+          <span class="vc-count" id="vcCount" aria-live="polite">01 / 03</span>
+          <button class="vc-arrow" id="vcPrev" type="button" aria-label="Vorheriges Video">←</button>
+          <button class="vc-arrow" id="vcNext" type="button" aria-label="Nächstes Video">→</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOP -->
+<section class="sec" id="shop" aria-labelledby="h-shop" style="padding-top:0">
+  <div class="wrap">
+    <h2 class="sh" id="h-shop"><b>03</b><span>Shop</span><i></i></h2>
+    <p class="lead rv">Von Hand gemacht in Hamm. Begrenzte Auflage.</p>
+    <div class="shop">
+
+      <article class="prod rv">
+        <div class="prod-media">
+          <span class="tag">30 Made</span>
+          <span class="tag r">N° 01</span>
+          <button class="prod-main" id="waxBtn" type="button" aria-label="Skatewax Bild vergrößern">
+            <img id="waxImg" src="Skatewachs frontal .jpg" alt="FOULNET Apple &amp; Eukalyptus Skatewax" loading="lazy">
+          </button>
+        </div>
+        <div class="prod-body">
+          <span class="prod-kick">FOULNET Original</span>
+          <h3>Apple &amp; Eukalyptus Skatewax</h3>
+          <p class="prod-desc">Skatewax mit Apfel-Eukalyptus-Duft. Für Ledges, Curbs und Rails.</p>
+          <dl class="spec">
+            <div><dt>Auflage</dt><dd>30 Stück</dd></div>
+            <div><dt>Duft</dt><dd>Apfel · Eukalyptus</dd></div>
+            <div><dt>Inhalt</dt><dd>Paraffinwachs, Bienenwachs, ätherisches Eukalyptusöl</dd></div>
+          </dl>
+          <div class="buy">
+            <span class="price">7 €</span>
+            <a class="btn-y" href="https://buy.stripe.com/9B6bJ19GIfEq7bYacnbo406" target="_blank" rel="noopener">Kaufen <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="prod rv">
+        <div class="prod-media">
+          <span class="tag">20 Made</span>
+          <span class="tag r">N° 02</span>
+          <button class="prod-main" id="candleBtn" type="button" aria-label="Kerzen-Bild vergrößern">
+            <img id="candleImg" src="Kerze frontal .jpg" alt="FOULNET Apple &amp; Eukalyptus Skate Candle, frontal" loading="lazy">
+          </button>
+          <div class="thumbs">
+            <button class="thumb on" type="button" data-src="Kerze frontal .jpg" data-alt="FOULNET Apple &amp; Eukalyptus Skate Candle, frontal" aria-label="Kerze frontal anzeigen" aria-pressed="true"><img src="Kerze frontal .jpg" alt="" loading="lazy"></button>
+            <button class="thumb" type="button" data-src="Kerze seitlich .jpg" data-alt="FOULNET Apple &amp; Eukalyptus Skate Candle, seitlich" aria-label="Kerze seitlich anzeigen" aria-pressed="false"><img src="Kerze seitlich .jpg" alt="" loading="lazy"></button>
+          </div>
+        </div>
+        <div class="prod-body">
+          <span class="prod-kick">Signature Edition</span>
+          <h3>Apple &amp; Eukalyptus Skate Candle</h3>
+          <p class="prod-desc">Handgegossene Duftkerze mit Apfel-Eukalyptus-Duft. Jede trägt die Unterschrift <span class="sig">— Foulnet</span></p>
+          <dl class="spec">
+            <div><dt>Auflage</dt><dd>20 Stück</dd></div>
+            <div><dt>Duft</dt><dd>Apfel · Eukalyptus</dd></div>
+            <div><dt>Inhalt</dt><dd>Paraffinwachs, Bienenwachs, ätherisches Eukalyptusöl, Kerzensand</dd></div>
+          </dl>
+          <div class="buy">
+            <span class="price">9 €</span>
+            <a class="btn-y" href="https://buy.stripe.com/fZu8wPdWY0JwfIuacnbo407" target="_blank" rel="noopener">Kaufen <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+    <p class="pay-note rv">Zahlung über Stripe, Versand wird im Bestellvorgang berechnet.</p>
+  </div>
+</section>
+
+<!-- SOCIALS -->
+<section class="sec" id="socials" aria-labelledby="h-soc" style="padding-top:0">
+  <div class="wrap">
+    <h2 class="sh" id="h-soc"><b>04</b><span>Socials</span><i></i></h2>
+    <ul class="soc rv">
+      <li><a href="https://www.youtube.com/@Foulnet" target="_blank" rel="noopener"><span class="n">YouTube</span><span class="h">@Foulnet ↗</span></a></li>
+      <li><a href="https://www.instagram.com/lfoulnet" target="_blank" rel="noopener"><span class="n">Instagram</span><span class="h">@lfoulnet ↗</span></a></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-logo" aria-hidden="true">FOULNET</div>
+    <div class="foot-row">
+      <div class="foot-links">
+        <button type="button" data-legal="impressum">Impressum</button>
+        <button type="button" data-legal="datenschutz">Datenschutz</button>
+        <button type="button" data-legal="widerruf">Widerrufsbelehrung</button>
+      </div>
+      <div class="foot-meta">© 2026 FOULNET · Hamm / NRW</div>
+    </div>
+  </div>
+</footer>
+
+<!-- LEGAL: IMPRESSUM -->
+<div class="legal" id="legal-impressum" role="dialog" aria-modal="true" aria-labelledby="t-impressum" aria-hidden="true">
+  <div class="legal-bar"><div class="wrap"><button class="legal-close" type="button" data-close="impressum">← Zurück</button></div></div>
+  <div class="legal-wrap">
+    <h2 id="t-impressum">Impressum</h2>
+    <h3>Angaben gemäß § 5 TMG</h3>
     <p>Julien Uschok<br>Richard-Wagner-Straße 44<br>59063 Hamm</p>
-    <h2>Kontakt</h2>
+    <h3>Kontakt</h3>
     <p>E-Mail: <a href="mailto:uschokaufjagd@gmail.com">uschokaufjagd@gmail.com</a></p>
-    <h2>Hinweis zur Verantwortlichkeit</h2>
+    <h3>Hinweis zur Verantwortlichkeit</h3>
     <p>Verantwortlich für den Inhalt dieser Seite gemäß § 55 Abs. 2 RStV: Julien Uschok (Adresse wie oben).</p>
     <p>Diese Website dient als persönliche Link-Seite für Inhalte der Marke FOULNET (Skate · Music · Content) sowie dem Direktverkauf von Produkten.</p>
   </div>
 </div>
 
-<div class="legal-overlay" id="overlay-datenschutz">
-  <button class="legal-close" onclick="closeLegal('datenschutz')">&#8592; Zurück</button>
-  <div class="legal-title">Datenschutzerklärung</div>
-  <div class="legal-body">
-    <h2>1. Verantwortlicher</h2>
+<!-- LEGAL: DATENSCHUTZ -->
+<div class="legal" id="legal-datenschutz" role="dialog" aria-modal="true" aria-labelledby="t-datenschutz" aria-hidden="true">
+  <div class="legal-bar"><div class="wrap"><button class="legal-close" type="button" data-close="datenschutz">← Zurück</button></div></div>
+  <div class="legal-wrap">
+    <h2 id="t-datenschutz">Datenschutzerklärung</h2>
+    <h3>1. Verantwortlicher</h3>
     <p>Julien Uschok<br>Richard-Wagner-Straße 44<br>59063 Hamm<br>E-Mail: <a href="mailto:uschokaufjagd@gmail.com">uschokaufjagd@gmail.com</a></p>
-    <h2>2. Hosting</h2>
+    <h3>2. Hosting</h3>
     <p>Diese Website wird über GitHub Pages (GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA) gehostet. Beim Aufruf der Seite erfasst GitHub automatisch Server-Logfiles (IP-Adresse, Browsertyp, Betriebssystem, Referrer-URL, Datum/Uhrzeit). Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO.</p>
-    <h2>3. Externe Dienste</h2>
-    <p><strong>YouTube (Google LLC):</strong> Beim Klick auf ein Video wirst du zu YouTube weitergeleitet. Es gelten die Datenschutzbestimmungen von Google: <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></p>
-    <p><strong>Spotify AB:</strong> Die eingebettete Spotify-Vorschau lädt Inhalte von Spotify-Servern. Es gelten deren Datenschutzbestimmungen: <a href="https://www.spotify.com/de/legal/privacy-policy/" target="_blank">spotify.com/legal/privacy-policy</a></p>
-    <p><strong>Stripe Payments Europe Ltd.:</strong> Zahlungen werden über Stripe abgewickelt. Stripe verarbeitet Zahlungsdaten gemäß deren Datenschutzrichtlinie: <a href="https://stripe.com/de/privacy" target="_blank">stripe.com/de/privacy</a>. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO.</p>
+    <h3>3. Externe Dienste</h3>
+    <p><strong>YouTube (Google LLC):</strong> Beim Klick auf ein Video wirst du zu YouTube weitergeleitet. Es gelten die Datenschutzbestimmungen von Google: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></p>
+    <p><strong>Spotify AB:</strong> Die eingebettete Spotify-Vorschau lädt Inhalte von Spotify-Servern. Es gelten deren Datenschutzbestimmungen: <a href="https://www.spotify.com/de/legal/privacy-policy/" target="_blank" rel="noopener">spotify.com/legal/privacy-policy</a></p>
+    <p><strong>Stripe Payments Europe Ltd.:</strong> Zahlungen werden über Stripe abgewickelt. Stripe verarbeitet Zahlungsdaten gemäß deren Datenschutzrichtlinie: <a href="https://stripe.com/de/privacy" target="_blank" rel="noopener">stripe.com/de/privacy</a>. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO.</p>
     <p><strong>Google Fonts:</strong> Diese Seite lädt Schriften von Google Fonts (Google LLC). Dabei wird deine IP-Adresse an Google-Server übermittelt. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO.</p>
-    <h2>4. Deine Rechte</h2>
+    <h3>4. Deine Rechte</h3>
     <p>Du hast das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18) sowie Datenübertragbarkeit (Art. 20). Wende dich dafür an: <a href="mailto:uschokaufjagd@gmail.com">uschokaufjagd@gmail.com</a></p>
-    <p>Zuständige Aufsichtsbehörde: Landesbeauftragte für Datenschutz und Informationsfreiheit NRW — <a href="https://www.ldi.nrw.de" target="_blank">ldi.nrw.de</a></p>
-    <h2>5. Cookies</h2>
+    <p>Zuständige Aufsichtsbehörde: Landesbeauftragte für Datenschutz und Informationsfreiheit NRW — <a href="https://www.ldi.nrw.de" target="_blank" rel="noopener">ldi.nrw.de</a></p>
+    <h3>5. Cookies</h3>
     <p>Diese Website setzt keine eigenen Cookies. Externe Dienste (Spotify, Google Fonts) können eigene Cookies setzen, auf die wir keinen Einfluss haben.</p>
   </div>
 </div>
 
-<div class="legal-overlay" id="overlay-widerruf">
-  <button class="legal-close" onclick="closeLegal('widerruf')">&#8592; Zurück</button>
-  <div class="legal-title">Widerrufsbelehrung</div>
-  <div class="legal-body">
-    <h2>Widerrufsrecht</h2>
+<!-- LEGAL: WIDERRUF -->
+<div class="legal" id="legal-widerruf" role="dialog" aria-modal="true" aria-labelledby="t-widerruf" aria-hidden="true">
+  <div class="legal-bar"><div class="wrap"><button class="legal-close" type="button" data-close="widerruf">← Zurück</button></div></div>
+  <div class="legal-wrap">
+    <h2 id="t-widerruf">Widerrufsbelehrung</h2>
+    <h3>Widerrufsrecht</h3>
     <p>Du hast das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen. Die Widerrufsfrist beträgt vierzehn Tage ab dem Tag, an dem du oder ein von dir benannter Dritter die Waren in Besitz genommen hast.</p>
     <p>Um dein Widerrufsrecht auszuüben, musst du uns mitteilen:<br><strong>Julien Uschok, Richard-Wagner-Straße 44, 59063 Hamm<br>E-Mail: uschokaufjagd@gmail.com</strong></p>
     <p>Zur Wahrung der Widerrufsfrist reicht es aus, dass du die Mitteilung vor Ablauf der Widerrufsfrist absendest.</p>
-    <h2>Folgen des Widerrufs</h2>
+    <h3>Folgen des Widerrufs</h3>
     <p>Wenn du diesen Vertrag widerrufst, haben wir dir alle Zahlungen, die wir von dir erhalten haben, einschließlich der Lieferkosten, unverzüglich und spätestens binnen vierzehn Tagen zurückzuzahlen. Für diese Rückzahlung verwenden wir dasselbe Zahlungsmittel, das du bei der ursprünglichen Transaktion eingesetzt hast.</p>
     <p>Wir können die Rückzahlung verweigern, bis wir die Waren zurückerhalten haben. Du trägst die unmittelbaren Kosten der Rücksendung.</p>
-    <h2>Ausschluss des Widerrufsrechts</h2>
+    <h3>Ausschluss des Widerrufsrechts</h3>
     <p>Das Widerrufsrecht besteht nicht bei Waren, die nach Kundenspezifikation angefertigt wurden oder eindeutig auf persönliche Bedürfnisse zugeschnitten sind.</p>
   </div>
 </div>
 
-<div id="intro">
-  <div class="intro-line"><span class="intro-word">FOULNET</span></div>
-  <div class="intro-bar"></div>
-  <div class="intro-sub">Skate · Music · Content</div>
-</div>
-
-<div class="page">
-  <div class="hero">
-    <div class="ticker-wrap">
-      <div class="ticker-track">
-        <span class="ticker-item">FOULNET</span><span class="ticker-item ticker-dot">✦</span>
-        <span class="ticker-item">SKATE</span><span class="ticker-item ticker-dot">✦</span>
-        <span class="ticker-item">MUSIK</span><span class="ticker-item ticker-dot">✦</span>
-        <span class="ticker-item">CONTENT</span><span class="ticker-item ticker-dot">✦</span>
-        <span class="ticker-item">FOULNET</span><span class="ticker-item ticker-dot">✦</span>
-        <span class="ticker-item">SKATE</span><span class="ticker-item ticker-dot">✦</span>
-        <span class="ticker-item">MUSIK</span><span class="ticker-item ticker-dot">✦</span>
-        <span class="ticker-item">CONTENT</span><span class="ticker-item ticker-dot">✦</span>
-        <span class="ticker-item">FOULNET</span><span class="ticker-item ticker-dot">✦</span>
-        <span class="ticker-item">SKATE</span><span class="ticker-item ticker-dot">✦</span>
-        <span class="ticker-item">MUSIK</span><span class="ticker-item ticker-dot">✦</span>
-        <span class="ticker-item">CONTENT</span><span class="ticker-item ticker-dot">✦</span>
-        <span class="ticker-item">FOULNET</span><span class="ticker-item ticker-dot">✦</span>
-        <span class="ticker-item">SKATE</span><span class="ticker-item ticker-dot">✦</span>
-        <span class="ticker-item">MUSIK</span><span class="ticker-item ticker-dot">✦</span>
-        <span class="ticker-item">CONTENT</span><span class="ticker-item ticker-dot">✦</span>
-      </div>
-    </div>
-    <div class="wordmark-wrap">
-      <div class="wordmark">FOULNET</div>
-      <div class="wordmark-sub">
-        <div class="ws-line"></div>
-        <span class="ws-text">Skate · Music · Content</span>
-        <div class="ws-line"></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section-head">
-    <span class="sh-label" id="videoLabel">Neustes Video</span>
-    <div class="sh-line"></div>
-    <span class="sh-tag" id="videoTag">NEU</span>
-  </div>
-
-  <div class="vcarousel-outer" id="carousel">
-    <div class="vcarousel-track" id="carouselTrack">
-
-      <a class="vcard active-card" id="card0" href="#" data-ytid="v42JXbRKiso">
-        <div class="vcard-thumb">
-          <img src="https://img.youtube.com/vi/v42JXbRKiso/maxresdefault.jpg"
-               onerror="this.src='https://img.youtube.com/vi/v42JXbRKiso/hqdefault.jpg'"
-               alt="12 Stufen, 2 Tage und mentale Blockaden" loading="eager">
-          <span class="vcorner">NEU</span>
-          <div class="vplay"><div class="vplay-btn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div></div>
-        </div>
-        <div class="vmeta">
-          <div>
-            <div class="vtitle">12 Stufen, 2 Tage &amp; mentale Blockaden 🛹</div>
-            <div class="vsub">Skate · 2026</div>
-          </div>
-          <div class="vwatch">Watch ↗</div>
-        </div>
-      </a>
-
-      <a class="vcard" id="card1" href="#" data-ytid="OhBFzeq4qts">
-        <div class="vcard-thumb">
-          <img src="https://img.youtube.com/vi/OhBFzeq4qts/maxresdefault.jpg"
-               onerror="this.src='https://img.youtube.com/vi/OhBFzeq4qts/hqdefault.jpg'"
-               alt="Haben sich die 12 Stufen gelohnt?" loading="lazy">
-          <span class="vcorner">12 Stufen</span>
-          <div class="vplay"><div class="vplay-btn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div></div>
-        </div>
-        <div class="vmeta">
-          <div>
-            <div class="vtitle">Haben sich die 12 Stufen gelohnt? 🛹</div>
-            <div class="vsub">Skate · 2026</div>
-          </div>
-          <div class="vwatch">Watch ↗</div>
-        </div>
-      </a>
-
-      <a class="vcard" id="card2" href="#" data-ytid="DCM6FP7jxgo">
-        <div class="vcard-thumb">
-          <img src="https://img.youtube.com/vi/DCM6FP7jxgo/maxresdefault.jpg"
-               onerror="this.src='https://img.youtube.com/vi/DCM6FP7jxgo/hqdefault.jpg'"
-               alt="Park voller Kids" loading="lazy">
-          <span class="vcorner">Skatepark</span>
-          <div class="vplay"><div class="vplay-btn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div></div>
-        </div>
-        <div class="vmeta">
-          <div>
-            <div class="vtitle">PARK VOLLER KIDS?! 🛹</div>
-            <div class="vsub">Skate · 2026</div>
-          </div>
-          <div class="vwatch">Watch ↗</div>
-        </div>
-      </a>
-
-    </div>
-  </div>
-
-  <div class="vdots">
-    <div class="vdot active" id="dot0" onclick="goTo(0)"></div>
-    <div class="vdot" id="dot1" onclick="goTo(1)"></div>
-    <div class="vdot" id="dot2" onclick="goTo(2)"></div>
-  </div>
-  <div class="swipe-hint" id="swipeHint">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 5l-7 7 7 7"/></svg>
-    swipe für älteres video
-  </div>
-
-  <div class="sep"><div class="sep-line"></div><div class="sep-dot"></div><div class="sep-line"></div></div>
-
-  <div class="section-head">
-    <span class="sh-label">FOULNET Drop</span>
-    <div class="sh-line"></div>
-    <span class="sh-tag" style="background:var(--yellow);color:#000;border-color:var(--yellow)">JETZT KAUFEN</span>
-  </div>
-
-  <div class="drop-banner">
-    <div class="drop-flash">
-      <span class="drop-flash-left">🛹 Limited Edition · Nur 30 Stück</span>
-      <span class="drop-flash-right">VERFÜGBAR</span>
-    </div>
-    <div class="drop-header">
-      <div class="drop-eyebrow">FOULNET Original</div>
-      <div class="drop-name">APPLE &amp;<br><span>EUKALYPTUS</span><br>SKATEWAX</div>
-      <div class="drop-sub">Handgemacht · Von Skatern für Skater</div>
-    </div>
-    <div class="drop-gallery">
-      <img class="drop-main-img" src="Skatewachs frontal .jpg" alt="FOULNET Skatewax" onclick="openImg(this.src)">
-    </div>
-    <div class="drop-body">
-      <div class="drop-desc">Premium Skatewax mit frischem Apfel-Eukalyptus-Duft und 100 % natürlichen Inhaltsstoffen. Entwickelt für maximalen Slide auf Ledges, Curbs und Rails — mit dem unverwechselbaren FOULNET-Charakter.</div>
-      <div class="drop-ingredients"><strong>Inhaltsstoffe:</strong> Paraffinwachs, Bienenwachs, ätherisches Eukalyptusöl</div>
-      <div class="drop-tags">
-        <span class="drop-tag drop-tag--yellow">Apfel · Eukalyptus</span>
-        <span class="drop-tag">100% natürlich</span>
-        <span class="drop-tag">Für Ledges &amp; Rails</span>
-        <span class="drop-tag">Von Skatern entwickelt</span>
-      </div>
-    </div>
-    <div class="drop-footer">
-      <div class="drop-price-wrap">
-        <div class="drop-price">7 €</div>
-        <div class="drop-stock">⚠ NUR 30 STÜCK</div>
-      </div>
-      <a class="drop-btn" href="https://buy.stripe.com/9B6bJ19GIfEq7bYacnbo406" target="_blank" rel="noopener">Jetzt kaufen →</a>
-    </div>
-    <div class="drop-note">Sichere Zahlung über <strong>Stripe</strong> · Versand wird im Bestellvorgang berechnet</div>
-  </div>
-
-  <div class="drop-banner">
-    <div class="drop-flash">
-      <span class="drop-flash-left">🕯️ Limited Edition · Nur 20 Stück</span>
-      <span class="drop-flash-right">VERFÜGBAR</span>
-    </div>
-    <div class="drop-header">
-      <div class="drop-eyebrow">FOULNET Signature</div>
-      <div class="drop-name">APPLE &amp;<br><span>EUKALYPTUS</span><br>SKATE CANDLE</div>
-      <div class="drop-sub">Handgegossen · Premium Duftkerze</div>
-      <div class="drop-sig">— Foulnet</div>
-    </div>
-    <div class="drop-gallery">
-      <img class="drop-main-img" id="candleMain" src="Kerze frontal .jpg" alt="FOULNET Kerze frontal" onclick="openImg(this.src)">
-      <div class="drop-thumbs">
-        <img class="drop-thumb active" src="Kerze frontal .jpg" alt="frontal" onclick="switchImg('candleMain',this)">
-        <img class="drop-thumb" src="Kerze seitlich .jpg" alt="seitlich" onclick="switchImg('candleMain',this)">
-      </div>
-    </div>
-    <div class="drop-body">
-      <div class="drop-desc">Die FOULNET Signature Candle mit frischem Apfel-Eukalyptus-Duft. Handgegossen mit 100 % natürlichen Duftstoffen — für alle die Skateboarding nicht nur fahren, sondern leben. Jede Kerze trägt die FOULNET Unterschrift.</div>
-      <div class="drop-ingredients"><strong>Inhaltsstoffe:</strong> Paraffinwachs, Bienenwachs, ätherisches Eukalyptusöl, Kerzensand</div>
-      <div class="drop-tags">
-        <span class="drop-tag drop-tag--yellow">Apfel · Eukalyptus</span>
-        <span class="drop-tag">100% natürlich</span>
-        <span class="drop-tag">Handgegossen</span>
-        <span class="drop-tag">Signature Edition</span>
-      </div>
-    </div>
-    <div class="drop-footer">
-      <div class="drop-price-wrap">
-        <div class="drop-price">9 €</div>
-        <div class="drop-stock">⚠ NUR 20 STÜCK</div>
-      </div>
-      <a class="drop-btn" href="https://buy.stripe.com/fZu8wPdWY0JwfIuacnbo407" target="_blank" rel="noopener">Jetzt kaufen →</a>
-    </div>
-    <div class="drop-note">Sichere Zahlung über <strong>Stripe</strong> · Versand wird im Bestellvorgang berechnet</div>
-  </div>
-
-  <div class="sep"><div class="sep-line"></div><div class="sep-dot"></div><div class="sep-line"></div></div>
-
-  <div class="section-head">
-    <span class="sh-label">Socials</span>
-    <div class="sh-line"></div>
-  </div>
-
-  <div class="links">
-    <a class="lbtn lbtn--yt" href="https://www.youtube.com/@Foulnet" target="_blank" rel="noopener">
-      <div class="lbtn-icon"><svg viewBox="0 0 24 24" fill="#e8132a"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></div>
-      <div class="lbtn-copy"><div class="lbtn-name">YouTube</div><div class="lbtn-handle">@Foulnet</div></div>
-      <span class="lbtn-arrow">›</span>
-    </a>
-    <a class="lbtn lbtn--ig" href="https://www.instagram.com/lfoulnet" target="_blank" rel="noopener">
-      <div class="lbtn-icon">
-        <svg viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f58529"/><stop offset="50%" stop-color="#e6683c"/><stop offset="100%" stop-color="#c13584"/></linearGradient></defs><path fill="url(#ig)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
-      </div>
-      <div class="lbtn-copy"><div class="lbtn-name">Instagram</div><div class="lbtn-handle">@lfoulnet</div></div>
-      <span class="lbtn-arrow">›</span>
-    </a>
-  </div>
-
-  <div class="music-head">
-    <span class="mh-label">Musik</span>
-    <div class="mh-line"></div>
-    <span class="mh-song">Regenbogen</span>
-    <div class="mh-line" style="max-width:30px"></div>
-  </div>
-
-  <div class="links">
-    <a class="lbtn lbtn--sp" href="https://open.spotify.com/intl-de/album/2TkU7Hb47cJzBQCLFSmY6x" target="_blank" rel="noopener">
-      <div class="lbtn-icon"><svg viewBox="0 0 24 24" fill="#1DB954"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></div>
-      <div class="lbtn-copy"><div class="lbtn-name">Spotify</div><div class="lbtn-handle">Foulnet — Regenbogen</div></div>
-      <span class="lbtn-arrow">›</span>
-    </a>
-    <a class="lbtn lbtn--am" href="https://music.apple.com/de/album/regenbogen-single/6805293749" target="_blank" rel="noopener">
-      <div class="lbtn-icon"><svg viewBox="0 0 24 24" fill="#fc3c44"><path d="M23.994 6.124a9.23 9.23 0 0 0-.24-2.19c-.317-1.31-1.064-2.31-2.24-3.09a5.88 5.88 0 0 0-1.64-.666c-.526-.112-1.07-.173-1.618-.217-.02-.001-.076-.003-.183-.006H5.927c-.183.003-.267.005-.35.006-.96.06-1.85.166-2.68.477C1.5 1.04.56 1.978.19 3.234a8.61 8.61 0 0 0-.166 1.121C.007 4.62 0 4.9 0 5.16v13.68c.006.24.014.48.04.72.07.79.262 1.52.654 2.19.55.944 1.37 1.61 2.4 1.98.51.18 1.05.273 1.61.32.05.003.1.007.15.008.36.016.72.02 1.082.023H18.07c.35-.003.7-.007 1.053-.022.07-.003.14-.006.21-.01.5-.04.983-.115 1.44-.27 1.08-.37 1.918-1.05 2.47-2.034.384-.665.574-1.385.648-2.154.026-.254.034-.51.04-.764.007-.27.008-.54.008-.81V6.124zm-8.16 3.99c-.158-.04-.32-.065-.484-.076a3.8 3.8 0 0 0-.512.02c-.52.059-1.012.232-1.46.504-.22.133-.418.29-.597.47V5.666l-1.76.47v8.97c0 .08.003.158.01.237.047.646.32 1.18.8 1.58.38.317.83.488 1.32.522.11.008.22.01.33.008.4-.01.78-.1 1.12-.29.53-.293.88-.74 1.02-1.326.04-.173.058-.35.058-.53V9.8l.155-.04z"/></svg></div>
-      <div class="lbtn-copy"><div class="lbtn-name">Apple Music</div><div class="lbtn-handle">Foulnet — Regenbogen</div></div>
-      <span class="lbtn-arrow">›</span>
-    </a>
-    <a class="lbtn lbtn--dz" href="https://link.deezer.com/s/34eDTzYym7S9Mv5UMvVp5" target="_blank" rel="noopener">
-      <div class="lbtn-icon"><svg viewBox="0 0 24 24" fill="#EF5466"><path d="M18.81 4.16v3.03H24V4.16h-5.19zm-6.48 0v3.03h5.19V4.16h-5.19zM5.85 4.16v3.03h5.19V4.16H5.85zM0 7.81v3.03h5.19V7.81H0zm6.48 0v3.03h5.19V7.81H6.48zm6.48 0v3.03h5.19V7.81h-5.19zm6.48 0v3.03H24V7.81h-5.19zM0 11.46v3.03h5.19v-3.03H0zm6.48 0v3.03h5.19v-3.03H6.48zm6.48 0v3.03h5.19v-3.03h-5.19zm6.48 0v3.03H24v-3.03h-5.19zM0 15.11v3.03h5.19v-3.03H0zm6.48 0v3.03h5.19v-3.03H6.48zm6.48 0v3.03h5.19v-3.03h-5.19zm6.48 0v3.03H24v-3.03h-5.19zM0 18.77v3.03h5.19v-3.03H0zm6.48 0v3.03h5.19v-3.03H6.48zm6.48 0v3.03h5.19v-3.03h-5.19zm6.48 0v3.03H24v-3.03h-5.19z"/></svg></div>
-      <div class="lbtn-copy"><div class="lbtn-name">Deezer</div><div class="lbtn-handle">Foulnet — Regenbogen</div></div>
-      <span class="lbtn-arrow">›</span>
-    </a>
-    <a class="lbtn lbtn--amz" href="https://music.amazon.de/albums/B0HGL7B6MG?ref=dm_sh_MAeFGgm3Wwg4x8kLLd84YqAQV" target="_blank" rel="noopener">
-      <div class="lbtn-icon"><svg viewBox="0 0 24 24" fill="#00a8e0"><path d="M13.958 10.09c0 1.232.029 2.256-.591 3.351-.502.891-1.301 1.438-2.186 1.438-1.214 0-1.922-.924-1.922-2.292 0-2.692 2.415-3.182 4.7-3.182v.685zm3.186 7.705a.66.66 0 0 1-.748.074c-1.051-.873-1.239-1.278-1.814-2.108-1.734 1.769-2.96 2.298-5.208 2.298-2.659 0-4.731-1.641-4.731-4.925 0-2.565 1.391-4.309 3.37-5.164 1.715-.754 4.11-.891 5.942-1.099v-.41c0-.753.059-1.642-.384-2.294-.384-.578-1.124-.817-1.774-.817-1.205 0-2.277.618-2.54 1.899-.054.285-.262.567-.549.581l-3.076-.333c-.259-.056-.548-.266-.472-.66.708-3.726 4.076-4.846 7.093-4.846 1.543 0 3.56.41 4.775 1.575 1.543 1.44 1.395 3.363 1.395 5.457v4.945c0 1.488.616 2.14 1.196 2.943.204.285.249.628-.01.839l-2.465 2.045zm3.27 1.985c-2.089 1.542-5.115 2.359-7.72 2.359-3.653 0-6.938-1.35-9.42-3.596-.195-.176-.021-.417.214-.28 2.682 1.561 5.996 2.501 9.421 2.501 2.31 0 4.847-.48 7.18-1.472.352-.15.647.231.325.488zm.929-1.058c-.266-.342-1.757-.161-2.427-.081-.203.025-.234-.153-.051-.281 1.189-.836 3.137-.595 3.364-.315.228.282-.059 2.234-1.176 3.167-.172.144-.335.067-.259-.121.251-.626.813-2.027.549-2.369z"/></svg></div>
-      <div class="lbtn-copy"><div class="lbtn-name">Amazon Music</div><div class="lbtn-handle">Foulnet — Regenbogen</div></div>
-      <span class="lbtn-arrow">›</span>
-    </a>
-  </div>
-
-  <footer>
-    <div class="footer-name">FOULNET</div>
-    <div class="footer-sub">© 2026 · All rights reserved</div>
-    <div class="footer-links">
-      <a href="#" onclick="openLegal('impressum');return false;">Impressum</a>
-      <a href="#" onclick="openLegal('datenschutz');return false;">Datenschutz</a>
-      <a href="#" onclick="openLegal('widerruf');return false;">Widerrufsbelehrung</a>
-    </div>
-  </footer>
-</div>
-
-<div class="spotify-bar">
-  <div class="spotify-embed-wrap">
-    <iframe id="spotifyFrame"
-      src="https://open.spotify.com/embed/album/2TkU7Hb47cJzBQCLFSmY6x?utm_source=generator&theme=0&autoplay=1"
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-      loading="lazy"></iframe>
-  </div>
-  <button class="mute-btn" id="muteBtn" title="Stumm schalten" aria-label="Stumm schalten">
-    <svg class="icon-sound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
-    <svg class="icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
-  </button>
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Bildansicht" aria-hidden="true">
+  <button class="lb-close" id="lbClose" type="button" aria-label="Schließen">✕</button>
+  <img id="lbImg" src="" alt="">
 </div>
 
 <script>
-var muteBtn = document.getElementById('muteBtn');
-var spotifyFrame = document.getElementById('spotifyFrame');
-var muted = false;
-var spotifyBase = 'https://open.spotify.com/embed/album/2TkU7Hb47cJzBQCLFSmY6x?utm_source=generator&theme=0&autoplay=1';
-muteBtn.addEventListener('click', function() {
-  muted = !muted;
-  muteBtn.classList.toggle('is-muted', muted);
-  spotifyFrame.src = muted ? spotifyBase + '&volume=0' : spotifyBase;
-});
+function byId(id) { return document.getElementById(id); }
+function pad(n) { return n < 10 ? '0' + n : '' + n; }
 
-setTimeout(function() {
-  var intro = document.getElementById('intro');
-  if (intro) intro.remove();
-}, 2400);
+/* ---------- NAV ---------- */
+var nav = byId('nav');
+function onScroll() {
+  var y = window.pageYOffset || document.documentElement.scrollTop;
+  nav.className = y > 40 ? 'nav solid' : 'nav';
+}
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
 
-function openYouTube(videoId) {
-  window.location.href = 'youtube://youtu.be/' + videoId;
-  setTimeout(function() { window.location.href = 'https://youtu.be/' + videoId; }, 800);
+/* ---------- HERO-BILD (Fallback, falls die Datei nicht geladen werden kann) ---------- */
+var hero = byId('hero');
+var heroImg = byId('heroImg');
+function heroFallback() { hero.className = 'hero noimg'; }
+heroImg.addEventListener('error', heroFallback);
+if (heroImg.complete && heroImg.naturalWidth === 0) { heroFallback(); }
+
+/* ---------- YOUTUBE THUMBNAILS (maxres -> hq Fallback) ---------- */
+function thumbFallback(img) {
+  if (img.getAttribute('data-fb') === '1') { return; }
+  var fb = img.getAttribute('data-fallback');
+  if (fb) { img.setAttribute('data-fb', '1'); img.src = fb; }
+}
+function bindThumb(img) {
+  img.addEventListener('error', function () { thumbFallback(img); });
+  img.addEventListener('load', function () { if (img.naturalWidth < 200) { thumbFallback(img); } });
+  if (img.complete && img.naturalWidth > 0 && img.naturalWidth < 200) { thumbFallback(img); }
+}
+var thumbImgs = document.querySelectorAll('.vc-thumb img');
+for (var t = 0; t < thumbImgs.length; t++) { bindThumb(thumbImgs[t]); }
+
+/* ---------- YOUTUBE ÖFFNEN (App, danach Web-Fallback) ---------- */
+function openYouTube(id) {
+  var left = false;
+  function onHide() { if (document.hidden) { left = true; } }
+  document.addEventListener('visibilitychange', onHide);
+  window.location.href = 'youtube://youtu.be/' + id;
+  setTimeout(function () {
+    document.removeEventListener('visibilitychange', onHide);
+    if (!left && !document.hidden) { window.location.href = 'https://youtu.be/' + id; }
+  }, 800);
 }
 
-function openLegal(which) {
-  document.getElementById('overlay-' + which).classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
-function closeLegal(which) {
-  document.getElementById('overlay-' + which).classList.remove('active');
-  document.body.style.overflow = '';
-}
-
-var carousel = document.getElementById('carousel');
-var carouselTrack = document.getElementById('carouselTrack');
-var videoLabel = document.getElementById('videoLabel');
-var videoTag = document.getElementById('videoTag');
-var swipeHint = document.getElementById('swipeHint');
-var cardEls = [
-  document.getElementById('card0'),
-  document.getElementById('card1'),
-  document.getElementById('card2')
-];
-var dotEls = [
-  document.getElementById('dot0'),
-  document.getElementById('dot1'),
-  document.getElementById('dot2')
-];
-var labels = ['Neustes Video', '12 Stufen', 'Park voller Kids'];
-var tags = ['NEU', '', ''];
-var current = 0;
-var dragStartX = 0;
-var dragStartTranslate = 0;
+/* ---------- VIDEO CAROUSEL ---------- */
+var vcView = byId('vcView');
+var vcTrack = byId('vcTrack');
+var vcCount = byId('vcCount');
+var vcPrev = byId('vcPrev');
+var vcNext = byId('vcNext');
+var slides = vcTrack.querySelectorAll('.vc-slide');
+var dots = document.querySelectorAll('.vc-dot');
+var n = slides.length;
+var cur = 0;
 var dragging = false;
-var dragMoved = false;
+var moved = false;
+var dragEnd = 0;
+var startX = 0;
+var baseX = 0;
+var pid = null;
 
-function getCardWidth() { return carousel.offsetWidth + 16; }
-
-function goTo(index, animate) {
-  if (animate === undefined) animate = true;
-  if (index < 0 || index >= cardEls.length) return;
-  current = index;
-  carouselTrack.style.transition = animate ? 'transform .45s cubic-bezier(.25,.46,.45,.94)' : 'none';
-  carouselTrack.style.transform = 'translateX(-' + (getCardWidth() * index) + 'px)';
-  videoLabel.textContent = labels[index];
-  videoTag.textContent = tags[index];
-  videoTag.style.display = tags[index] ? '' : 'none';
-  dotEls.forEach(function(d, i) { d.classList.toggle('active', i === index); });
-  cardEls.forEach(function(c, i) { c.classList.toggle('active-card', i === index); });
-  swipeHint.classList.toggle('hidden', index > 0);
+function goTo(i, anim) {
+  if (i < 0) { i = 0; }
+  if (i > n - 1) { i = n - 1; }
+  cur = i;
+  vcTrack.style.transition = (anim === false) ? 'none' : '';
+  vcTrack.style.transform = 'translate3d(' + (-slides[i].offsetLeft) + 'px,0,0)';
+  for (var k = 0; k < n; k++) {
+    slides[k].className = (k === i) ? 'vc-slide on' : 'vc-slide';
+    dots[k].className = (k === i) ? 'vc-dot on' : 'vc-dot';
+    dots[k].setAttribute('aria-current', k === i ? 'true' : 'false');
+  }
+  vcCount.textContent = pad(i + 1) + ' / ' + pad(n);
+  vcPrev.disabled = (i === 0);
+  vcNext.disabled = (i === n - 1);
 }
 
-carousel.addEventListener('touchstart', function(e) {
-  dragStartX = e.touches[0].clientX;
-  dragStartTranslate = getCardWidth() * current;
-  carouselTrack.style.transition = 'none';
-  dragMoved = false;
-}, { passive: true });
-
-carousel.addEventListener('touchmove', function(e) {
-  var diff = e.touches[0].clientX - dragStartX;
-  carouselTrack.style.transform = 'translateX(-' + (dragStartTranslate - diff) + 'px)';
-  dragMoved = true;
-}, { passive: true });
-
-carousel.addEventListener('touchend', function(e) {
-  var diff = dragStartX - e.changedTouches[0].clientX;
-  if (Math.abs(diff) > 50) {
-    goTo(diff > 0 ? Math.min(current + 1, cardEls.length - 1) : Math.max(current - 1, 0));
-  } else {
-    goTo(current);
-  }
-});
-
-carousel.addEventListener('mousedown', function(e) {
+vcView.addEventListener('pointerdown', function (e) {
+  if (e.pointerType === 'mouse' && e.button !== 0) { return; }
   dragging = true;
-  dragMoved = false;
-  dragStartX = e.clientX;
-  dragStartTranslate = getCardWidth() * current;
-  carouselTrack.style.transition = 'none';
-  e.preventDefault();
+  moved = false;
+  pid = e.pointerId;
+  startX = e.clientX;
+  baseX = -slides[cur].offsetLeft;
+  vcTrack.style.transition = 'none';
 });
 
-window.addEventListener('mousemove', function(e) {
-  if (!dragging) return;
-  var diff = e.clientX - dragStartX;
-  carouselTrack.style.transform = 'translateX(-' + (dragStartTranslate - diff) + 'px)';
-  if (Math.abs(diff) > 5) dragMoved = true;
+window.addEventListener('pointermove', function (e) {
+  if (!dragging || e.pointerId !== pid) { return; }
+  var dx = e.clientX - startX;
+  if (Math.abs(dx) > 8) { moved = true; vcView.className = 'vc-view drag'; }
+  var off = dx;
+  if ((cur === 0 && dx > 0) || (cur === n - 1 && dx < 0)) { off = dx * 0.3; }
+  vcTrack.style.transform = 'translate3d(' + (baseX + off) + 'px,0,0)';
 });
 
-window.addEventListener('mouseup', function(e) {
-  if (!dragging) return;
+window.addEventListener('pointerup', function (e) {
+  if (!dragging || e.pointerId !== pid) { return; }
   dragging = false;
-  var diff = dragStartX - e.clientX;
-  if (Math.abs(diff) > 50) {
-    goTo(diff > 0 ? Math.min(current + 1, cardEls.length - 1) : Math.max(current - 1, 0));
-  } else {
-    goTo(current);
-  }
+  vcView.className = 'vc-view';
+  var dx = e.clientX - startX;
+  if (moved) { dragEnd = Date.now(); }
+  if (Math.abs(dx) > 50) { goTo(cur + (dx < 0 ? 1 : -1)); } else { goTo(cur); }
 });
 
-cardEls.forEach(function(card) {
-  card.addEventListener('click', function(e) {
+window.addEventListener('pointercancel', function (e) {
+  if (!dragging || e.pointerId !== pid) { return; }
+  dragging = false;
+  vcView.className = 'vc-view';
+  goTo(cur);
+});
+
+vcView.addEventListener('dragstart', function (e) { e.preventDefault(); });
+
+function bindSlide(i) {
+  slides[i].addEventListener('click', function (e) {
     e.preventDefault();
-    if (dragMoved) return;
-    var videoId = card.getAttribute('data-ytid');
-    if (videoId) openYouTube(videoId);
+    /* Wischen darf nie ein Video öffnen */
+    if (moved && (Date.now() - dragEnd) < 400) { return; }
+    moved = false;
+    if (i !== cur) { goTo(i); return; }
+    openYouTube(slides[i].getAttribute('data-id'));
   });
+}
+for (var s = 0; s < n; s++) { bindSlide(s); }
+
+function bindDot(i) { dots[i].addEventListener('click', function () { goTo(i); }); }
+for (var d = 0; d < n; d++) { bindDot(d); }
+vcPrev.addEventListener('click', function () { goTo(cur - 1); });
+vcNext.addEventListener('click', function () { goTo(cur + 1); });
+
+vcView.addEventListener('keydown', function (e) {
+  if (e.key === 'ArrowLeft') { goTo(cur - 1); }
+  if (e.key === 'ArrowRight') { goTo(cur + 1); }
+});
+vcView.addEventListener('focusin', function (e) {
+  vcView.scrollLeft = 0;
+  for (var k = 0; k < n; k++) {
+    if (slides[k].contains(e.target) && k !== cur) { goTo(k); }
+  }
 });
 
 goTo(0, false);
-window.addEventListener('resize', function() { goTo(current, false); });
+window.addEventListener('resize', function () { goTo(cur, false); });
+window.addEventListener('load', function () { goTo(cur, false); });
 
-function switchImg(mainId, thumb) {
-  document.getElementById(mainId).src = thumb.src;
-  thumb.closest('.drop-gallery').querySelectorAll('.drop-thumb').forEach(function(t) {
-    t.classList.remove('active');
-  });
-  thumb.classList.add('active');
+/* ---------- LIGHTBOX ---------- */
+var lb = byId('lb');
+var lbImg = byId('lbImg');
+var lbFocus = null;
+function openLb(src, alt) {
+  lbFocus = document.activeElement;
+  lbImg.src = src;
+  lbImg.alt = alt || '';
+  lb.className = 'lb open';
+  lb.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  byId('lbClose').focus();
 }
+function closeLb() {
+  lb.className = 'lb';
+  lb.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+  if (lbFocus && lbFocus.focus) { lbFocus.focus(); }
+}
+lb.addEventListener('click', closeLb);
 
-function openImg(src) {
-  var overlay = document.createElement('div');
-  overlay.style.cssText = 'position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.95);display:flex;align-items:center;justify-content:center;cursor:zoom-out';
-  var img = document.createElement('img');
-  img.src = src;
-  img.style.cssText = 'max-width:95vw;max-height:90vh;object-fit:contain;border-radius:4px';
-  overlay.appendChild(img);
-  overlay.addEventListener('click', function() { overlay.remove(); });
-  document.body.appendChild(overlay);
+byId('waxBtn').addEventListener('click', function () {
+  var im = byId('waxImg');
+  openLb(im.src, im.alt);
+});
+byId('candleBtn').addEventListener('click', function () {
+  var im = byId('candleImg');
+  openLb(im.src, im.alt);
+});
+
+var thumbBtns = document.querySelectorAll('.thumb');
+function bindThumbBtn(btn) {
+  btn.addEventListener('click', function () {
+    var im = byId('candleImg');
+    im.src = btn.getAttribute('data-src');
+    im.alt = btn.getAttribute('data-alt');
+    for (var k = 0; k < thumbBtns.length; k++) {
+      thumbBtns[k].className = 'thumb';
+      thumbBtns[k].setAttribute('aria-pressed', 'false');
+    }
+    btn.className = 'thumb on';
+    btn.setAttribute('aria-pressed', 'true');
+  });
+}
+for (var tb = 0; tb < thumbBtns.length; tb++) { bindThumbBtn(thumbBtns[tb]); }
+
+/* ---------- LEGAL OVERLAYS ---------- */
+var legalFocus = null;
+function openLegal(id) {
+  var el = byId('legal-' + id);
+  legalFocus = document.activeElement;
+  el.className = 'legal open';
+  el.setAttribute('aria-hidden', 'false');
+  el.scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+  var c = el.querySelector('.legal-close');
+  if (c) { c.focus(); }
+}
+function closeLegal(id) {
+  var el = byId('legal-' + id);
+  el.className = 'legal';
+  el.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+  if (legalFocus && legalFocus.focus) { legalFocus.focus(); }
+}
+function bindOpen(btn) { btn.addEventListener('click', function () { openLegal(btn.getAttribute('data-legal')); }); }
+function bindClose(btn) { btn.addEventListener('click', function () { closeLegal(btn.getAttribute('data-close')); }); }
+var openBtns = document.querySelectorAll('[data-legal]');
+var closeBtns = document.querySelectorAll('[data-close]');
+for (var o = 0; o < openBtns.length; o++) { bindOpen(openBtns[o]); }
+for (var c = 0; c < closeBtns.length; c++) { bindClose(closeBtns[c]); }
+
+document.addEventListener('keydown', function (e) {
+  if (e.key !== 'Escape') { return; }
+  if (lb.className.indexOf('open') > -1) { closeLb(); return; }
+  var ids = ['impressum', 'datenschutz', 'widerruf'];
+  for (var k = 0; k < ids.length; k++) {
+    if (byId('legal-' + ids[k]).className.indexOf('open') > -1) { closeLegal(ids[k]); return; }
+  }
+});
+
+/* ---------- SCROLL REVEAL ---------- */
+var rvEls = document.querySelectorAll('.rv');
+if ('IntersectionObserver' in window) {
+  var io = new IntersectionObserver(function (entries) {
+    for (var k = 0; k < entries.length; k++) {
+      if (entries[k].isIntersecting) {
+        entries[k].target.className += ' in';
+        io.unobserve(entries[k].target);
+      }
+    }
+  }, { threshold: 0.12 });
+  for (var r = 0; r < rvEls.length; r++) { io.observe(rvEls[r]); }
+} else {
+  for (var q = 0; q < rvEls.length; q++) { rvEls[q].className += ' in'; }
 }
 </script>
 </body>
 </html>
-
